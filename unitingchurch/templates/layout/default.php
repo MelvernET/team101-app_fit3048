@@ -74,9 +74,9 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/group') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/cluster') ?>">
                 <i class="fas fa-fw  fa-layer-group"></i>
-                <span>Groups</span></a>
+                <span>Clusters</span></a>
         </li>
 
         <li class="nav-item">
