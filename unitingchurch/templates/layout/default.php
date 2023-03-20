@@ -38,7 +38,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-guitar"></i>
+
             </div>
             <div class="sidebar-brand-text mx-3">Uniting</div>
         </a>
@@ -49,56 +49,60 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build('/') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw  fa-list"></i>
                 <span>Home</span></a>
         </li>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/services') ?>">
-                <i class="fas fa-fw fa-user"></i>
-                <span>Customers</span></a>
+            <a class="nav-link" href="<?= $this->Url->build('/service') ?>">
+                <i class="fas fa-fw fa-list"></i>
+                <span>Services</span></a>
         </li>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/jobs') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/program') ?>">
                 <i class="fas fa-fw  fa-list"></i>
-                <span>Jobs</span></a>
+                <span>Programs</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/site') ?>">
+                <i class="fas fa-fw  fa-list"></i>
+                <span>Sites</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/group') ?>">
+                <i class="fas fa-fw  fa-layer-group"></i>
+                <span>Groups</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/division') ?>">
+                <i class="fas fa-fw  fa-layer-group"></i>
+                <span>Divisons</span></a>
         </li>
 
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-warehouse"></i>
-                <span>Inventory Management</span>
+                <i class="fas fa-fw fa-phone"></i>
+                <span>Calls</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/categories') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Item Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/items') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>  Items</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/client') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Clients</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/record') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>Records</a>
 
                 </div>
             </div>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-star"></i>
-                <span>Orders Management</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/orders') ?>"> <i class="fas fa-fw fa-star"></i>  Orders</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/invoices') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>  Invoices</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/quotes') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Quotes</a>
-                </div>
-            </div>
-        </li>
 
 
 
