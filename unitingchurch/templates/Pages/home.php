@@ -45,6 +45,14 @@ if (!Configure::read('debug')) :
     );
 endif;
 
+$formTemplate = [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control" {{attrs}}/>'
+];
+
+$this->Form->setTemplates($formTemplate);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,73 +76,100 @@ endif;
 <body>
 <header>
     <div class="container text-center">
-
-        <h1>
-            Uniting Logo
-        </h1>
+            <?=  $this->Html->image('uniting-logo.png', ['class' => 'uniting-logo']); ?>
 
 
     </div>
 
+    <main class="main">
+        <div class="container">
+            <div class="content">
+                <h5 class="headings"><b>Find a Uniting service near you</h5></b>
+<br>
+                <!-- Content Row -->
+
+                <div class="row">
+                    <div class="col-8">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Map</h5>
+                                <div class="map">
+                                <p class="card-text">Place map here.</p>
+
+                            </div></div>
+                        </div>
 
 
-</header>
-<main class="main">
-    <div class="container">
-        <div class="content">
-            <!-- Content Row -->
-            <un!-- Area Chart -->
 
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Map</h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Search Filters</h5>
+                                <p class="card-text">
+                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button">
+                                <div class="input-group mb-3">
 
-                        </a>
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">
+                                    <div class="input-group-append" >
+
+                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Select Service</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        </div>
+                                    </div>
+                                </div></div>
+
+
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button">
+                                        <div class="input-group-append" >
+
+                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Select Service</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+<br>
+                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
+                             <br>
+                                <a href="#" class="btn btn-primary">Search</a>
+</div>
+
+
+
+                        </div>
+
 
                     </div>
                 </div>
 
-
-
-
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
-                </div>
+<!-- end -->
 
 
 
 
-            </div>
-        </div>
-
-
-
-
-
-
-        <!-- Content Row -->
 
 
     </div>
-
-
-
-
-
-
-</main>
-
-
-
-
+    </div>
+    </main>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -147,7 +182,7 @@ endif;
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-
+</header>
 
 </body>
 </html>

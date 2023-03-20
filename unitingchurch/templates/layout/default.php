@@ -38,7 +38,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-guitar"></i>
+
             </div>
             <div class="sidebar-brand-text mx-3">Uniting</div>
         </a>
@@ -49,66 +49,60 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build('/') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw  fa-list"></i>
                 <span>Home</span></a>
         </li>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/division') ?>">
-                <i class="fas fa-fw fa-user"></i>
-                <span>Division</span></a>
+            <a class="nav-link" href="<?= $this->Url->build('/service') ?>">
+                <i class="fas fa-fw fa-list"></i>
+                <span>Services</span></a>
         </li>
 
-
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/g') ?>">
-                <i class="fas fa-fw  fa-list"></i>
-                <span>Group</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/site') ?>">
-                <i class="fas fa-fw  fa-list"></i>
-                <span>Site</span></a>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link" href="<?= $this->Url->build('/program') ?>">
                 <i class="fas fa-fw  fa-list"></i>
-                <span>Program</span></a>
+                <span>Programs</span></a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/site') ?>">
+                <i class="fas fa-fw  fa-list"></i>
+                <span>Sites</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/group') ?>">
+                <i class="fas fa-fw  fa-layer-group"></i>
+                <span>Groups</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/division') ?>">
+                <i class="fas fa-fw  fa-layer-group"></i>
+                <span>Divisons</span></a>
+        </li>
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-warehouse"></i>
-                <span>Program</span>
+                <i class="fas fa-fw fa-phone"></i>
+                <span>Calls</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/program_type') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>program_type</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/program') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>program</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/client') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Clients</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/record') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>Records</a>
 
                 </div>
             </div>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-star"></i>
-                <span>Service</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/service_stream') ?>"> <i class="fas fa-fw fa-star"></i>Service Stream</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/service_type') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>Type</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/service') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Service</a>
-                </div>
-            </div>
-        </li>
 
 
 
@@ -165,12 +159,12 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
 
-<!--                            --><?;;; ?>
+                            <?=  $this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']); ?>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="<?= $this->Url->build('/user') ?>">
+                            <a class="dropdown-item" href="<?= $this->Url->build('/users') ?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Users
                             </a>
@@ -206,7 +200,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Uniting VIC 2023</span>
+                    <span>Copyright &copy; Uniting Vic Tas 2023</span>
                 </div>
             </div>
         </footer>
