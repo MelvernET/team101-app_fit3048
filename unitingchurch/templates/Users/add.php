@@ -19,8 +19,8 @@
                 <?php
                     echo $this->Form->control('user_first_name');
                     echo $this->Form->control('user_last_name');
-                    echo $this->Form->control('user_email');
-                    echo $this->Form->control('user_password');
+                    echo $this->Form->control('email');
+                    echo $this->Form->control('password');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

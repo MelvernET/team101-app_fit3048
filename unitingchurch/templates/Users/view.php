@@ -27,11 +27,11 @@
                     <td><?= h($user->user_last_name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('User Email') ?></th>
+                    <th><?= __('Email') ?></th>
                     <td><?= h($user->user_email) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('User Password') ?></th>
+                    <th><?= __('Password') ?></th>
                     <td><?= h($user->user_password) ?></td>
                 </tr>
                 <tr>

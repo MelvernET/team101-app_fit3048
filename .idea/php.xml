@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="PhpCodeSniffer">
+    <phpcs_settings>
+      <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/unitingchurch/vendor/bin/phpcbf" tool_path="$PROJECT_DIR$/unitingchurch/vendor/bin/phpcs" />
+    </phpcs_settings>
+  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/unitingchurch/vendor/symfony/polyfill-php73" />
@@ -83,6 +88,15 @@
       <path value="$PROJECT_DIR$/unitingchurch/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/unitingchurch/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/unitingchurch/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/unitingchurch/vendor/cakephp/authentication" />
     </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/unitingchurch/vendor/autoload.php" />
+    </phpunit_settings>
   </component>
 </project>

@@ -14,8 +14,8 @@
                     <th><?= $this->Paginator->sort('user_id') ?></th>
                     <th><?= $this->Paginator->sort('user_first_name') ?></th>
                     <th><?= $this->Paginator->sort('user_last_name') ?></th>
-                    <th><?= $this->Paginator->sort('user_email') ?></th>
-                    <th><?= $this->Paginator->sort('user_password') ?></th>
+                    <th><?= $this->Paginator->sort('email') ?></th>
+                    <th><?= $this->Paginator->sort('password') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
