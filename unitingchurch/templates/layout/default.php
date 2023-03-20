@@ -55,32 +55,32 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/service') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/services') ?>">
                 <i class="fas fa-fw fa-list"></i>
                 <span>Services</span></a>
         </li>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/program') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/programs') ?>">
                 <i class="fas fa-fw  fa-list"></i>
                 <span>Programs</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/site') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/sites') ?>">
                 <i class="fas fa-fw  fa-list"></i>
                 <span>Sites</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/cluster') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/clusters') ?>">
                 <i class="fas fa-fw  fa-layer-group"></i>
                 <span>Clusters</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/division') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/divisions') ?>">
                 <i class="fas fa-fw  fa-layer-group"></i>
                 <span>Divisons</span></a>
         </li>
@@ -95,8 +95,8 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/client') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Clients</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/record') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>Records</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/clients') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Clients</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/records') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>Records</a>
 
                 </div>
             </div>
@@ -164,7 +164,7 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="<?= $this->Url->build('/user') ?>">
+                            <a class="dropdown-item" href="<?= $this->Url->build('/users') ?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 User
                             </a>
