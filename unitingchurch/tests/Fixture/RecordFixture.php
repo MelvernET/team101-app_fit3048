@@ -29,7 +29,7 @@ class RecordFixture extends TestFixture
                 'user_id' => 1,
                 'client_id' => 1,
                 'record_info' => 'Lorem ipsum dolor sit amet',
-                'record_date_time' => '2023-03-20 04:56:52',
+                'record_date_time' => '2023-03-20 09:48:16',
             ],
         ];
         parent::init();

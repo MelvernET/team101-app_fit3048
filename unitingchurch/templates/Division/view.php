@@ -27,8 +27,8 @@
                     <td><?= h($division->division_general_manager) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Divison Id') ?></th>
-                    <td><?= $this->Number->format($division->divison_id) ?></td>
+                    <th><?= __('Division Id') ?></th>
+                    <td><?= $this->Number->format($division->division_id) ?></td>
                 </tr>
             </table>
         </div>

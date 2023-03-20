@@ -65,7 +65,7 @@
                             <th><?= __('Program Type Id') ?></th>
                             <th><?= __('Program Name') ?></th>
                             <th><?= __('Program Manager') ?></th>
-                            <th><?= __('Group Id') ?></th>
+                            <th><?= __('G Id') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($site->program as $program) : ?>
@@ -74,7 +74,7 @@
                             <td><?= h($program->program_type_id) ?></td>
                             <td><?= h($program->program_name) ?></td>
                             <td><?= h($program->program_manager) ?></td>
-                            <td><?= h($program->group_id) ?></td>
+                            <td><?= h($program->g_id) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Program', 'action' => 'view', $program->program_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Program', 'action' => 'edit', $program->program_id]) ?>

@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 /**
  * Division Entity
  *
- * @property int $divison_id
+ * @property int $division_id
  * @property string $division_name
  * @property string $division_general_manager
  */

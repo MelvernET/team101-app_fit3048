@@ -55,30 +55,40 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/services') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/division') ?>">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Customers</span></a>
+                <span>Division</span></a>
         </li>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/jobs') ?>">
+            <a class="nav-link" href="<?= $this->Url->build('/g') ?>">
                 <i class="fas fa-fw  fa-list"></i>
-                <span>Jobs</span></a>
+                <span>Group</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/site') ?>">
+                <i class="fas fa-fw  fa-list"></i>
+                <span>Site</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/program') ?>">
+                <i class="fas fa-fw  fa-list"></i>
+                <span>Program</span></a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-warehouse"></i>
-                <span>Inventory Management</span>
+                <span>Program</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/categories') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Item Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/items') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>  Items</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/program_type') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>program_type</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/program') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>program</a>
 
                 </div>
             </div>
@@ -88,14 +98,14 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-star"></i>
-                <span>Orders Management</span>
+                <span>Service</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/orders') ?>"> <i class="fas fa-fw fa-star"></i>  Orders</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/invoices') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>  Invoices</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/quotes') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Quotes</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/service_stream') ?>"> <i class="fas fa-fw fa-star"></i>Service Stream</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/service_type') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>Type</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/service') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Service</a>
                 </div>
             </div>
         </li>
@@ -155,12 +165,12 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
 
-                            <?=  $this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']); ?>
+<!--                            --><?;;; ?>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="<?= $this->Url->build('/users') ?>">
+                            <a class="dropdown-item" href="<?= $this->Url->build('/user') ?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Users
                             </a>
@@ -196,7 +206,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; GAtech 2022</span>
+                    <span>Copyright &copy; Uniting VIC 2023</span>
                 </div>
             </div>
         </footer>

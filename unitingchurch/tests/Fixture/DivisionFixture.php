@@ -25,7 +25,7 @@ class DivisionFixture extends TestFixture
     {
         $this->records = [
             [
-                'divison_id' => 1,
+                'division_id' => 1,
                 'division_name' => 'Lorem ipsum dolor sit amet',
                 'division_general_manager' => 'Lorem ipsum dolor sit amet',
             ],

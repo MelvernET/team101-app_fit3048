@@ -22,6 +22,7 @@
             <fieldset>
                 <legend><?= __('Edit Division') ?></legend>
                 <?php
+                    echo $this->Form->control('division_id');
                     echo $this->Form->control('division_name');
                     echo $this->Form->control('division_general_manager');
                 ?>

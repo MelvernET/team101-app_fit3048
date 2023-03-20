@@ -25,9 +25,9 @@ class GroupFixture extends TestFixture
     {
         $this->records = [
             [
-                'group_id' => 1,
-                'group_name' => 'Lorem ipsum dolor sit amet',
-                'group_executive_manager' => 'Lorem ipsum dolor sit amet',
+                'id' => 1,
+                'g_name' => 'Lorem ipsum dolor sit amet',
+                'g_executive_manager' => 'Lorem ipsum dolor sit amet',
                 'divison_id' => 1,
             ],
         ];

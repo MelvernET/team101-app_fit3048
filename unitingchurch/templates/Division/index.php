@@ -11,7 +11,7 @@
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('divison_id') ?></th>
+                    <th><?= $this->Paginator->sort('division_id') ?></th>
                     <th><?= $this->Paginator->sort('division_name') ?></th>
                     <th><?= $this->Paginator->sort('division_general_manager') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -20,7 +20,7 @@
             <tbody>
                 <?php foreach ($division as $division): ?>
                 <tr>
-                    <td><?= $this->Number->format($division->divison_id) ?></td>
+                    <td><?= $this->Number->format($division->division_id) ?></td>
                     <td><?= h($division->division_name) ?></td>
                     <td><?= h($division->division_general_manager) ?></td>
                     <td class="actions">

@@ -38,8 +38,8 @@ class DivisionTable extends Table
         parent::initialize($config);
 
         $this->setTable('division');
-        $this->setDisplayField('divison_id');
-        $this->setPrimaryKey('divison_id');
+        $this->setDisplayField('division_id');
+        $this->setPrimaryKey('division_id');
     }
 
     /**

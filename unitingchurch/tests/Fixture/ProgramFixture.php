@@ -29,7 +29,7 @@ class ProgramFixture extends TestFixture
                 'program_type_id' => 1,
                 'program_name' => 'Lorem ipsum dolor sit amet',
                 'program_manager' => 'Lorem ipsum dolor sit amet',
-                'group_id' => 1,
+                'cluster_id' => 1,
             ],
         ];
         parent::init();
