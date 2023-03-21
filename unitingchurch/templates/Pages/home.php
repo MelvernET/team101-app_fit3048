@@ -74,7 +74,7 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->fetch('script') ?>
 </head>
 <body>
-<header>
+
     <div class="container text-center">
             <?=  $this->Html->image('uniting-logo.png', ['class' => 'uniting-logo']); ?>
 
@@ -82,6 +82,7 @@ $this->Form->setTemplates($formTemplate);
     </div>
 
     <main class="main">
+<!--        <div class="col-xl-6 col-lg-7">-->
         <div class="container">
             <div class="content">
                 <h5 class="headings"><b>Find a Uniting service near you</h5></b>
@@ -91,16 +92,16 @@ $this->Form->setTemplates($formTemplate);
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="card" style='width: 35vw; height: 50vh;'>
+                        <div class="card" style='width: 35vw; height: 70vh;'>
                             <div class="card-body" >
                                 <h5 class="card-title">Map</h5>
-                                <div class="card shadow mb-4" style='width: 30vw; height: 40vh;'>
-                                <div class="map" style='width: 30vw; height: 40vh;' >
+                                <div class="card shadow mb-4" style='width: 30vw; height: 60vh;'>
+                                <div class="map" style='width: 30vw; height: 60vh;' >
 
 
                                     <div id='printoutPanel'></div>
 
-                                    <div id='myMap' style='width: 30vw; height: 40vh;'></div>
+                                    <div id='myMap' style='width: 30vw; height: 60vh;'></div>
 
 
 <!--                                <p class="card-text">Place map here.</p>-->
@@ -165,9 +166,9 @@ $this->Form->setTemplates($formTemplate);
 
 
                         </div>
-
-
                     </div>
+
+
                 </div>
 
 <!-- end -->
@@ -192,7 +193,7 @@ $this->Form->setTemplates($formTemplate);
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-</header>
+
 
 
 
