@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Clients Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsToMany $Users
+ *
  * @method \App\Model\Entity\Client newEmptyEntity()
  * @method \App\Model\Entity\Client newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Client[] newEntities(array $data, array $options = [])
@@ -40,6 +42,12 @@ class ClientsTable extends Table
         $this->setTable('clients');
         $this->setDisplayField('client_id');
         $this->setPrimaryKey('client_id');
+
+        $this->belongsToMany('Users', [
+            'foreignKey' => 'client_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'users_clients',
+        ]);
     }
 
     /**

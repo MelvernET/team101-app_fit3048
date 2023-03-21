@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Client $client
+ * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
 <div class="row">
@@ -15,11 +16,12 @@
         <div class="clients form content">
             <?= $this->Form->create($client) ?>
             <fieldset>
-                <legend><?= __('Add Client') ?></legend>
+                <legend><?= __('Add New Client') ?></legend>
                 <?php
                     echo $this->Form->control('client_first_name');
                     echo $this->Form->control('client_last_name');
                     echo $this->Form->control('client_location');
+                    echo $this->Form->control('users._ids', ['options' => $users]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

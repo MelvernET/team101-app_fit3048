@@ -33,7 +33,7 @@ class ClientsController extends AppController
     public function view($id = null)
     {
         $client = $this->Clients->get($id, [
-            'contain' => [],
+            'contain' => ['Users'],
         ]);
 
         $this->set(compact('client'));
@@ -56,7 +56,8 @@ class ClientsController extends AppController
             }
             $this->Flash->error(__('The client could not be saved. Please, try again.'));
         }
-        $this->set(compact('client'));
+        $users = $this->Clients->Users->find('list', ['limit' => 200])->all();
+        $this->set(compact('client', 'users'));
     }
 
     /**
@@ -69,7 +70,7 @@ class ClientsController extends AppController
     public function edit($id = null)
     {
         $client = $this->Clients->get($id, [
-            'contain' => [],
+            'contain' => ['Users'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $client = $this->Clients->patchEntity($client, $this->request->getData());
@@ -80,7 +81,8 @@ class ClientsController extends AppController
             }
             $this->Flash->error(__('The client could not be saved. Please, try again.'));
         }
-        $this->set(compact('client'));
+        $users = $this->Clients->Users->find('list', ['limit' => 200])->all();
+        $this->set(compact('client', 'users'));
     }
 
     /**

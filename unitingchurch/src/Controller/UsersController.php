@@ -33,7 +33,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => [],
+            'contain' => ['Clients'],
         ]);
 
         $this->set(compact('user'));
@@ -56,7 +56,8 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $clients = $this->Users->Clients->find('list', ['limit' => 200])->all();
+        $this->set(compact('user', 'clients'));
     }
 
     /**
@@ -69,7 +70,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => [],
+            'contain' => ['Clients'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -80,7 +81,8 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $clients = $this->Users->Clients->find('list', ['limit' => 200])->all();
+        $this->set(compact('user', 'clients'));
     }
 
     /**
