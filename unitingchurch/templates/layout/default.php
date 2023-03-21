@@ -66,6 +66,11 @@
                 <i class="fas fa-fw  fa-list"></i>
                 <span>Programs</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->Url->build('/program types') ?>">
+                <i class="fas fa-fw  fa-list"></i>
+                <span>Program types</span></a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" href="<?= $this->Url->build('/sites') ?>">
