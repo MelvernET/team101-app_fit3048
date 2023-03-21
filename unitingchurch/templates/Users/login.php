@@ -36,7 +36,7 @@ $this->Form->setTemplates($formTemplate);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GAtech - Login</title>
+    <title>Uniting - Login</title>
 
     <!-- Custom fonts for this template-->
 

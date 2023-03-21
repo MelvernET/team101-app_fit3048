@@ -66,7 +66,7 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-
+    <style type='text/css'>body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Helvetica,Arial,Sans-Serif}</style>
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home']) ?>
 
     <?= $this->fetch('meta') ?>
@@ -95,6 +95,13 @@ $this->Form->setTemplates($formTemplate);
                             <div class="card-body">
                                 <h5 class="card-title">Map</h5>
                                 <div class="map">
+
+
+                                    <div id='printoutPanel'></div>
+
+                                    <div id='myMap' style='width: 50vw; height: 50vh;'></div>
+
+
                                 <p class="card-text">Place map here.</p>
 
                             </div></div>
@@ -183,6 +190,22 @@ $this->Form->setTemplates($formTemplate);
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 </header>
+
+
+
+
+
+<script type='text/javascript'>
+    function loadMapScenario() {
+        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+
+    }
+</script>
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?setmkt=en-us&key=YourBingMapsKey&callback=loadMapScenario' async defer></script>
+
+
+
+
 
 </body>
 </html>
