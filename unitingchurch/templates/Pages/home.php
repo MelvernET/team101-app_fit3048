@@ -219,7 +219,21 @@ $this->Form->setTemplates($formTemplate);
             };
             searchManager.geocode(requestOptions);
         });
+        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
+            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+            anchor: new Microsoft.Maps.Point(12, 39)
+        });
+        map.entities.push(pushpin);
+
+        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
+            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+            anchor: new Microsoft.Maps.Point(12, 39)
+        });
+        map.entities.push(pushpin);
     }
+
+
+
 </script>
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?setmkt=en-us&key=AiF7rJipK3V6_DUqjwflPRpHqRcG8rp61tg6qb5NVxN0yfiPRvMQC8CKVA3Le1CW&callback=loadMapScenario' async defer></script>
 
