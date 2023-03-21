@@ -12,6 +12,8 @@ use Cake\ORM\Entity;
  * @property string $client_first_name
  * @property string $client_last_name
  * @property string $client_location
+ *
+ * @property \App\Model\Entity\User[] $users
  */
 class Client extends Entity
 {
@@ -28,5 +30,6 @@ class Client extends Entity
         'client_first_name' => true,
         'client_last_name' => true,
         'client_location' => true,
+        'users' => true,
     ];
 }

@@ -23,6 +23,8 @@ class ClientsControllerTest extends TestCase
      */
     protected $fixtures = [
         'app.Clients',
+        'app.Users',
+        'app.UsersClients',
     ];
 
     /**

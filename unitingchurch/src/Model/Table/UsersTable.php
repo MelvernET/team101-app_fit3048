@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsToMany $Clients
+ *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -40,6 +42,12 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('user_id');
         $this->setPrimaryKey('user_id');
+
+        $this->belongsToMany('Clients', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'client_id',
+            'joinTable' => 'users_clients',
+        ]);
     }
 
     /**
@@ -63,8 +71,7 @@ class UsersTable extends Table
             ->notEmptyString('user_last_name');
 
         $validator
-            ->scalar('email')
-            ->maxLength('email', 50)
+            ->email('email')
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
 
@@ -75,5 +82,19 @@ class UsersTable extends Table
             ->notEmptyString('password');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+
+        return $rules;
     }
 }

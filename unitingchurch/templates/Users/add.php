@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+ * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
 <div class="row">
@@ -21,6 +22,7 @@
                     echo $this->Form->control('user_last_name');
                     echo $this->Form->control('email');
                     echo $this->Form->control('password');
+                    echo $this->Form->control('clients._ids', ['options' => $clients]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

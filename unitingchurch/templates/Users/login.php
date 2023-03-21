@@ -1,4 +1,3 @@
-
 <?php
 /**
  * @var \App\View\AppView $this
@@ -67,20 +66,20 @@ $this->Form->setTemplates($formTemplate);
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
 
-                                    <div class="users form">
-                                        <?= $this->Flash->render() ?>
-                                        <h3>Login</h3>
-                                        <?= $this->Form->create() ?>
-                                        <fieldset>
+                                <div class="users form">
+                                    <?= $this->Flash->render() ?>
+                                    <h3>Login</h3>
+                                    <?= $this->Form->create() ?>
+                                    <fieldset>
 
-                                            <?= $this->Form->control('email', ['required' => true]) ?>
-                                            <?= $this->Form->control('password', ['required' => true]) ?>
-                                        </fieldset>
-                                        <br>
-                                        <?= $this->Form->submit(__('Login'),['class'=>'btn btn-primary btn-user btn-block']); ?>
-                                        <?= $this->Form->end() ?>
+                                        <?= $this->Form->control('email', ['required' => true]) ?>
+                                        <?= $this->Form->control('password', ['required' => true]) ?>
+                                    </fieldset>
+                                    <br>
+                                    <?= $this->Form->submit(__('Login'),['class'=>'btn btn-primary btn-user btn-block']); ?>
+                                    <?= $this->Form->end() ?>
 
-                                    </div>
+                                </div>
 
 
                                 <hr>
@@ -113,4 +112,5 @@ $this->Form->setTemplates($formTemplate);
 </body>
 
 </html>
+
 

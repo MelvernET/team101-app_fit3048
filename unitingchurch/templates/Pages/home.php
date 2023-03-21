@@ -219,17 +219,13 @@ $this->Form->setTemplates($formTemplate);
             };
             searchManager.geocode(requestOptions);
         });
-        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
-            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-            anchor: new Microsoft.Maps.Point(12, 39)
-        });
-        map.entities.push(pushpin);
+        // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
+        //     icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+        //     anchor: new Microsoft.Maps.Point(12, 39)
+        // });
+        // map.entities.push(pushpin);
 
-        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
-            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-            anchor: new Microsoft.Maps.Point(12, 39)
-        });
-        map.entities.push(pushpin);
+
     }
 
 
