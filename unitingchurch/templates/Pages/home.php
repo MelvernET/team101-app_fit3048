@@ -91,20 +91,23 @@ $this->Form->setTemplates($formTemplate);
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="card">
-                            <div class="card-body">
+                        <div class="card" style='width: 35vw; height: 50vh;'>
+                            <div class="card-body" >
                                 <h5 class="card-title">Map</h5>
-                                <div class="map">
+                                <div class="card shadow mb-4" style='width: 30vw; height: 40vh;'>
+                                <div class="map" style='width: 30vw; height: 40vh;' >
 
 
                                     <div id='printoutPanel'></div>
 
-                                    <div id='myMap' style='width: 50vw; height: 50vh;'></div>
+                                    <div id='myMap' style='width: 30vw; height: 40vh;'></div>
 
 
-                                <p class="card-text">Place map here.</p>
+<!--                                <p class="card-text">Place map here.</p>-->
 
-                            </div></div>
+                            </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -198,11 +201,21 @@ $this->Form->setTemplates($formTemplate);
 <script type='text/javascript'>
     function loadMapScenario() {
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
-
+        Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
+            var searchManager = new Microsoft.Maps.Search.SearchManager(map);
+            var requestOptions = {
+                bounds: map.getBounds(),
+                where: 'Monash University clayton campus',
+                callback: function (answer, userData) {
+                    map.setView({ bounds: answer.results[0].bestView });
+                    map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location));
+                }
+            };
+            searchManager.geocode(requestOptions);
+        });
     }
 </script>
-<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?setmkt=en-us&key=YourBingMapsKey&callback=loadMapScenario' async defer></script>
-
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?setmkt=en-us&key=AiF7rJipK3V6_DUqjwflPRpHqRcG8rp61tg6qb5NVxN0yfiPRvMQC8CKVA3Le1CW&callback=loadMapScenario' async defer></script>
 
 
 
