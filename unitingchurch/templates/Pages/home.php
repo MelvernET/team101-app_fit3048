@@ -119,7 +119,7 @@ $this->Form->setTemplates($formTemplate);
                             <div class="card-body">
                                 <h5 class="card-title">Search Filters</h5>
                                 <p class="card-text">
-                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button">
+                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "location">
                                 <div class="input-group mb-3">
 
 
@@ -142,7 +142,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button">
+                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">
                                         <div class="input-group-append" >
 
                                             <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -160,7 +160,7 @@ $this->Form->setTemplates($formTemplate);
 <br>
                                 <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
                              <br>
-                                <a href="#" class="btn btn-primary">Search</a>
+                                <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">
 </div>
 
 
@@ -200,13 +200,18 @@ $this->Form->setTemplates($formTemplate);
 
 
 <script type='text/javascript'>
+
+    function findLocation(){
+        loadMapScenario();
+
+    }
     function loadMapScenario() {
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
             var requestOptions = {
                 bounds: map.getBounds(),
-                where: 'Monash University clayton campus',
+                where: document.getElementById("location").value,
                 callback: function (answer, userData) {
                     map.setView({ bounds: answer.results[0].bestView });
                     map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location));
