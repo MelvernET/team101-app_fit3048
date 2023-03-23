@@ -20,6 +20,8 @@ $formTemplate =
     ];
 
 $this->Form->setTemplates($formTemplate);
+
+
 ?>
 
 
@@ -43,7 +45,7 @@ $this->Form->setTemplates($formTemplate);
 
 
     <!-- Custom styles for this template-->
-    <?= $this->Html->css('/css/sb-admin-2.min.css') ?>
+    <?= $this->Html->css('/css/sb-admin-2.css') ?>
 </head>
 
 <body class="bg-gradient-primary">
@@ -59,7 +61,7 @@ $this->Form->setTemplates($formTemplate);
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block"><?=  $this->Html->image('church.png', ['class' => 'church']); ?></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
