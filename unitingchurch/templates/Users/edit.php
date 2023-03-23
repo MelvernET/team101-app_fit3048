@@ -4,6 +4,24 @@
  * @var \App\Model\Entity\User $user
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
+
+$formTemplate =
+    [
+
+        'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
+        'input' => '<input type="{{type}}" name="{{name}}"  class="form-control" {{attrs}} />',
+        'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+        'label' => '<label{{attrs}} class="form-label"> {{text}}</label>',
+        'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option>',
+        'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
+        'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}>{{value}}</textarea>',
+        'select' => '<select name="{{name}}" class="form-select" aria-label=".form-select-lg example" "{{attrs}}>{{content}}</select>',
+        'selectMultiple' => '<select name="{{name}}[]" class="form-select" aria-label=".form-select-lg example"   multiple="multiple"{{attrs}}>{{content}}</select>',
+        'selectedClass'=>'selected',
+    ];
+
+$this->Form->setTemplates($formTemplate);
+
 ?>
 <div class="row">
     <aside class="column">

@@ -91,7 +91,7 @@ $this->Form->setTemplates($formTemplate);
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="card" >
+                        <div class="card" style="height: 400px;">
                             <div class="card-body" >
                                 <h5 class="card-title">Map</h5>
 

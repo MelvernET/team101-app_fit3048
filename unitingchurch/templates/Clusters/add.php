@@ -4,6 +4,21 @@
  * @var \App\Model\Entity\Cluster $cluster
  * @var \Cake\Collection\CollectionInterface|string[] $divisions
  */
+
+$formTemplate =
+    [
+
+        'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
+        'input' => '<input type="{{type}}" name="{{name}}"  class="form-control" {{attrs}} />',
+        'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+        'label' => '<label{{attrs}} class="form-label"> {{text}}</label>',
+        'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option>',
+        'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
+        'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}>{{value}}</textarea>',
+    ];
+
+$this->Form->setTemplates($formTemplate);
+
 ?>
 <div class="row">
     <aside class="column">
