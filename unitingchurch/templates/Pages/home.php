@@ -93,7 +93,8 @@ $this->Form->setTemplates($formTemplate);
 
                         <div class="card" style="height: 400px;">
                             <div class="card-body" >
-                                <h5 class="card-title">Map</h5>
+                                <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
+                                <br>
 
                                 <div class="map" style='width: 100%; height: 90%;' >
 
@@ -110,10 +111,10 @@ $this->Form->setTemplates($formTemplate);
 
                     </div>
                     <div class="col-4">
-                        <div class="card">
+                        <div class="card" style="height: 400px;">
                             <div class="card-body">
-                                <h5 class="card-title">Search Filters</h5>
-                                <p class="card-text">
+                                <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
+                                <p class="card-text"><br>
                                     <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "location">
                                 <div class="input-group mb-3">
 

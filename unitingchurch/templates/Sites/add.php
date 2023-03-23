@@ -22,31 +22,25 @@ $formTemplate =
 $this->Form->setTemplates($formTemplate);
 
 ?>
-<div class="row">
+<div class="container">
+
+    <div class="row">
 
 
-    <div class="col-xl-6 col-lg-7">
-        <div class="card shadow mb-4">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-plus"></i> Add New Site</h5>
 
-            <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Add New Site</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                    </a>
 
-                </div>
-            </div>
-
-            <div class="card-body">
-
+                    <div class="card-body">
+                        <div class = "modal-body">
 
                 <div class="sites form content">
                     <?= $this->Form->create($site) ?>
                     <fieldset>
-                        <legend><?= __('Add Site') ?></legend>
+
                         <?php
                         echo $this->Form->control('site_address');
                         echo $this->Form->control('site_postcode');
@@ -61,17 +55,29 @@ $this->Form->setTemplates($formTemplate);
                     </fieldset><br>
                     <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
                     <?= $this->Form->end() ?>
-                </div>
 
+                </div>
+                        </div></div></div>
             </div>
+
+
+
         </div>
 
+        <div class="col-sm-4">
+            <div class="card" style="height: 100%;" >
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                    <div class="card-body">
 
-        <h4 class="heading"><?= __('Actions') ?></h4>
-        <?= $this->Html->link(__('List Sites'), ['action' => 'index'], ['class'=>'btn btn-primary']) ?>
-        </aside>
 
-        <br>        <br>
+                        <?= $this->Html->link(__('List Sites'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                        </aside>
+
+
+                    </div></div></div></div>
+
+
+
     </div>
-</div>
-
+    <br>
