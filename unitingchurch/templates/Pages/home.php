@@ -76,8 +76,6 @@ $this->Form->setTemplates($formTemplate);
 <body>
 
     <div class="container text-center">
-            <?=  $this->Html->image('uniting-logo.png', ['class' => 'uniting-logo']); ?>
-
 
     </div>
 
@@ -85,6 +83,7 @@ $this->Form->setTemplates($formTemplate);
 <!--        <div class="col-xl-6 col-lg-7">-->
         <div class="container">
             <div class="content">
+                <br>
                 <h5 class="headings"><b>Find a Uniting service near you</h5></b>
 <br>
                 <!-- Content Row -->
@@ -92,23 +91,19 @@ $this->Form->setTemplates($formTemplate);
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="card" style='width: 35vw; height: 70vh;'>
+                        <div class="card" >
                             <div class="card-body" >
                                 <h5 class="card-title">Map</h5>
-                                <div class="card shadow mb-4" style='width: 30vw; height: 60vh;'>
-                                <div class="map" style='width: 30vw; height: 60vh;' >
 
+                                <div class="map" style='width: 100%; height: 90%;' >
 
                                     <div id='printoutPanel'></div>
 
-                                    <div id='myMap' style='width: 30vw; height: 60vh;'></div>
-
-
-<!--                                <p class="card-text">Place map here.</p>-->
+                                    <div id='myMap' style='width: 100%; height: 100%;'></div>
 
                             </div>
                                 </div>
-                            </div>
+
                         </div>
 
 
@@ -164,8 +159,8 @@ $this->Form->setTemplates($formTemplate);
 </div>
 
 
+</div>
 
-                        </div>
                     </div>
 
 

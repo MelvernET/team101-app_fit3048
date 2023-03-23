@@ -65,13 +65,13 @@ $this->Form->setTemplates($formTemplate);
                         <div class="col-lg-6 d-none d-lg-block"><?=  $this->Html->image('church.png', ['class' => 'church']); ?></div>
                         <div class="col-lg-6">
                             <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                <div class="text-center headings">
+                                    <h1 class="h4 text-gray-900 mb-4 secondary-heading">Welcome Back!</h1>
                                 </div>
 
                                 <div class="users form">
                                     <?= $this->Flash->render() ?>
-                                    <h3>Login</h3>
+                                    <h3 class="headings">Login</h3>
                                     <?= $this->Form->create() ?>
                                     <fieldset>
 

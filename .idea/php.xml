@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PhpCodeSniffer">
     <phpcs_settings>
-      <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/unitingchurch/vendor/bin/phpcbf" tool_path="$PROJECT_DIR$/unitingchurch/vendor/bin/phpcs" />
+      <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/unitingchurch/vendor/bin/phpcbf" standards="CakePHP;MySource;PEAR;PSR1;PSR12;PSR2;Squiz;Zend" tool_path="$PROJECT_DIR$/unitingchurch/vendor/bin/phpcs" />
     </phpcs_settings>
   </component>
   <component name="PhpIncludePathManager">
@@ -89,6 +89,9 @@
       <path value="$PROJECT_DIR$/unitingchurch/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/unitingchurch/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/unitingchurch/vendor/cakephp/authentication" />
+      <path value="$PROJECT_DIR$/unitingchurch/vendor/wsssoftware/cakephp-datatables" />
+      <path value="$PROJECT_DIR$/unitingchurch/vendor/matthiasmullie/path-converter" />
+      <path value="$PROJECT_DIR$/unitingchurch/vendor/matthiasmullie/minify" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

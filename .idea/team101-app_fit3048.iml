@@ -89,6 +89,9 @@
       <excludeFolder url="file://$MODULE_DIR$/unitingchurch/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/unitingchurch/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/unitingchurch/vendor/cakephp/authentication" />
+      <excludeFolder url="file://$MODULE_DIR$/unitingchurch/vendor/wsssoftware/cakephp-datatables" />
+      <excludeFolder url="file://$MODULE_DIR$/unitingchurch/vendor/matthiasmullie/path-converter" />
+      <excludeFolder url="file://$MODULE_DIR$/unitingchurch/vendor/matthiasmullie/minify" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
