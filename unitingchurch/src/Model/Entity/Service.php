@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property int $service_active_client
  * @property float $service_staff_number
  * @property float $service_fte
- * @property int $service_riskman_id
+ * @property int $service_riskman
  * @property int $program_id
  * @property int $service_type_id
  *
@@ -36,7 +36,7 @@ class Service extends Entity
         'service_active_client' => true,
         'service_staff_number' => true,
         'service_fte' => true,
-        'service_riskman_id' => true,
+        'service_riskman' => true,
         'program_id' => true,
         'service_type_id' => true,
         'program' => true,

@@ -24,7 +24,7 @@ class ServicesFixture extends TestFixture
                 'service_active_client' => 1,
                 'service_staff_number' => 1,
                 'service_fte' => 1,
-                'service_riskman_id' => 1,
+                'service_riskman' => 1,
                 'program_id' => 1,
                 'service_type_id' => 1,
             ],

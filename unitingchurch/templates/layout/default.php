@@ -61,16 +61,13 @@
         </li>
 
 
+
         <li class="nav-item">
             <a class="nav-link" href="<?= $this->Url->build('/programs') ?>">
                 <i class="fas fa-fw  fa-list"></i>
                 <span>Programs</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/program types') ?>">
-                <i class="fas fa-fw  fa-list"></i>
-                <span>Program types</span></a>
-        </li>
+
 
         <li class="nav-item">
             <a class="nav-link" href="<?= $this->Url->build('/sites') ?>">
@@ -106,7 +103,20 @@
                 </div>
             </div>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-star"></i>
+                <span>Advance Management</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?= $this->Url->build('/service streams') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>  Service streams</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/service types') ?>"> <i class="fas fa-fw fa-star"></i>Service types</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/program types') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Program types</a>
+                </div>
+            </div>
+        </li>
 
 
 

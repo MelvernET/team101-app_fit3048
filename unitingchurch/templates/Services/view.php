@@ -47,8 +47,8 @@
                     <td><?= $this->Number->format($service->service_fte) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Service Riskman Id') ?></th>
-                    <td><?= $this->Number->format($service->service_riskman_id) ?></td>
+                    <th><?= __('Service Riskman') ?></th>
+                    <td><?= h($service->service_riskman) ?></td>
                 </tr>
             </table>
         </div>

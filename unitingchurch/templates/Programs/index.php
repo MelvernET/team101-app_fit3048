@@ -5,22 +5,22 @@
  */
 ?>
 <div class="programs index content">
-    <?= $this->Html->link(__('New Program'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New Program'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
     <h3><?= __('Programs') ?></h3>
     <div class="table-responsive">
-        <table>
+        <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('program_id') ?></th>
-                    <th><?= $this->Paginator->sort('program_type_id') ?></th>
-                    <th><?= $this->Paginator->sort('program_name') ?></th>
-                    <th><?= $this->Paginator->sort('program_manager') ?></th>
-                    <th><?= $this->Paginator->sort('cluster_id') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
+            <tr>
+                <th><?= $this->Paginator->sort('program_id') ?></th>
+                <th><?= $this->Paginator->sort('program_type_id') ?></th>
+                <th><?= $this->Paginator->sort('program_name') ?></th>
+                <th><?= $this->Paginator->sort('program_manager') ?></th>
+                <th><?= $this->Paginator->sort('cluster_id') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
             </thead>
             <tbody>
-                <?php foreach ($programs as $program): ?>
+            <?php foreach ($programs as $program): ?>
                 <tr>
                     <td><?= $this->Number->format($program->program_id) ?></td>
                     <td><?= $program->has('program_type') ? $this->Html->link($program->program_type->program_type_id, ['controller' => 'ProgramTypes', 'action' => 'view', $program->program_type->program_type_id]) : '' ?></td>
@@ -33,18 +33,14 @@
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $program->program_id], ['confirm' => __('Are you sure you want to delete # {0}?', $program->program_id)]) ?>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+
+    </script>
 </div>

@@ -84,9 +84,9 @@ class ServicesTable extends Table
             ->notEmptyString('service_fte');
 
         $validator
-            ->integer('service_riskman_id')
-            ->requirePresence('service_riskman_id', 'create')
-            ->notEmptyString('service_riskman_id');
+            ->integer('service_riskman')
+            ->requirePresence('service_riskman', 'create')
+            ->notEmptyString('service_riskman');
 
         $validator
             ->integer('program_id')
