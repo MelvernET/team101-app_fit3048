@@ -28,6 +28,8 @@ use Cake\Controller\Controller;
  */
 class AppController extends Controller
 {
+
+
     /**
      * Initialization hook method.
      *
@@ -65,4 +67,7 @@ class AppController extends Controller
         // actions public, skipping the authentication check
 //        $this->Authentication->addUnauthenticatedActions(['index', 'view']);
     }
+
+
+
 }

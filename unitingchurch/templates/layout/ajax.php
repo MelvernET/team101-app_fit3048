@@ -13,5 +13,5 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  */
-
+$this->Flash->render();
 echo $this->fetch('content');

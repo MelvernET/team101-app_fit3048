@@ -11285,9 +11285,8 @@ body.sidebar-toggled footer.sticky-footer {
 
 
 .uniting-logo{
-    width: 100px!important;
+    width: 150px!important;
     height: auto;
-    margin-top: 0px;
 }
 
 .card-title{
@@ -11313,6 +11312,8 @@ body.sidebar-toggled footer.sticky-footer {
 .church{
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 1em;
 
 }
 

@@ -13,6 +13,8 @@ class UsersController extends AppController
 {
 
 
+
+
     /**
      * Index method
      *
@@ -118,6 +120,7 @@ class UsersController extends AppController
     public function login()
     {
 
+        $this->viewBuilder()->setLayout('non-default');
 
         $this->request->allowMethod(['get', 'post']);
         $result = $this->Authentication->getResult();
@@ -135,6 +138,8 @@ class UsersController extends AppController
         if ($this->request->is('post') && !$result->isValid()) {
             $this->Flash->error(__('Invalid username or password'));
         }
+
+
     }
 
 
