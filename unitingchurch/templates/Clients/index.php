@@ -29,9 +29,9 @@
                     <td><?= h($client->client_last_name) ?></td>
                     <td><?= h($client->client_location) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $client->client_id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $client->client_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $client->client_id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->client_id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $client->client_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $client->client_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $client->client_id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $client->client_id)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

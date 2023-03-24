@@ -29,9 +29,9 @@
                     <td><?= h($cluster->cluster_executive_manager) ?></td>
                     <td><?= $cluster->has('division') ? $this->Html->link($cluster->division->division_id, ['controller' => 'Divisions', 'action' => 'view', $cluster->division->division_id]) : '' ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $cluster->cluster_id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cluster->cluster_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $cluster->cluster_id], ['confirm' => __('Are you sure you want to delete # {0}?', $cluster->cluster_id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $cluster->cluster_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cluster->cluster_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $cluster->cluster_id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $cluster->cluster_id)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

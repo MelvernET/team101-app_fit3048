@@ -31,9 +31,9 @@
                     <td><?= h($program->program_manager) ?></td>
                     <td><?= $program->has('cluster') ? $this->Html->link($program->cluster->cluster_id, ['controller' => 'Clusters', 'action' => 'view', $program->cluster->cluster_id]) : '' ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $program->program_id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $program->program_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $program->program_id], ['confirm' => __('Are you sure you want to delete # {0}?', $program->program_id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $program->program_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $program->program_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $program->program_id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $program->program_id)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

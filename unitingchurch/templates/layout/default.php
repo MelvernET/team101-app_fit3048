@@ -92,13 +92,13 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-phone"></i>
-                <span>Calls</span>
+                <span>Call Management</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="<?= $this->Url->build('/clients') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>Clients</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>Records</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/clients') ?>"> <i class="fas fa-fw fa-solid fa-user"></i>Clients</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('') ?>"><i class="fas fa-fw fa-file"></i>Records</a>
 
                 </div>
             </div>
@@ -107,13 +107,13 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-star"></i>
-                <span>Advance Management</span>
+                <span>Advanced Management</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= $this->Url->build('/service streams') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>  Service streams</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/service types') ?>"> <i class="fas fa-fw fa-star"></i>Service types</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('/program types') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Program types</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/service streams') ?>"><i class="fas fa-fw fa-solid fa-file-invoice"></i>  Service Streams</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/service types') ?>"> <i class="fas fa-fw fa-file"></i>Service Types</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/program types') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Program Types</a>
                 </div>
             </div>
         </li>

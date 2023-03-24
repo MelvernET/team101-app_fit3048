@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="clients view content">
-            <h3><?= h($client->client_id) ?></h3>
+            <h3><?= h($client->client_first_name) ?></h3>
             <table>
                 <tr>
                     <th><?= __('Client First Name') ?></th>

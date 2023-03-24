@@ -11359,7 +11359,7 @@ select {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #6e707e;
     background-color: #fff;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
@@ -11381,3 +11381,5 @@ select {
 .table thead th{
     vertical-align: top!important;
 }
+
+.
