@@ -84,7 +84,7 @@ $this->Form->setTemplates($formTemplate);
         <div class="container">
             <div class="content">
                 <br>
-                <h5 class="headings"><b>Find a Uniting service near you</h5></b>
+                <h3 class="headings"><b>Find a Uniting service near you</h3></b>
 <br>
                 <!-- Content Row -->
 

@@ -11345,6 +11345,8 @@ thead{
 
 
 
+
+
 .actions{
     color:#A20066!important;
 }
@@ -11374,4 +11376,8 @@ select {
     border: 1px solid red;
     border-radius: 20px;
     margin: 10px 0px;
+}
+
+.table thead th{
+    vertical-align: top!important;
 }

@@ -24,114 +24,70 @@ $this->Form->setTemplates($formTemplate);
 
 ?>
 
-<legend><?= __('Add Usere') ?></legend>
-<div class="row">
+<div class="container">
+
+    <div class="row">
 
 
-    <div class="col-xl-6 col-lg-7">
-        <div class="card shadow mb-4">
-
-            <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Add New User</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                    </a>
-
-                </div>
-            </div>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-plus"></i> Add New User</h5>
 
 
 
+                    <div class="card-body">
+                        <div class = "modal-body">
 
-    <div class="column-responsive column-80">
+
         <div class="users form content">
             <?= $this->Form->create($user) ?>
             <fieldset>
-                <legend><?= __('Add User') ?></legend>
+
                 <?php
-                    echo $this->Form->control('user_first_name');
-                    echo $this->Form->control('user_last_name');
+                    echo $this->Form->control('first_name');
+                    echo $this->Form->control('last_name');
                     echo $this->Form->control('email');
                     echo $this->Form->control('password');
                     echo $this->Form->control('clients._ids', ['options' => $clients,'class' => 'form-control']);
                 ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            </fieldset><br>
+            <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
             <?= $this->Form->end() ?>
+
         </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-    <aside class="column">
-
-
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'btn btn-primary']) ?>
-        </div>
-
-
-    </aside>
-    <div class="col-xl-6 col-lg-7">
-        <div class="card shadow mb-4" style='width: 35vw; height: 50vh;'>
-            <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Add New User</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                    </a>
-
-                </div>
+                        </div></div></div>
             </div>
 
-            <div class="card-body">
-                <div class="users form content">
-                    <?= $this->Form->create($user) ?>
-                    <fieldset>
-                        <legend><?= __('Add User') ?></legend>
-                        <?php
-                        echo $this->Form->control('user_first_name');
-                        echo $this->Form->control('user_last_name');
-                        echo $this->Form->control('email');
-                        echo $this->Form->control('password');
-                        echo $this->Form->control('clients._ids', ['options' => $clients,'class' => 'form-control']);
-                        ?>
-                    </fieldset>
-                    <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
-                    <?= $this->Form->end() ?>
-                </div>
-            </div>
+
+
         </div>
+
+        <div class="col-sm-4">
+            <div class="card" style="height: 100%;" >
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                    <div class="card-body">
+
+
+                        <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                        </aside>
+
+
+                    </div></div></div></div>
+
+
+
     </div>
-</div>
+    <br>
+
+
+
+
+
+
+
+
+
+
 
