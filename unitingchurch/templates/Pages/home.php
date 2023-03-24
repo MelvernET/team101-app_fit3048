@@ -91,12 +91,12 @@ $this->Form->setTemplates($formTemplate);
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="card" style="height: 400px;">
+                        <div class="card" style="height: 500px;">
                             <div class="card-body" >
                                 <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
                                 <br>
 
-                                <div class="map" style='width: 100%; height: 90%;' >
+                                <div class="map" style='width: 100%; height: 80%;' >
 
                                     <div id='printoutPanel'></div>
 
@@ -111,7 +111,7 @@ $this->Form->setTemplates($formTemplate);
 
                     </div>
                     <div class="col-4">
-                        <div class="card" style="height: 400px;">
+                        <div class="card" style="height: 500px;">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
                                 <p class="card-text"><br>
@@ -163,7 +163,7 @@ $this->Form->setTemplates($formTemplate);
 </div>
 
                     </div>
-
+<br>
 
                 </div>
 

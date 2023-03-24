@@ -5,27 +5,24 @@
  */
 ?>
 
-<div class="col-xl-6 col-lg-7">
-    <div class="card shadow mb-4">
+<div class="container">
 
-        <div
-            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">View Divisions</h6>
-            <div class="dropdown no-arrow">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="row">
 
-                </a>
 
-            </div>
-        </div>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-info"></i> View Division</h5>
 
-        <div class="card-body">
 
-            <div class = "modal-body">
+
+                    <div class="card-body">
+                        <div class = "modal-body">
+                            <div class="divisions view content">
                 <!--          -->
-                <h3><?= h($division->division_id) ?></h3>
-                <table>
+                <h3><?= h($division->division_name) ?></h3>
+                                <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
                         <th><?= __('Division Name') ?></th>
                         <td><?= h($division->division_name) ?></td>
@@ -40,19 +37,38 @@
                     </tr>
                 </table>
 
-            </div>
+                        </div>
+                    </div></div></div>
         </div>
-    </div>
-</div>
+
+        </div>
+
+
+        <div class="col-sm-4">
+            <div class="card" style="height: 100%;" >
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                    <div class="card-body">
+
+
+                        <?= $this->Html->link(__('List Division'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('New Division'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('Edit Division'), ['action' => 'edit', $division->division_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Form->postLink(__('Delete Division'), ['action' => 'delete', $division->division_id], ['confirm' => __('Are you sure you want to delete # {0}?', $division->division_id), 'class' => 'btn btn-primary btn-block']) ?>
+
+                        </aside>
+
+
+                    </div></div></div></div>
+
+
+    <br>
 
 
 
-<aside class="column">
-    <div class="side-nav">
-        <h4 class="heading"><?= __('Actions') ?></h4>
-        <?= $this->Html->link(__('Edit Division'), ['action' => 'edit', $division->division_id], ['class' => 'btn btn-primary']) ?>
-        <?= $this->Form->postLink(__('Delete Division'), ['action' => 'delete', $division->division_id], ['confirm' => __('Are you sure you want to delete # {0}?', $division->division_id), 'class' => 'btn btn-primary']) ?>
-        <?= $this->Html->link(__('List Divisions'), ['action' => 'index'], ['class' => 'btn btn-primary']) ?>
-        <?= $this->Html->link(__('New Division'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
-    </div>
-</aside>
+</div></div>
+
+

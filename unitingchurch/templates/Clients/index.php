@@ -14,10 +14,10 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('client_id') ?></th>
-                <th><?= $this->Paginator->sort('client_first_name') ?></th>
-                <th><?= $this->Paginator->sort('client_last_name') ?></th>
-                <th><?= $this->Paginator->sort('client_location') ?></th>
+                <th><?= $this->Paginator->sort('Client ID') ?></th>
+                <th><?= $this->Paginator->sort('First Name') ?></th>
+                <th><?= $this->Paginator->sort('Last Name') ?></th>
+                <th><?= $this->Paginator->sort('Location') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

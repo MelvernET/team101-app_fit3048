@@ -20,14 +20,14 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="st
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('service_id') ?></th>
-                    <th><?= $this->Paginator->sort('service_description') ?></th>
-                    <th><?= $this->Paginator->sort('service_active_client') ?></th>
-                    <th><?= $this->Paginator->sort('service_staff_number') ?></th>
-                    <th><?= $this->Paginator->sort('service_fte') ?></th>
-                    <th><?= $this->Paginator->sort('service_riskman') ?></th>
-                    <th><?= $this->Paginator->sort('program_id') ?></th>
-                    <th><?= $this->Paginator->sort('service_type_id') ?></th>
+                    <th><?= $this->Paginator->sort('Service ID') ?></th>
+                    <th><?= $this->Paginator->sort('Service Description') ?></th>
+                    <th><?= $this->Paginator->sort('Active Clients') ?></th>
+                    <th><?= $this->Paginator->sort('Staff Numbers (Head Count)') ?></th>
+                    <th><?= $this->Paginator->sort('FTE') ?></th>
+                    <th><?= $this->Paginator->sort('RiskMan ID') ?></th>
+                    <th><?= $this->Paginator->sort('Program') ?></th>
+                    <th><?= $this->Paginator->sort('Service Type') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

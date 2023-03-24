@@ -14,10 +14,10 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('cluster_id') ?></th>
+                <th><?= $this->Paginator->sort('Cluster ID') ?></th>
                 <th><?= $this->Paginator->sort('cluster_name') ?></th>
                 <th><?= $this->Paginator->sort('cluster_executive_manager') ?></th>
-                <th><?= $this->Paginator->sort('division_id') ?></th>
+                <th><?= $this->Paginator->sort('Division') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

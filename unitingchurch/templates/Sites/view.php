@@ -4,20 +4,23 @@
  * @var \App\Model\Entity\Site $site
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Site'), ['action' => 'edit', $site->site_id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Site'), ['action' => 'delete', $site->site_id], ['confirm' => __('Are you sure you want to delete # {0}?', $site->site_id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Sites'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Site'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-info"></i> View Site</h5>
+
+
+
+                    <div class="card-body">
+                        <div class = "modal-body">
         <div class="sites view content">
-            <h3><?= h($site->site_id) ?></h3>
-            <table>
+            <h3><?= h($site->site_name) ?></h3>
+            <table class="table table-bordered" id="dataTable" width="100%">
                 <tr>
                     <th><?= __('Site Address') ?></th>
                     <td><?= h($site->site_address) ?></td>
@@ -43,15 +46,15 @@
                     <td><?= h($site->site_contact_direct_ph_no) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Site Lga') ?></th>
+                    <th><?= __('LGA') ?></th>
                     <td><?= h($site->site_lga) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Site Dhhs Area') ?></th>
+                    <th><?= __('DHHS Area') ?></th>
                     <td><?= h($site->site_dhhs_area) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Site Id') ?></th>
+                    <th><?= __('Site ID') ?></th>
                     <td><?= $this->Number->format($site->site_id) ?></td>
                 </tr>
             </table>
@@ -61,11 +64,11 @@
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Program Id') ?></th>
-                            <th><?= __('Program Type Id') ?></th>
+                            <th><?= __('Program ID') ?></th>
+                            <th><?= __('Program Type ID') ?></th>
                             <th><?= __('Program Name') ?></th>
                             <th><?= __('Program Manager') ?></th>
-                            <th><?= __('Cluster Id') ?></th>
+                            <th><?= __('Cluster ID') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($site->programs as $programs) : ?>
@@ -83,9 +86,46 @@
                         </tr>
                         <?php endforeach; ?>
                     </table>
-                </div>
                 <?php endif; ?>
+                </div>
+            </div></div></div>
+                    </div>
+
+                </div>
+
             </div>
-        </div>
+
+            <div class="col-sm-4">
+                <div class="card" style="height: 100%;" >
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                        <div class="card-body">
+
+
+                            <?= $this->Html->link(__('List Sites'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                            <br style="line-height:1px;" />
+                            <?= $this->Html->link(__('New Site'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
+                            <br style="line-height:1px;" />
+                            <?= $this->Html->link(__('Edit Site'), ['action' => 'edit', $site->site_id], ['class' => 'btn btn-primary btn-block']) ?>
+                            <br style="line-height:1px;" />
+                            <?= $this->Form->postLink(__('Delete Site'), ['action' => 'delete', $site->site_id], ['confirm' => __('Are you sure you want to delete # {0}?', $site->site_id), 'class' => 'btn btn-primary btn-block']) ?>
+
+                            </aside>
+
+
+                        </div></div></div></div></div>
+
+
+
     </div>
-</div>
+    <br>
+
+
+
+
+
+
+
+
+
+

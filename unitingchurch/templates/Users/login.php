@@ -49,24 +49,25 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->Html->css('/css/sb-admin-2.css') ?>
 </head>
 
-<section class="vh-100" style="background-color: #eee;">
+<section class="vh-100" style="background: linear-gradient(195deg, #A20066, #F9C3D4)">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
-                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block text-center">
                             <?=  $this->Html->image('church.png', ['class' => 'church']); ?> </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
 
 
 
-                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                    <div class="align-items-center text-center mb-3 pb-1">
 
                                         <?=  $this->Html->image('uniting-logo.png', ['class' => 'uniting-logo']); ?>
 
                                     </div>
+                                <hr>
                                     <div class="users form">
                                         <?= $this->Flash->render() ?>
                                         <h3 class="headings">Login</h3>

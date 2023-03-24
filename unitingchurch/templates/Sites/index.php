@@ -14,15 +14,15 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('site_id') ?></th>
+                <th><?= $this->Paginator->sort('Site ID') ?></th>
                 <th><?= $this->Paginator->sort('site_address') ?></th>
                 <th><?= $this->Paginator->sort('site_postcode') ?></th>
                 <th><?= $this->Paginator->sort('site_contact') ?></th>
                 <th><?= $this->Paginator->sort('site_contact_no') ?></th>
                 <th><?= $this->Paginator->sort('site_ph_no') ?></th>
                 <th><?= $this->Paginator->sort('site_contact_direct_ph_no') ?></th>
-                <th><?= $this->Paginator->sort('site_lga') ?></th>
-                <th><?= $this->Paginator->sort('site_dhhs_area') ?></th>
+                <th><?= $this->Paginator->sort('LGA') ?></th>
+                <th><?= $this->Paginator->sort('DHHS Area') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

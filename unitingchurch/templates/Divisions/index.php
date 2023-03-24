@@ -14,7 +14,7 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('division_id') ?></th>
+                <th><?= $this->Paginator->sort('Division ID') ?></th>
                 <th><?= $this->Paginator->sort('division_name') ?></th>
                 <th><?= $this->Paginator->sort('division_general_manager') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>

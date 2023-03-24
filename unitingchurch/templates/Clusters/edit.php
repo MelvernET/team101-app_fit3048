@@ -20,31 +20,62 @@ $formTemplate =
 $this->Form->setTemplates($formTemplate);
 
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $cluster->cluster_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $cluster->cluster_id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Clusters'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="clusters form content">
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-sm-8">
+            <div class="card" style="height: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw fa-pen"></i> Edit Cluster</h5>
+
+
+
+                    <div class="card-body">
+                        <div class = "modal-body">
+                            <div class="clusters view content">
             <?= $this->Form->create($cluster) ?>
             <fieldset>
-                <legend><?= __('Edit Cluster') ?></legend>
+
                 <?php
                     echo $this->Form->control('cluster_name');
                     echo $this->Form->control('cluster_executive_manager');
                     echo $this->Form->control('division_id', ['options' => $divisions]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
+                                <br>
+                                <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
+
+                                <?= $this->Form->end() ?>
+                            </div>
+                        </div>
+                    </div></div></div></div>
+
+
+
+
+
+        <div class="col-sm-4">
+            <div class="card" style="height: 100%;" >
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                    <div class="card-body">
+
+
+                        <?= $this->Html->link(__('List Cluster'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('New Cluster'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('View Cluster'), ['action' => 'view', $cluster->cluster_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Form->postLink(__('Delete Cluster'), ['action' => 'delete', $cluster->cluster_id], ['confirm' => __('Are you sure you want to delete # {0}?', $cluster->cluster_id), 'class' => 'btn btn-primary btn-block']) ?>
+
+                        </aside>
+
+                    </div></div></div></div></div>
+
+
+
 </div>
+<br>

@@ -11287,6 +11287,12 @@ body.sidebar-toggled footer.sticky-footer {
 .uniting-logo{
     width: 150px!important;
     height: auto;
+    text-align: center;
+}
+
+.uniting-logo-white{
+    width: 100px!important;
+    height: auto;
 }
 
 .card-title{
@@ -11318,7 +11324,7 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 input, textarea {
-    background-color: #F9C3D4;
+    background-color: white;
 }
 
 input:-webkit-autofill,
@@ -11330,11 +11336,14 @@ input:-webkit-autofill:active {
 }
 
 
+
 thead{
-    background: white;
+    background: rgba(249, 195, 212, 0.22);
     vertical-align: text-top!important;
     text-align: justify;
 }
+
+
 
 .actions{
     color:#A20066!important;
@@ -11355,4 +11364,14 @@ select {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
 
+}
+
+.error{
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #ffcdcd;
+    border: 1px solid red;
+    border-radius: 20px;
+    margin: 10px 0px;
 }

@@ -23,23 +23,24 @@ $formTemplate =
 $this->Form->setTemplates($formTemplate);
 
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $site->site_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $site->site_id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Sites'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="sites form content">
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw fa-pen"></i> Edit Site</h5>
+
+
+
+                    <div class="card-body">
+                        <div class = "modal-body">
+                            <div class="sites view content">
             <?= $this->Form->create($site) ?>
             <fieldset>
-                <legend><?= __('Edit Site') ?></legend>
+
                 <?php
                     echo $this->Form->control('site_address');
                     echo $this->Form->control('site_postcode');
@@ -52,8 +53,38 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('programs._ids', ['options' => $programs]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
+                                <br>
+                                <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
+                                <?= $this->Form->end() ?>
+                            </div>
+                        </div>
+                    </div></div></div></div>
+
+
+
+
+
+        <div class="col-sm-4">
+            <div class="card" style="height: 100%;" >
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                    <div class="card-body">
+
+
+                        <?= $this->Html->link(__('List Sites'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('New Site'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('View Site'), ['action' => 'view', $site->site_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Form->postLink(__('Delete Site'), ['action' => 'delete', $site->site_id], ['confirm' => __('Are you sure you want to delete # {0}?', $site->site_id), 'class' => 'btn btn-primary btn-block']) ?>
+
+                        </aside>
+
+
+                    </div></div></div></div></div>
+
+
+
 </div>
+<br>

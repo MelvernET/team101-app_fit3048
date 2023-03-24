@@ -19,30 +19,63 @@ $formTemplate =
 $this->Form->setTemplates($formTemplate);
 
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $division->division_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $division->division_id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Divisions'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="divisions form content">
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-sm-8">
+            <div class="card" style="height: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw fa-pen"></i> Edit Division</h5>
+
+
+
+                    <div class="card-body">
+                        <div class = "modal-body">
+                            <div class="divisions view content">
             <?= $this->Form->create($division) ?>
             <fieldset>
-                <legend><?= __('Edit Division') ?></legend>
+
                 <?php
                     echo $this->Form->control('division_name');
                     echo $this->Form->control('division_general_manager');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
+                                <br>
+                                <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
+
+                                <?= $this->Form->end() ?>
+                            </div>
+                        </div>
+                    </div></div></div></div>
+
+
+
+
+
+        <div class="col-sm-4">
+            <div class="card" style="height: 100%;" >
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
+                    <div class="card-body">
+
+
+
+                        <?= $this->Html->link(__('List Division'), ['action' => 'index'], ['class'=>'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('New Division'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Html->link(__('View Division'), ['action' => 'view', $division->division_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <br style="line-height:1px;" />
+                        <?= $this->Form->postLink(__('Delete Division'), ['action' => 'delete', $division->division_id], ['confirm' => __('Are you sure you want to delete # {0}?', $division->division_id), 'class' => 'btn btn-primary btn-block']) ?>
+
+                        </aside>
+
+
+                    </div></div></div></div></div>
+
+
+
 </div>
+<br>

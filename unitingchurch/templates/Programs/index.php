@@ -14,11 +14,11 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('program_id') ?></th>
-                <th><?= $this->Paginator->sort('program_type_id') ?></th>
-                <th><?= $this->Paginator->sort('program_name') ?></th>
-                <th><?= $this->Paginator->sort('program_manager') ?></th>
-                <th><?= $this->Paginator->sort('cluster_id') ?></th>
+                <th><?= $this->Paginator->sort('Program ID') ?></th>
+                <th><?= $this->Paginator->sort('Program Type') ?></th>
+                <th><?= $this->Paginator->sort('Program Name') ?></th>
+                <th><?= $this->Paginator->sort('Program Manager') ?></th>
+                <th><?= $this->Paginator->sort('Cluster') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

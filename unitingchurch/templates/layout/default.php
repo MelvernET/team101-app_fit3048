@@ -40,7 +40,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
 
             </div>
-            <div class="sidebar-brand-text mx-3">Uniting</div>
+            <div class="sidebar-brand-text mx-3">          <?=  $this->Html->image('uniting-logo-white.png', ['class' => 'uniting-logo-white']); ?></div>
         </a>
 
         <!-- Divider -->
