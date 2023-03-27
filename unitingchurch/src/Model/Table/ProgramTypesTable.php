@@ -38,7 +38,7 @@ class ProgramTypesTable extends Table
         parent::initialize($config);
 
         $this->setTable('program_types');
-        $this->setDisplayField('program_type_id');
+        $this->setDisplayField(['program_type_id','program_type_name']);
         $this->setPrimaryKey('program_type_id');
     }
 

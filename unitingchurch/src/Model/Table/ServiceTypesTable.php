@@ -40,7 +40,7 @@ class ServiceTypesTable extends Table
         parent::initialize($config);
 
         $this->setTable('service_types');
-        $this->setDisplayField('service_type_id');
+        $this->setDisplayField(['service_type_id','service_type_name']);
         $this->setPrimaryKey('service_type_id');
 
         $this->belongsTo('ServiceStreams', [

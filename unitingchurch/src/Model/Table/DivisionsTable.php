@@ -38,7 +38,7 @@ class DivisionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('divisions');
-        $this->setDisplayField('division_id');
+        $this->setDisplayField(['division_id','division_name']);
         $this->setPrimaryKey('division_id');
     }
 

@@ -42,7 +42,7 @@ class ProgramsTable extends Table
         parent::initialize($config);
 
         $this->setTable('programs');
-        $this->setDisplayField('program_id');
+        $this->setDisplayField(['program_id','program_name']);
         $this->setPrimaryKey('program_id');
 
         $this->belongsTo('ProgramTypes', [

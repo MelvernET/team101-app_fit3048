@@ -38,7 +38,7 @@ class ServiceStreamsTable extends Table
         parent::initialize($config);
 
         $this->setTable('service_streams');
-        $this->setDisplayField('service_stream_id');
+        $this->setDisplayField(['service_stream_id','service_stream_name']);
         $this->setPrimaryKey('service_stream_id');
     }
 

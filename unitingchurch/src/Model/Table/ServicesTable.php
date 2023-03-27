@@ -41,7 +41,7 @@ class ServicesTable extends Table
         parent::initialize($config);
 
         $this->setTable('services');
-        $this->setDisplayField('service_id');
+        $this->setDisplayField(['service_id']);
         $this->setPrimaryKey('service_id');
 
         $this->belongsTo('Programs', [

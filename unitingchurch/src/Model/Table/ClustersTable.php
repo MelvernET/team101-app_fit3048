@@ -40,7 +40,7 @@ class ClustersTable extends Table
         parent::initialize($config);
 
         $this->setTable('clusters');
-        $this->setDisplayField('cluster_id');
+        $this->setDisplayField(['cluster_id','cluster_name']);
         $this->setPrimaryKey('cluster_id');
 
         $this->belongsTo('Divisions', [
