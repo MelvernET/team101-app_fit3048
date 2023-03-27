@@ -62,7 +62,7 @@
                 <h4><?= __('Related Programs') ?></h4>
                 <?php if (!empty($site->programs)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="dataTable" width="100%">
                         <tr>
                             <th><?= __('Program ID') ?></th>
                             <th><?= __('Program Type ID') ?></th>

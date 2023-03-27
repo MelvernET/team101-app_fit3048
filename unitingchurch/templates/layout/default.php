@@ -98,7 +98,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
 
                     <a class="collapse-item" href="<?= $this->Url->build('/clients') ?>"> <i class="fas fa-fw fa-solid fa-user"></i>Clients</a>
-                    <a class="collapse-item" href="<?= $this->Url->build('') ?>"><i class="fas fa-fw fa-file"></i>Records</a>
+                    <a class="collapse-item" href="<?= $this->Url->build('/records') ?>"><i class="fas fa-fw fa-file"></i>Records</a>
 
                 </div>
             </div>

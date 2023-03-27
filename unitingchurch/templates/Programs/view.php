@@ -46,7 +46,7 @@
                 <h4><?= __('Related Sites') ?></h4>
                 <?php if (!empty($program->sites)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="dataTable" width="100%">
                         <tr>
                             <th><?= __('Site Id') ?></th>
                             <th><?= __('Site Address') ?></th>
@@ -70,7 +70,11 @@
                             <td><?= h($sites->site_contact_direct_ph_no) ?></td>
                             <td><?= h($sites->site_lga) ?></td>
                             <td><?= h($sites->site_dhhs_area) ?></td>
-
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Sites', 'action' => 'view', $sites->site_id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Sites', 'action' => 'edit', $sites->site_id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Sites', 'action' => 'delete', $sites->site_id], ['confirm' => __('Are you sure you want to delete # {0}?', $sites->site_id)]) ?>
+                            </td>
                         </tr>
 
                         <?php endforeach; ?>
