@@ -68,7 +68,7 @@ $this->Form->setTemplates($formTemplate);
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('View Division'), ['action' => 'view', $division->division_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Form->postLink(__('Delete Division'), ['action' => 'delete', $division->division_id], ['confirm' => __('Are you sure you want to delete # {0}?', $division->division_id), 'class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Form->postLink(__('Delete Division'), ['action' => 'delete', $division->division_id], ['confirm' => __('Are you sure you want to delete # {0}?', $division->division_name), 'class' => 'btn btn-primary btn-block']) ?>
 
                         </aside>
 

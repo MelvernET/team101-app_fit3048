@@ -73,7 +73,7 @@
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Sites', 'action' => 'view', $sites->site_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Sites', 'action' => 'edit', $sites->site_id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Sites', 'action' => 'delete', $sites->site_id], ['confirm' => __('Are you sure you want to delete # {0}?', $sites->site_id)]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Sites', 'action' => 'delete', $sites->site_id], ['confirm' => __('Are you sure you want to delete #this site id:{0}?', $sites->site_id)]) ?>
                             </td>
                         </tr>
 
@@ -104,7 +104,7 @@
                                 <br style="line-height:1px;" />
                                 <?= $this->Html->link(__('Edit Program'), ['action' => 'edit', $program->program_id], ['class' => 'btn btn-primary btn-block']) ?>
                                 <br style="line-height:1px;" />
-                                <?= $this->Form->postLink(__('Delete Program'), ['action' => 'delete', $program->program_id], ['confirm' => __('Are you sure you want to delete # {0}?', $program->program_id), 'class' => 'btn btn-primary btn-block']) ?>
+                                <?= $this->Form->postLink(__('Delete Program'), ['action' => 'delete', $program->program_id], ['confirm' => __('Are you sure you want to delete # {0}?', $program->program_name), 'class' => 'btn btn-primary btn-block']) ?>
 
                                 </aside>
 

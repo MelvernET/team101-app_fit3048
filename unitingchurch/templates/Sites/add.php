@@ -51,9 +51,6 @@ $this->Form->setTemplates($formTemplate);
                                     echo $this->Form->control('site_lga');
                                     echo $this->Form->control('site_dhhs_area');
                                     echo $this->Form->control('programs._ids', ['options' => $programs ,'label' => 'program name','class' => 'form-control']);
-
-
-
                                     ?>
                                 </fieldset><br>
                                 <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>

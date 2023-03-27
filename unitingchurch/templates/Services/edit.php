@@ -75,7 +75,7 @@
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('View Service'), ['action' => 'view', $service->service_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Form->postLink(__('Delete Service'), ['action' => 'delete', $service->service_id], ['confirm' => __('Are you sure you want to delete # {0}?', $service->service_id), 'class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Form->postLink(__('Delete Service'), ['action' => 'delete', $service->service_id], ['confirm' => __('Are you sure you want to delete # this service: id {0}?', $service->service_id), 'class' => 'btn btn-primary btn-block']) ?>
 
                         </aside>
 
