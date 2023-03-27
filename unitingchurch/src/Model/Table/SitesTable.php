@@ -60,7 +60,6 @@ class SitesTable extends Table
     {
         $validator
             ->scalar('site_address')
-            ->maxLength('site_address', 200)
             ->requirePresence('site_address', 'create')
             ->notEmptyString('site_address');
 

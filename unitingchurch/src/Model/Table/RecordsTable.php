@@ -72,7 +72,6 @@ class RecordsTable extends Table
 
         $validator
             ->scalar('record_info')
-            ->maxLength('record_info', 200)
             ->requirePresence('record_info', 'create')
             ->notEmptyString('record_info');
 

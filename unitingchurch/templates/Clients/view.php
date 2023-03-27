@@ -1,4 +1,8 @@
 
+
+
+
+
 <?php
 /**
  * @var \App\View\AppView $this
@@ -20,6 +24,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="clients view content">
+                                <h3><?= h($client->client_id) ?></h3>
                                 <table>
                                     <tr>
                                         <th><?= __('Client First Name') ?></th>
@@ -30,14 +35,16 @@
                                         <td><?= h($client->client_last_name) ?></td>
                                     </tr>
                                     <tr>
-                                        <th><?= __('Client Location') ?></th>
-                                        <td><?= h($client->client_location) ?></td>
-                                    </tr>
-                                    <tr>
                                         <th><?= __('Client Id') ?></th>
                                         <td><?= $this->Number->format($client->client_id) ?></td>
                                     </tr>
                                 </table>
+                                <div class="text">
+                                    <strong><?= __('Client Location') ?></strong>
+                                    <blockquote>
+                                        <?= $this->Text->autoParagraph(h($client->client_location)); ?>
+                                    </blockquote>
+                                </div>
                             </div>
                         </div>
                     </div>

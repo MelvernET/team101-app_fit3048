@@ -15,27 +15,25 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="st
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="btn btn-primary"><i
                 class="fas fa-solid fa-plus fa-sm text-white-50"></i> New Service</a>
     </div>
-        <div class="table-responsive">
+    <div class="table-responsive">
 
         <table class="table table-hover  table-light table-bordered" id="dataTable" width="100%">
             <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('Service ID') ?></th>
-                    <th><?= $this->Paginator->sort('Service Description') ?></th>
-                    <th><?= $this->Paginator->sort('Active Clients') ?></th>
-                    <th><?= $this->Paginator->sort('Staff Numbers (Head Count)') ?></th>
-                    <th><?= $this->Paginator->sort('FTE') ?></th>
-                    <th><?= $this->Paginator->sort('RiskMan ID') ?></th>
-                    <th><?= $this->Paginator->sort('Program') ?></th>
-                    <th><?= $this->Paginator->sort('Service Type') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
+            <tr>
+                <th><?= $this->Paginator->sort('Service ID') ?></th>
+                <th><?= $this->Paginator->sort('Active Clients') ?></th>
+                <th><?= $this->Paginator->sort('Staff Numbers (Head Count)') ?></th>
+                <th><?= $this->Paginator->sort('FTE') ?></th>
+                <th><?= $this->Paginator->sort('RiskMan ID') ?></th>
+                <th><?= $this->Paginator->sort('Program') ?></th>
+                <th><?= $this->Paginator->sort('Service Type') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
             </thead>
             <tbody>
-                <?php foreach ($services as $service): ?>
+            <?php foreach ($services as $service): ?>
                 <tr>
                     <td><?= $this->Number->format($service->service_id) ?></td>
-                    <td><?= h($service->service_description) ?></td>
                     <td><?= $this->Number->format($service->service_active_client) ?></td>
                     <td><?= $this->Number->format($service->service_staff_number) ?></td>
                     <td><?= $this->Number->format($service->service_fte) ?></td>
@@ -48,7 +46,7 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="st
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $service->service_id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $service->service_id)]) ?>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -59,15 +57,6 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="st
 
     </script>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -14,7 +14,6 @@
                     <th><?= $this->Paginator->sort('record_id') ?></th>
                     <th><?= $this->Paginator->sort('user_id') ?></th>
                     <th><?= $this->Paginator->sort('client_id') ?></th>
-                    <th><?= $this->Paginator->sort('record_info') ?></th>
                     <th><?= $this->Paginator->sort('record_date_time') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -25,7 +24,6 @@
                     <td><?= $this->Number->format($record->record_id) ?></td>
                     <td><?= $record->has('user') ? $this->Html->link($record->user->user_id, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : '' ?></td>
                     <td><?= $record->has('client') ? $this->Html->link($record->client->client_id, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ?></td>
-                    <td><?= h($record->record_info) ?></td>
                     <td><?= h($record->record_date_time) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $record->record_id]) ?>

@@ -64,7 +64,6 @@ class ServicesTable extends Table
     {
         $validator
             ->scalar('service_description')
-            ->maxLength('service_description', 1000)
             ->requirePresence('service_description', 'create')
             ->notEmptyString('service_description');
 

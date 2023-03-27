@@ -6,22 +6,22 @@
  * @var string[]|\Cake\Collection\CollectionInterface $serviceTypes
  */
 
-$formTemplate =
-    [
-
-        'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
-        'input' => '<input type="{{type}}" name="{{name}}"  class="form-control" {{attrs}} />',
-        'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
-        'label' => '<label{{attrs}} class="form-label"> {{text}}</label>',
-        'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option>',
-        'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
-        'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}>{{value}}</textarea>',
-        'select' => '<select name="{{name}}" class="form-select" aria-label=".form-select-lg example" "{{attrs}}>{{content}}</select>',
-        'selectMultiple' => '<select name="{{name}}[]" class="form-select" aria-label=".form-select-lg example"   multiple="multiple"{{attrs}}>{{content}}</select>',
-        'selectedClass'=>'selected',
-    ];
-
-$this->Form->setTemplates($formTemplate);
+//$formTemplate =
+//    [
+//
+//        'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
+//        'input' => '<input type="{{type}}" name="{{name}}"  class="form-control" {{attrs}} />',
+//        'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+//        'label' => '<label{{attrs}} class="form-label"> {{text}}</label>',
+//        'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option>',
+//        'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
+//        'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}>{{value}}</textarea>',
+//        'select' => '<select name="{{name}}" class="form-select" aria-label=".form-select-lg example" "{{attrs}}>{{content}}</select>',
+//        'selectMultiple' => '<select name="{{name}}[]" class="form-select" aria-label=".form-select-lg example"   multiple="multiple"{{attrs}}>{{content}}</select>',
+//        'selectedClass'=>'selected',
+//    ];
+//
+//$this->Form->setTemplates($formTemplate);
 
 ?>
 <div class="container">
@@ -39,19 +39,19 @@ $this->Form->setTemplates($formTemplate);
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="services view content">
-            <?= $this->Form->create($service) ?>
-            <fieldset>
+                                <?= $this->Form->create($service) ?>
+                                <fieldset>
 
-                <?php
-                    echo $this->Form->control('service_description');
-                    echo $this->Form->control('service_active_client');
-                    echo $this->Form->control('service_staff_number');
-                    echo $this->Form->control('service_fte');
-                    echo $this->Form->control('service_riskman');
-                    echo $this->Form->control('program_id', ['options' => $programs]);
-                    echo $this->Form->control('service_type_id', ['options' => $serviceTypes]);
-                ?>
-            </fieldset><br>
+                                    <?php
+                                    echo $this->Form->control('service_description');
+                                    echo $this->Form->control('service_active_client');
+                                    echo $this->Form->control('service_staff_number');
+                                    echo $this->Form->control('service_fte');
+                                    echo $this->Form->control('service_riskman');
+                                    echo $this->Form->control('program_id', ['options' => $programs]);
+                                    echo $this->Form->control('service_type_id', ['options' => $serviceTypes]);
+                                    ?>
+                                </fieldset><br>
                                 <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
                                 <?= $this->Form->end() ?>
                             </div>

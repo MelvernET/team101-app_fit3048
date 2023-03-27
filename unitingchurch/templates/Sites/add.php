@@ -16,7 +16,7 @@ $formTemplate =
         'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
         'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}>{{value}}</textarea>',
         'select' => '<select name="{{name}}" class="form-select" aria-label=".form-select-lg example" "{{attrs}}>{{content}}</select>',
-       'selectedClass'=>'selected',
+        'selectedClass'=>'selected',
     ];
 
 $this->Form->setTemplates($formTemplate);
@@ -37,26 +37,29 @@ $this->Form->setTemplates($formTemplate);
                     <div class="card-body">
                         <div class = "modal-body">
 
-                <div class="sites form content">
-                    <?= $this->Form->create($site) ?>
-                    <fieldset>
+                            <div class="sites form content">
+                                <?= $this->Form->create($site) ?>
+                                <fieldset>
 
-                        <?php
-                        echo $this->Form->control('site_address');
-                        echo $this->Form->control('site_postcode');
-                        echo $this->Form->control('site_contact');
-                        echo $this->Form->control('site_contact_no');
-                        echo $this->Form->control('site_ph_no');
-                        echo $this->Form->control('site_contact_direct_ph_no');
-                        echo $this->Form->control('site_lga');
-                        echo $this->Form->control('site_dhhs_area');
-                        echo $this->Form->control('programs._ids', ['options' => $programs ,'class' => 'form-control']);
-                        ?>
-                    </fieldset><br>
-                    <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
-                    <?= $this->Form->end() ?>
+                                    <?php
+                                    echo $this->Form->control('site_address');
+                                    echo $this->Form->control('site_postcode');
+                                    echo $this->Form->control('site_contact');
+                                    echo $this->Form->control('site_contact_no');
+                                    echo $this->Form->control('site_ph_no');
+                                    echo $this->Form->control('site_contact_direct_ph_no');
+                                    echo $this->Form->control('site_lga');
+                                    echo $this->Form->control('site_dhhs_area');
+                                    echo $this->Form->control('programs._ids', ['options' => $programs ,'label' => 'program name','class' => 'form-control']);
 
-                </div>
+
+
+                                    ?>
+                                </fieldset><br>
+                                <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
+                                <?= $this->Form->end() ?>
+
+                            </div>
                         </div></div></div>
             </div>
 
@@ -80,4 +83,4 @@ $this->Form->setTemplates($formTemplate);
 
 
     </div>
-    <br>
+

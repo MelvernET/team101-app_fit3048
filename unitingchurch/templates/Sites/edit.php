@@ -38,31 +38,27 @@ $this->Form->setTemplates($formTemplate);
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="sites view content">
-            <?= $this->Form->create($site) ?>
-            <fieldset>
+                                <?= $this->Form->create($site) ?>
+                                <fieldset>
 
-                <?php
-                    echo $this->Form->control('site_address');
-                    echo $this->Form->control('site_postcode');
-                    echo $this->Form->control('site_contact');
-                    echo $this->Form->control('site_contact_no');
-                    echo $this->Form->control('site_ph_no');
-                    echo $this->Form->control('site_contact_direct_ph_no');
-                    echo $this->Form->control('site_lga');
-                    echo $this->Form->control('site_dhhs_area');
-                    echo $this->Form->control('programs._ids', ['options' => $programs]);
-                ?>
-            </fieldset>
+                                    <?php
+                                    echo $this->Form->control('site_address');
+                                    echo $this->Form->control('site_postcode');
+                                    echo $this->Form->control('site_contact');
+                                    echo $this->Form->control('site_contact_no');
+                                    echo $this->Form->control('site_ph_no');
+                                    echo $this->Form->control('site_contact_direct_ph_no');
+                                    echo $this->Form->control('site_lga');
+                                    echo $this->Form->control('site_dhhs_area');
+                                    echo $this->Form->control('programs._ids', ['options' => $programs]);
+                                    ?>
+                                </fieldset>
                                 <br>
                                 <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>
                                 <?= $this->Form->end() ?>
                             </div>
                         </div>
                     </div></div></div></div>
-
-
-
-
 
         <div class="col-sm-4">
             <div class="card" style="height: 100%;" >
@@ -87,4 +83,5 @@ $this->Form->setTemplates($formTemplate);
 
 
 </div>
-<br>
+
+

@@ -64,7 +64,6 @@ class ClientsTable extends Table
 
         $validator
             ->scalar('client_location')
-            ->maxLength('client_location', 50)
             ->requirePresence('client_location', 'create')
             ->notEmptyString('client_location');
 

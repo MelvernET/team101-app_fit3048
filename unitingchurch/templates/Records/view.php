@@ -27,10 +27,6 @@
                     <td><?= $record->has('client') ? $this->Html->link($record->client->client_id, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Record Info') ?></th>
-                    <td><?= h($record->record_info) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Record Id') ?></th>
                     <td><?= $this->Number->format($record->record_id) ?></td>
                 </tr>
@@ -39,6 +35,18 @@
                     <td><?= h($record->record_date_time) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Record Info') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($record->record_info)); ?>
+                </blockquote>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
