@@ -22,7 +22,7 @@
                 <th><?= $this->Paginator->sort('Client ID') ?></th>
                 <th><?= $this->Paginator->sort('First Name') ?></th>
                 <th><?= $this->Paginator->sort('Last Name') ?></th>
-                <th><?= $this->Paginator->sort('Location') ?></th>
+                <th><?= $this->Paginator->sort('Address') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

@@ -45,6 +45,8 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+
+        $sites = $this->fetchTable('Sites')->find()->toArray();
         if (!$path) {
             return $this->redirect('/');
         }

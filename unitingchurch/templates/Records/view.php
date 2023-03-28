@@ -23,12 +23,12 @@
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
-                    <th><?= __('User') ?></th>
-                    <td><?= $record->has('user') ? $this->Html->link($record->user->user_id, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : '' ?></td>
+                    <th><?= __('Staff') ?></th>
+                    <td><?= h("ID: "),($record->has('user') ? $this->Html->link($record->user->user_id, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : ''),(h(" , Name: ")),(h($record->user->user_first_name)),(h("  ")),(h($record->user->user_last_name)) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Client') ?></th>
-                    <td><?= $record->has('client') ? $this->Html->link($record->client->client_id, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ?></td>
+                    <td><?= (h("ID: ")),($record->has('client') ? $this->Html->link($record->client->client_id, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ),(h(" , Name: ")),(h($record->client->client_first_name)),(h("  ")),(h($record->client->client_last_name)) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Record ID') ?></th>

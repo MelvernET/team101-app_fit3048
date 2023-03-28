@@ -40,7 +40,7 @@ class SitesTable extends Table
         parent::initialize($config);
 
         $this->setTable('sites');
-        $this->setDisplayField(['site_id','site_lga']);
+        $this->setDisplayField(['site_id','site_lga','site_address']);
         $this->setPrimaryKey('site_id');
 
         $this->belongsToMany('Programs', [

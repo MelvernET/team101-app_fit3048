@@ -29,7 +29,7 @@
                                     <?php
                                     echo $this->Form->control('client_first_name');
                                     echo $this->Form->control('client_last_name');
-                                    echo $this->Form->control('client_location');
+                                    echo $this->Form->control('client_address');
                                     ?>
                                 </fieldset><br>
                                 <?= $this->Form->button(__('Submit'),['class' => 'button float-right btn btn-primary']) ?>

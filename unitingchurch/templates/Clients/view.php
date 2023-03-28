@@ -40,7 +40,7 @@
                                     </tr>
                                     <tr>
                                 <div class="text">
-                                    <th> <?= __('Client Location') ?> </th>
+                                    <th> <?= __('Client Address') ?> </th>
 
                                     <td>  <?= $this->Text->autoParagraph(h($client->client_location)); ?></td>
 

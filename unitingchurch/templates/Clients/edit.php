@@ -42,7 +42,7 @@ $this->Form->setTemplates($formTemplate);
                                     <?php
                                     echo $this->Form->control('client_first_name');
                                     echo $this->Form->control('client_last_name');
-                                    echo $this->Form->control('client_location');
+                                    echo $this->Form->control('client_address');
                                     ?>
                                 </fieldset>
                                 <br>
