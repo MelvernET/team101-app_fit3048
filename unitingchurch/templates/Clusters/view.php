@@ -63,7 +63,7 @@
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('Edit Cluster'), ['action' => 'edit', $cluster->cluster_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Form->postLink(__('Delete Cluster'), ['action' => 'delete', $cluster->cluster_id], ['confirm' => __('Are you sure you want to delete # {0}?', $cluster->cluster_name), 'class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Form->postLink(__('Delete Cluster'), ['action' => 'delete', $cluster->cluster_id], ['confirm' => __('Are you sure you want to delete {0}?', $cluster->cluster_name), 'class' => 'btn btn-primary btn-block']) ?>
 
                         </aside>
 
