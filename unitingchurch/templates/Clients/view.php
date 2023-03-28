@@ -24,9 +24,9 @@
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="clients view content">
-                                <h3><?= h($client->client_id) ?></h3>
-                                <table>
-                                    <tr>
+                                <h3><?= h($client->client_first_name) ?></h3>
+                                <table class="table table-bordered" id="dataTable" width="100%">
+                                <tr>
                                         <th><?= __('Client First Name') ?></th>
                                         <td><?= h($client->client_first_name) ?></td>
                                     </tr>
@@ -38,13 +38,14 @@
                                         <th><?= __('Client Id') ?></th>
                                         <td><?= $this->Number->format($client->client_id) ?></td>
                                     </tr>
-                                </table>
+                                    <tr>
                                 <div class="text">
-                                    <strong><?= __('Client Location') ?></strong>
-                                    <blockquote>
-                                        <?= $this->Text->autoParagraph(h($client->client_location)); ?>
-                                    </blockquote>
-                                </div>
+                                    <th> <?= __('Client Location') ?> </th>
+
+                                    <td>  <?= $this->Text->autoParagraph(h($client->client_location)); ?></td>
+
+                                    </tr>
+                                </div> </table>
                             </div>
                         </div>
                     </div>
@@ -64,7 +65,7 @@
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('Edit Client'), ['action' => 'edit', $client->client_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Form->postLink(__('Delete Client'), ['action' => 'delete', $client->clientr_id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->client_first_name), 'class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Form->postLink(__('Delete Client'), ['action' => 'delete', $client->clientr_id], ['confirm' => __('Are you sure you want to delete {0}?', $client->client_first_name), 'class' => 'btn btn-primary btn-block']) ?>
 
 
                     </div></div></div></div>
