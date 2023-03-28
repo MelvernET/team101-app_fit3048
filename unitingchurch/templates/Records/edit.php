@@ -54,7 +54,7 @@
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('New Record'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Html->link(__('Edit Record'), ['action' => 'edit', $record->record_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Html->link(__('View Record'), ['action' => 'view', $record->record_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
                         <?= $this->Form->postLink(__('Delete Record'), ['action' => 'delete', $record->record_id], ['confirm' => __('Are you sure you want to delete # {0}?', $record->record_id), 'class' => 'btn btn-primary btn-block']) ?>
 
