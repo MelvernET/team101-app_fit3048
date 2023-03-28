@@ -11382,4 +11382,13 @@ select {
     vertical-align: top!important;
 }
 
-.
+.success{
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(249, 195, 212, 0.22)!important;
+    border: 1px solid #A20066!important;
+    border-radius: 20px;
+    margin: 10px 0px;
+    color: #A20066;
+}

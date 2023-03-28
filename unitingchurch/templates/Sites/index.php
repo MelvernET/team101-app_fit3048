@@ -41,8 +41,7 @@
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $site->site_id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $site->site_id], ['class' => 'btn btn-primary btn-sm']) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $site->site_id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $site->site_id)]) ?>
-                    </td>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $site->site_id], ['class' => 'btn btn-primary btn-sm', 'confirm' => __('Are you sure you want to delete {0}?', $site->site_name)]) ?>          </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
