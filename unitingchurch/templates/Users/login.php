@@ -85,6 +85,9 @@ $this->Form->setTemplates($formTemplate);
 
                                         <br>
 
+<!--                                        <a class="small text-muted" href="#">Forgot password?</a>-->
+<!--                                        <p class="mb-5 pb-lg-2" >Don't have an account? <a href="#"-->
+<!--                                                                                                                  style="color: #A20066;">Register here</a></p>-->
 
 
 

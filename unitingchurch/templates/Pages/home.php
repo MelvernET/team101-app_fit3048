@@ -12,6 +12,7 @@
  * @since     0.10.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
+ * @var \Cake\Collection\CollectionInterface|string[] $sites
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -116,45 +117,45 @@ $this->Form->setTemplates($formTemplate);
                                 <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
                                 <p class="card-text"><br>
                                     <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "location">
-                                <div class="input-group mb-3">
-
-
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">
-                                    <div class="input-group-append" >
-
-                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Select Service</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-
-                                        </div>
-                                    </div>
-                                </div></div>
-
-
-
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">
-                                        <div class="input-group-append" >
-
-                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Select Service</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-<br>
-                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
+<!--                                <div class="input-group mb-3">-->
+<!---->
+<!---->
+<!--                                <div class="input-group">-->
+<!--                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">-->
+<!--                                    <div class="input-group-append" >-->
+<!---->
+<!--                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                            <span class="sr-only">Toggle Dropdown</span>-->
+<!--                                        </button>-->
+<!--                                        <div class="dropdown-menu">-->
+<!--                                            <a class="dropdown-item" href="#">Select Service</a>-->
+<!--                                            <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                            <a class="dropdown-item" href="#">Something else here</a>-->
+<!---->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div></div>-->
+<!---->
+<!---->
+<!---->
+<!--                                    <div class="input-group">-->
+<!--                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">-->
+<!--                                        <div class="input-group-append" >-->
+<!---->
+<!--                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                                <span class="sr-only">Toggle Dropdown</span>-->
+<!--                                            </button>-->
+<!--                                            <div class="dropdown-menu">-->
+<!--                                                <a class="dropdown-item" href="#">Select Service</a>-->
+<!--                                                <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                                <a class="dropdown-item" href="#">Something else here</a>-->
+<!---->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!---->
+<!--<br>-->
+<!--                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">-->
                              <br>
                                 <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">
 </div>
@@ -196,7 +197,16 @@ $this->Form->setTemplates($formTemplate);
 
 
 <script type='text/javascript'>
+    var number = "<?php echo count($sites);?>"
+    var datas = new Array(0);
+    <?php
 
+    foreach ($sites as $site):
+    $address = $site->site_address;
+    ?>
+    datas.push("<?php echo $address;?>")
+
+    <?php endforeach; ?>
     function findLocation(){
         loadMapScenario();
 
@@ -205,12 +215,33 @@ $this->Form->setTemplates($formTemplate);
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
+
+            for (i = 0; i < datas.length; i++) {
+                var siteAdr = {
+                    bounds: map.getBounds(),
+                    where: datas[i],
+                    callback: function (answer, userData) {
+                        map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location));
+                    }
+                };
+                searchManager.geocode(siteAdr);
+            }
+
+
+            // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
+            //     icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+            //     anchor: new Microsoft.Maps.Point(12, 39)
+            // });
+            // map.entities.push(pushpin);
             var requestOptions = {
                 bounds: map.getBounds(),
                 where: document.getElementById("location").value,
                 callback: function (answer, userData) {
                     map.setView({ bounds: answer.results[0].bestView });
-                    map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location));
+                    map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location, {
+                            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+                            anchor: new Microsoft.Maps.Point(12, 39)
+                        }));
                 }
             };
             searchManager.geocode(requestOptions);
