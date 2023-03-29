@@ -48,7 +48,7 @@
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('New Program Type'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Html->link(__('Edit Program Type'), ['action' => 'edit', $programType->program_type_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Html->link(__('View Program Type'), ['action' => 'view', $programType->program_type_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
                         <?= $this->Form->postLink(__('Delete Program Type'), ['action' => 'delete', $programType->program_type_id], ['confirm' => __('Are you sure you want to delete {0}?', $programType->program_type_name), 'class' => 'btn btn-primary btn-block']) ?>
        </aside>

@@ -51,7 +51,7 @@
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('New Service Type'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Html->link(__('Edit Service Type'), ['action' => 'edit', $serviceType->service_type_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Html->link(__('View Service Type'), ['action' => 'view', $serviceType->service_type_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
                         <?= $this->Form->postLink(__('Delete Service Type'), ['action' => 'delete', $serviceType->service_type_id], ['confirm' => __('Are you sure you want to delete {0}?', $serviceType->service_type_name), 'class' => 'btn btn-primary btn-block']) ?>
 

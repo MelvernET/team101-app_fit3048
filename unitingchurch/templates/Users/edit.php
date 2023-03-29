@@ -71,7 +71,7 @@ $this->Form->setTemplates($formTemplate);
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->user_id], ['class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Html->link(__('View User'), ['action' => 'view', $user->user_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
                         <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete {0}?', $user->user_first_name), 'class' => 'btn btn-primary btn-block']) ?>
 
