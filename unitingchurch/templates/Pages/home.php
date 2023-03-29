@@ -61,7 +61,7 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        GATech
+        unitingchurch
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
@@ -76,120 +76,120 @@ $this->Form->setTemplates($formTemplate);
 </head>
 <body>
 
-    <div class="container text-center">
+<div class="container text-center">
 
-    </div>
+</div>
 
-    <main class="main">
-<!--        <div class="col-xl-6 col-lg-7">-->
-        <div class="container">
-            <div class="content">
-                <br>
-                <h3 class="headings"><b>Find a Uniting service near you</h3></b>
-<br>
-                <!-- Content Row -->
+<main class="main">
+    <!--        <div class="col-xl-6 col-lg-7">-->
+    <div class="container">
+        <div class="content">
+            <br>
+            <h3 class="headings"><b>Find a Uniting service near you</h3></b>
+            <br>
+            <!-- Content Row -->
 
-                <div class="row">
-                    <div class="col-8">
+            <div class="row">
+                <div class="col-8">
 
-                        <div class="card" style="height: 500px;">
-                            <div class="card-body" >
-                                <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
-                                <br>
+                    <div class="card" style="height: 500px;">
+                        <div class="card-body" >
+                            <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
+                            <br>
 
-                                <div class="map" style='width: 100%; height: 80%;' >
+                            <div class="map" style='width: 100%; height: 80%;' >
 
-                                    <div id='printoutPanel'></div>
+                                <div id='printoutPanel'></div>
 
-                                    <div id='myMap' style='width: 100%; height: 100%;'></div>
+                                <div id='myMap' style='width: 100%; height: 100%;'></div>
 
                             </div>
-                                </div>
+                        </div>
 
+                    </div>
+
+
+
+                </div>
+                <div class="col-4">
+                    <div class="card" style="height: 500px;">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
+                            <p class="card-text"><br>
+                                <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "location">
+                                <!--                                <div class="input-group mb-3">-->
+                                <!---->
+                                <!---->
+                                <!--                                <div class="input-group">-->
+                                <!--                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">-->
+                                <!--                                    <div class="input-group-append" >-->
+                                <!---->
+                                <!--                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                <!--                                            <span class="sr-only">Toggle Dropdown</span>-->
+                                <!--                                        </button>-->
+                                <!--                                        <div class="dropdown-menu">-->
+                                <!--                                            <a class="dropdown-item" href="#">Select Service</a>-->
+                                <!--                                            <a class="dropdown-item" href="#">Another action</a>-->
+                                <!--                                            <a class="dropdown-item" href="#">Something else here</a>-->
+                                <!---->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div></div>-->
+                                <!---->
+                                <!---->
+                                <!---->
+                                <!--                                    <div class="input-group">-->
+                                <!--                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">-->
+                                <!--                                        <div class="input-group-append" >-->
+                                <!---->
+                                <!--                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                <!--                                                <span class="sr-only">Toggle Dropdown</span>-->
+                                <!--                                            </button>-->
+                                <!--                                            <div class="dropdown-menu">-->
+                                <!--                                                <a class="dropdown-item" href="#">Select Service</a>-->
+                                <!--                                                <a class="dropdown-item" href="#">Another action</a>-->
+                                <!--                                                <a class="dropdown-item" href="#">Something else here</a>-->
+                                <!---->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!---->
+                                <!--<br>-->
+                                <!--                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">-->
+                                <br>
+                                <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">
                         </div>
 
 
-
                     </div>
-                    <div class="col-4">
-                        <div class="card" style="height: 500px;">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
-                                <p class="card-text"><br>
-                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "location">
-<!--                                <div class="input-group mb-3">-->
-<!---->
-<!---->
-<!--                                <div class="input-group">-->
-<!--                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">-->
-<!--                                    <div class="input-group-append" >-->
-<!---->
-<!--                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                            <span class="sr-only">Toggle Dropdown</span>-->
-<!--                                        </button>-->
-<!--                                        <div class="dropdown-menu">-->
-<!--                                            <a class="dropdown-item" href="#">Select Service</a>-->
-<!--                                            <a class="dropdown-item" href="#">Another action</a>-->
-<!--                                            <a class="dropdown-item" href="#">Something else here</a>-->
-<!---->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div></div>-->
-<!---->
-<!---->
-<!---->
-<!--                                    <div class="input-group">-->
-<!--                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">-->
-<!--                                        <div class="input-group-append" >-->
-<!---->
-<!--                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                                <span class="sr-only">Toggle Dropdown</span>-->
-<!--                                            </button>-->
-<!--                                            <div class="dropdown-menu">-->
-<!--                                                <a class="dropdown-item" href="#">Select Service</a>-->
-<!--                                                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                                                <a class="dropdown-item" href="#">Something else here</a>-->
-<!---->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!---->
-<!--<br>-->
-<!--                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">-->
-                             <br>
-                                <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">
-</div>
-
-
-</div>
-
-                    </div>
-<br>
 
                 </div>
+                <br>
 
-<!-- end -->
+            </div>
+
+            <!-- end -->
 
 
 
 
 
 
+        </div>
     </div>
-    </div>
-    </main>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</main>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/chart.js/Chart.min.js"></script>
 
 
 
@@ -264,9 +264,9 @@ $this->Form->setTemplates($formTemplate);
                 callback: function (answer, userData) {
                     map.setView({ bounds: answer.results[0].bestView });
                     map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location, {
-                            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-                            anchor: new Microsoft.Maps.Point(12, 39)
-                        }));
+                        icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+                        anchor: new Microsoft.Maps.Point(12, 39)
+                    }));
                 }
             };
 
@@ -277,7 +277,7 @@ $this->Form->setTemplates($formTemplate);
         //     anchor: new Microsoft.Maps.Point(12, 39)
         // });
         // map.entities.push(pushpin);
-]
+    ]
 
         map.entities.push(pushpins);
     }
