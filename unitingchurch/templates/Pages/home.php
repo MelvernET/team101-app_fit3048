@@ -199,12 +199,15 @@ $this->Form->setTemplates($formTemplate);
 <script type='text/javascript'>
     var number = "<?php echo count($sites);?>"
     var datas = new Array(0);
+    var infoBox = new Array(0);
     <?php
 
     foreach ($sites as $site):
     $address = $site->site_address;
+    $site_address = $site->site_contact;
     ?>
     datas.push("<?php echo $address;?>")
+    infoBox.push("<?php echo $site_address;?>")
 
     <?php endforeach; ?>
     function findLocation(){
@@ -213,19 +216,41 @@ $this->Form->setTemplates($formTemplate);
     }
     function loadMapScenario() {
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+        var layer = new Microsoft.Maps.Layer();
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
-
+            var a = 0;
             for (i = 0; i < datas.length; i++) {
+
                 var siteAdr = {
                     bounds: map.getBounds(),
                     where: datas[i],
+
                     callback: function (answer, userData) {
-                        map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location));
+                        var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location);
+                        pushpin.metadata = { title: infoBox[a], description: 'address: '+ datas[a] }
+                        layer.add(pushpin);
+                        var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
+                        // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: infoBox[a], description: 'address: '+ datas[a] });
+                        infobox.setMap(map);
+                        Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
+                            infobox.setOptions({
+                                location: args.target.getLocation(),
+                                title: args.target.metadata.title,
+                                description: args.target.metadata.description,
+                                visible: true
+                            });
+                        });
+                        a++;
                     }
+
+
                 };
                 searchManager.geocode(siteAdr);
+
+
             }
+            map.layers.insert(layer);
 
 
             // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
@@ -244,6 +269,7 @@ $this->Form->setTemplates($formTemplate);
                         }));
                 }
             };
+
             searchManager.geocode(requestOptions);
         });
         // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
@@ -251,8 +277,9 @@ $this->Form->setTemplates($formTemplate);
         //     anchor: new Microsoft.Maps.Point(12, 39)
         // });
         // map.entities.push(pushpin);
+]
 
-
+        map.entities.push(pushpins);
     }
 
 
