@@ -206,50 +206,75 @@ $this->Form->setTemplates($formTemplate);
     $address = $site->site_address;
     $site_address = $site->site_contact;
     ?>
-    datas.push("<?php echo $address;?>")
+    datas.push(["<?php echo $address;?>","<?php echo $site_address;?>"])
     infoBox.push("<?php echo $site_address;?>")
 
     <?php endforeach; ?>
     function findLocation(){
         loadMapScenario();
-
     }
     function loadMapScenario() {
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
         var layer = new Microsoft.Maps.Layer();
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
-            var a = 0;
-            for (i = 0; i < datas.length; i++) {
 
-                var siteAdr = {
-                    bounds: map.getBounds(),
-                    where: datas[i],
 
-                    callback: function (answer, userData) {
-                        var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-                        pushpin.metadata = { title: infoBox[a], description: 'Address: '+ datas[a] }
-                        layer.add(pushpin);
-                        var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
-                        // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: infoBox[a], description: 'address: '+ datas[a] });
-                        infobox.setMap(map);
-                        Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
-                            infobox.setOptions({
-                                location: args.target.getLocation(),
-                                title: args.target.metadata.title,
-                                description: args.target.metadata.description,
-                                visible: true
-                            });
+
+
+            // var a = 0;
+            // for (i = 0; i < datas.length; i++) {
+            //
+            //     var siteAdr = {
+            //         bounds: map.getBounds(),
+            //         where: datas[i],
+            //
+            //         callback: function (answer, userData) {
+            //             var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
+            //             // pushpin.metadata = { title: infoBox[a], description: 'Address: '+ datas[a] }
+            //             layer.add(pushpin);
+            //             // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
+            //             var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: infoBox[a], description: 'address: '+ datas[a] });
+            //             infobox.setMap(map);
+            //             // Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
+            //             //     infobox.setOptions({
+            //             //         location: args.target.getLocation(),
+            //             //         title: args.target.metadata.title,
+            //             //         description: args.target.metadata.description,
+            //             //         visible: true
+            //             //     });
+            //             // });
+            //             a++;
+            //         }
+            //     };
+            //     searchManager.geocode(siteAdr);
+            // }
+
+
+
+            datas.forEach( function (item) { var siteAdr = {
+                bounds: map.getBounds(),
+                where: item[0],
+
+                callback: function (answer, userData) {
+                    var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
+                    pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
+                    layer.add(pushpin);
+                    var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
+                    // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: 'site: ', description: 'address: '+ item });
+                    infobox.setMap(map);
+                    Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
+                        infobox.setOptions({
+                            location: args.target.getLocation(),
+                            title: args.target.metadata.title,
+                            description: args.target.metadata.description,
+                            visible: true
                         });
-                        a++;
-                    }
+                    });
 
-
-                };
-                searchManager.geocode(siteAdr);
-
-
-            }
+                }
+            };
+            searchManager.geocode(siteAdr);})
             map.layers.insert(layer);
 
 
@@ -277,29 +302,9 @@ $this->Form->setTemplates($formTemplate);
         // });
         // map.entities.push(pushpin);
 
-        //
-        //
-        //
-        // var infobox = new Microsoft.Maps.Infobox(layer[0].getLocation(), { visible: false, autoAlignment: true });
-        // infobox.setMap(map);
-        // for (var i = 0; i < layer.length; i++) {
-        //     var pushpin = layer[i];
-        //     //Store some metadata with the pushpin
-        //     pushpin.metadata = {
-        //         title: 'Pushpin ' + i,
-        //         description: 'Discription for pushpin' + i
-        //     };
-        //     Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
-        //         infobox.setOptions({
-        //             location: args.target.getLocation(),
-        //             title: args.target.metadata.title,
-        //             description: args.target.metadata.description,
-        //             visible: true
-        //         });
-        //     });
-        // }
 
-        map.entities.push(pushpins);
+
+        // map.entities.push(pushpins);
     }
 
 
