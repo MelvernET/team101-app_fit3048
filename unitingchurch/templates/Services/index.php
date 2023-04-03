@@ -38,8 +38,8 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="st
                     <td><?= $this->Number->format($service->service_staff_number) ?></td>
                     <td><?= $this->Number->format($service->service_fte) ?></td>
                     <td><?= h($service->service_riskman) ?></td>
-                    <td><?= $service->has('program') ? $this->Html->link($service->program->program_id, ['controller' => 'Programs', 'action' => 'view', $service->program->program_id]) : '' ?></td>
-                    <td><?= $service->has('service_type') ? $this->Html->link($service->service_type->service_type_id, ['controller' => 'ServiceTypes', 'action' => 'view', $service->service_type->service_type_id]) : '' ?></td>
+                    <td><?= $service->has('program') ? $this->Html->link($service->program->program_name, ['controller' => 'Programs', 'action' => 'view', $service->program->program_id]) : '' ?></td>
+                    <td><?= $service->has('service_type') ? $this->Html->link($service->service_type->service_type_name, ['controller' => 'ServiceTypes', 'action' => 'view', $service->service_type->service_type_id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
