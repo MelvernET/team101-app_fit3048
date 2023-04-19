@@ -28,11 +28,15 @@ use Cake\View\Exception\MissingTemplateException;
  * This controller will render views from templates/Pages/
  *
  * @link https://book.cakephp.org/4/en/controllers/pages-controller.html
+ * @property \App\Model\Table\ProgramsTable $Programs
+ * @property \App\Model\Table\SitesTable $Sites
+ * @property \App\Model\Table\ProgramTypesTable $ProgramTypes
  */
 class PagesController extends AppController
 {
     /**
      * Displays a view
+     *
      *
      * @param string ...$path Path segments.
      * @return \Cake\Http\Response|null
@@ -46,7 +50,12 @@ class PagesController extends AppController
     public function display(string ...$path): ?Response
     {
 
+
         $sites = $this->fetchTable('Sites')->find()->toArray();
+        $program_types = $this->fetchTable('Programtypes')->find()->toArray();
+        $programs= $this->fetchTable('Programs')->find()->toArray();
+
+
         if (!$path) {
             return $this->redirect('/');
         }
@@ -61,7 +70,8 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage','sites'));
+
+        $this->set(compact('page', 'subpage','sites','program_types','programs'));
 
         try {
             return $this->render(implode('/', $path));
@@ -72,4 +82,45 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+
+
+//
+//    public function loadSite($programTypeId) {
+//        $pr = array();
+//        $siteee = array();
+//        foreach ($this->Programs as $pro):
+//            if($pro->program_type_id == $programTypeId){
+//                $pr.array_push($pr,$pro);
+//            }
+//            endforeach;
+//
+//
+//        $progType = $this->Sites->findById($programTypeId);
+//        $posts = $progType['program_type_id'];
+//        $sitee = $this->Programs->findById($progType);
+//
+//        $this->set(compact('posts'));
+//    }
+//    public function home($id = null)
+//    {
+//        $program = $this->Programs->get($id, [
+//            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
+//        ]);
+//        $program = $this->Programs->find('all', [
+//            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
+//        ]);
+//
+//        $this->set(compact('program'));
+//    }
+
+
+//    public function index()
+//    {
+//
+//
+//        $program = $this->Programs->find('all'); // Retrieve all articles from the database
+//
+//        $this->set(compact('program')); // Pass the articles data to the view
+//    }
 }

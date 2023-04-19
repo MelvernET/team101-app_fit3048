@@ -17,6 +17,8 @@ use Cake\ORM\Entity;
  * @property string $site_contact_direct_ph_no
  * @property string $site_lga
  * @property string $site_dhhs_area
+ * @property string $site_longitude
+ * @property string $site_latitude
  *
  * @property \App\Model\Entity\Program[] $programs
  */
@@ -40,6 +42,8 @@ class Site extends Entity
         'site_contact_direct_ph_no' => true,
         'site_lga' => true,
         'site_dhhs_area' => true,
+        'site_longitude' => true,
+        'site_latitude' => true,
         'programs' => true,
     ];
 }

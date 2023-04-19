@@ -139,7 +139,15 @@ class UsersController extends AppController
 
     }
 
+    public function forgetpassword()
+    {
 
+        $this->viewBuilder()->setLayout('non-default');
+
+
+
+
+    }
 
 
 

@@ -13,6 +13,9 @@
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  * @var \Cake\Collection\CollectionInterface|string[] $sites
+ * @var \Cake\Collection\CollectionInterface|string[] $program_types
+ * @var \App\Model\Entity\Site $site
+ * @var \App\Model\Entity\Program $program
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -90,33 +93,59 @@ $this->Form->setTemplates($formTemplate);
                 <!-- Content Row -->
 
                 <div class="row">
+
+
                     <div class="col-8">
 
                         <div class="card" style="height: 500px;">
+
+
+
                             <div class="card-body" >
                                 <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
                                 <br>
 
                                 <div class="map" style='width: 100%; height: 80%;' >
 
-                                    <div id='printoutPanel'></div>
+<!--                                    <div id='printoutPanel'></div>-->
 
                                     <div id='myMap' style='width: 100%; height: 100%;'></div>
 
                             </div>
                                 </div>
+                            <?php foreach ($program_types as $program_type):
 
+                                ?>
+                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="btn btn-primary">
+
+
+                            <?php endforeach; ?>
                         </div>
 
 
 
                     </div>
+
+
+
+
+
+
+
+
                     <div class="col-4">
-                        <div class="card" style="height: 500px;">
-                            <div class="card-body">
+
+                        <div  class="card" style="height: 500px;">
+
+                            <div  class="card-body">
                                 <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
+
                                 <p class="card-text"><br>
-                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "location">
+                                <div id='searchBoxContainer'>
+                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
+                                </div>
+                                <div id='printoutPanel'></div>
+
 <!--                                <div class="input-group mb-3">-->
 <!---->
 <!---->
@@ -156,8 +185,10 @@ $this->Form->setTemplates($formTemplate);
 <!---->
 <!--<br>-->
 <!--                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">-->
+
                              <br>
                                 <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">
+
 </div>
 
 
@@ -200,23 +231,74 @@ $this->Form->setTemplates($formTemplate);
     var number = "<?php echo count($sites);?>"
     var datas = new Array(0);
     var infoBox = new Array(0);
+    var filt = new Array("1");
+    var min = new Array(0);
     <?php
 
     foreach ($sites as $site):
     $address = $site->site_address;
     $site_address = $site->site_contact;
+    $lati = $site->site_latitude;
+    $long = $site->site_longitude;
+
+
+
     ?>
-    datas.push(["<?php echo $address;?>","<?php echo $site_address;?>"])
+    datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>"])
     infoBox.push("<?php echo $site_address;?>")
 
     <?php endforeach; ?>
-    function findLocation(){
+
+
+    function fil(id){
+
+
+        // numbers.forEach(function(number) {
+        //
+        // });
+
+
+
+        datas.length = 0;
+
+        <?php if (!empty($program)) : ?>
+        <?php foreach ($program as $pro) :
+        $proTypeId = $pro->program_type_id;
+
+        $proId = $pro->program_id;
+
+        ?>
+        //var a = "<?php //echo $proTypeId;?>//";
+        //
+        //if( a == id ){
+        //
+        //    filt.push("<?php //echo $proId;?>//")
+        //
+        //}
+        filt.push("<?php echo $proId;?>")
+
+        <?php endforeach; ?>
+        <?php endif; ?>
+
         loadMapScenario();
     }
+    function findLocation(){
+
+
+
+        loadMapScenario();
+        // map.setView({ bounds: loca[index].bestView });
+        // document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> ';
+    }
     function loadMapScenario() {
-        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+
+        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
         var layer = new Microsoft.Maps.Layer();
-        Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
+        document.getElementById('printoutPanel').innerHTML = filt[0]
+        var loca = new Array(0);
+        var addr = new Array(0);
+
+      Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
 
@@ -259,6 +341,7 @@ $this->Form->setTemplates($formTemplate);
                 callback: function (answer, userData) {
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
                     pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
+                    addr.push(['Site: '+item[1],'Address: '+ item[0]])
                     layer.add(pushpin);
                     var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
                     // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: 'site: ', description: 'address: '+ item });
@@ -271,11 +354,43 @@ $this->Form->setTemplates($formTemplate);
                             visible: true
                         });
                     });
+                    loca.push(pushpin);
+
 
                 }
+
+
             };
             searchManager.geocode(siteAdr);})
             map.layers.insert(layer);
+
+
+
+
+
+            // datas.forEach( function (item) { var siteAdr = {
+            //     // var locat = new Microsoft.Maps.Location(item[3], item[4]);
+            //     var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(item[3]), parseFloat(item[4])),{ color: 'red' });
+            //     pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
+            //     layer.add(pushpin);
+            //     var infobox = new Microsoft.Maps.Infobox(locat,  { visible: false, autoAlignment: true });
+            //     infobox.setMap(map);
+            //     Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
+            //         infobox.setOptions({
+            //             location: args.target.getLocation(),
+            //             title: args.target.metadata.title,
+            //             description: args.target.metadata.description,
+            //             visible: true
+            //         });
+            //     });
+            // };
+            //     searchManager.geocode(siteAdr);})
+            // map.layers.insert(layer);
+
+
+
+
+
 
 
             // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
@@ -283,29 +398,180 @@ $this->Form->setTemplates($formTemplate);
             //     anchor: new Microsoft.Maps.Point(12, 39)
             // });
             // map.entities.push(pushpin);
-            var requestOptions = {
-                bounds: map.getBounds(),
-                where: document.getElementById("location").value,
-                callback: function (answer, userData) {
-                    map.setView({ bounds: answer.results[0].bestView });
-                    map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location, {
-                            icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-                            anchor: new Microsoft.Maps.Point(12, 39)
-                        }));
-                }
-            };
-            searchManager.geocode(requestOptions);
+
+
+
+
+            //
+            //
+            // Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
+            //     // var pushpins = Microsoft.Maps.TestDataGenerator.getPushpins(2, map.getBounds());
+            //     // map.entities.push(pushpins);
+            //     document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
+            //         + Microsoft.Maps.SpatialMath.getDistanceTo(pushpins[0].getLocation(), pushpins[1].getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
+            // });
+
+
+
+
+
+
+
+
+
+
+
+
+            // var requestOptions = {
+            //     bounds: map.getBounds(),
+            //     where: document.getElementById("searchBox").value,
+            //     callback: function (answer, userData) {
+            //         var pushpinNow = new Microsoft.Maps.Pushpin(answer.results[0].location, {
+            //             icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+            //             anchor: new Microsoft.Maps.Point(12, 39)
+            //         });
+            //         map.setView({ bounds: answer.results[0].bestView });
+            //         map.entities.push(pushpinNow);
+            //         var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
+            //         infobox.setMap(map);
+            //         Microsoft.Maps.Events.addHandler(pushpinNow, 'click', function (args) {
+            //             infobox.setOptions({
+            //                 location: args.target.getLocation(),
+            //                 title: document.getElementById("searchBox").value,
+            //                 description: '<b>Location:</b> <br>' + infobox.getLocation() + '<br>',
+            //                 visible: true
+            //             });
+            //         });
+            //
+            //     }
+            //
+            // };
+            //
+            //
+            //
+            //
+            // searchManager.geocode(requestOptions);
+
         });
-        // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
-        //     icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-        //     anchor: new Microsoft.Maps.Point(12, 39)
+
+
+
+        Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
+            var options = {
+                maxResults: 4,
+                map: map
+            };
+            var manager = new Microsoft.Maps.AutosuggestManager(options);
+            manager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
+        });
+
+
+        function selectedSuggestion(suggestionResult) {
+            min.length = 0
+            var index;
+            map.entities.clear();
+            var pushpinNow = new Microsoft.Maps.Pushpin(suggestionResult.location, {
+                icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
+                anchor: new Microsoft.Maps.Point(12, 39)
+            });
+            map.setView({ bounds: suggestionResult.bestView });
+            map.entities.push(pushpinNow);
+            var infobox = new Microsoft.Maps.Infobox(suggestionResult.location,  { visible: false, autoAlignment: true });
+            infobox.setMap(map);
+            Microsoft.Maps.Events.addHandler(pushpinNow, 'click', function (args) {
+                infobox.setOptions({
+                    location: args.target.getLocation(),
+                    title: document.getElementById("searchBox").value,
+                    description: '<b>Location:</b>  <br>' + suggestionResult.formattedSuggestion+ '<br> Lat: ' + suggestionResult.location.latitude +
+                        '<br> Lon: ' + suggestionResult.location.longitude + '<br>',
+                    visible: true
+                });
+            });
+            loca.forEach( function (item) {
+                Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
+                    min.push(Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles));
+                    // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
+                    //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
+                        })
+
+            })
+            var minn = Math.min.apply(null,min);
+            index = min.indexOf(minn);
+            document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
+
+
+            // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
+            //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), loca[0].getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);})
+            // datas.forEach( function (item) {
+            //     Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
+            //         var pushpin1 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(item[3],item[4]),{});
+            //         document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
+            //             + Microsoft.Maps.SpatialMath.getDistanceTo(suggestionResult.location.getLocation(), pushpin1.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);})
+            // })
+
+            // document.getElementById('printoutPanel').innerHTML =
+            //     'Suggestion: ' + suggestionResult.formattedSuggestion +
+            //     '<br> Lat: ' + suggestionResult.location.latitude +
+            //     '<br> Lon: ' + suggestionResult.location.longitude;
+        }
+
+
+
+
+
+        // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
+        //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpins[0].getLocation(), pushpins[1].getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
+
+
+        // Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+        //     var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+        //     // Set Route Mode to driving
+        //     directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
+        //     var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: 'Redmond', location: new Microsoft.Maps.Location(47.67683029174805, -122.1099624633789) });
+        //     var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: 'Seattle', location: new Microsoft.Maps.Location(47.59977722167969, -122.33458709716797) });
+        //     directionsManager.addWaypoint(waypoint1);
+        //     directionsManager.addWaypoint(waypoint2);
+        //     // Set the element in which the itinerary will be rendered
+        //     directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel') });
+        //     directionsManager.calculateDirections();
         // });
-        // map.entities.push(pushpin);
 
 
 
-        // map.entities.push(pushpins);
+
+
+
+
+
+
+        // Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
+        //     var manager = new Microsoft.Maps.Traffic.TrafficManager(map);
+        //     manager.show();
+        // });
+
+
+
+
+
+        // Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+        //     var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+        //     // Set Route Mode to transit
+        //     directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.transit });
+        //     var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: 'Redmond', location: new Microsoft.Maps.Location(47.67683029174805, -122.1099624633789) });
+        //     var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: 'Seattle', location: new Microsoft.Maps.Location(47.59977722167969, -122.33458709716797) });
+        //     directionsManager.addWaypoint(waypoint1);
+        //     directionsManager.addWaypoint(waypoint2);
+        //     // Set the element in which the itinerary will be rendered
+        //     directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel') });
+        //     directionsManager.calculateDirections();
+        // });
     }
+
+
+
+
+
+
 
 
 

@@ -40,7 +40,7 @@ class SitesTable extends Table
         parent::initialize($config);
 
         $this->setTable('sites');
-        $this->setDisplayField(['site_id','site_lga','site_address']);
+        $this->setDisplayField(['site_id','site_lga','site_address','site_longitude','site_latitude']);
         $this->setPrimaryKey('site_id');
 
         $this->belongsToMany('Programs', [
@@ -104,6 +104,16 @@ class SitesTable extends Table
             ->maxLength('site_dhhs_area', 100)
             ->requirePresence('site_dhhs_area', 'create')
             ->notEmptyString('site_dhhs_area');
+        $validator
+            ->scalar('site_longitude')
+            ->maxLength('site_longitude', 100)
+            ->requirePresence('site_longitude', 'create')
+            ->notEmptyString('site_longitude');
+        $validator
+            ->scalar('site_latitude')
+            ->maxLength('site_latitude', 100)
+            ->requirePresence('site_latitude', 'create')
+            ->notEmptyString('site_latitude');
 
         return $validator;
     }
