@@ -231,7 +231,7 @@ $this->Form->setTemplates($formTemplate);
     var number = "<?php echo count($sites);?>"
     var datas = new Array(0);
     var infoBox = new Array(0);
-    var filt = new Array("1");
+    // var filt = new Array("1");
     var min = new Array(0);
     <?php
 
@@ -294,7 +294,7 @@ $this->Form->setTemplates($formTemplate);
 
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
         var layer = new Microsoft.Maps.Layer();
-        document.getElementById('printoutPanel').innerHTML = filt[0]
+        // document.getElementById('printoutPanel').innerHTML = filt[0]
         var loca = new Array(0);
         var addr = new Array(0);
 
