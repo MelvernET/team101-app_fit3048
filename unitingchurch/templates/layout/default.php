@@ -183,6 +183,10 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 User
                             </a>
+                            <a class="dropdown-item" href="<?= $this->Url->build('/users/forgetpassword') ?>">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Forget Password
+                            </a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

@@ -14,6 +14,7 @@
  * @var \App\View\AppView $this
  * @var \Cake\Collection\CollectionInterface|string[] $sites
  * @var \Cake\Collection\CollectionInterface|string[] $program_types
+ * @var \Cake\Collection\CollectionInterface|string[] $bridges
  * @var \App\Model\Entity\Site $site
  * @var \App\Model\Entity\Program $program
  * @var \App\Model\Entity\Program $query
@@ -244,21 +245,17 @@ $this->Form->setTemplates($formTemplate);
     var infoBox = new Array(0);
     var filt = new Array(0);
     var min = new Array(0);
-    var loca = new Array(0);
     var addr = new Array(0);
-    var index;
-    <?php
-//    $connection = ConnectionManager::get('default');
-//    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
+    var index = null;
+    //    $connection = ConnectionManager::get('default');
+    //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
 
+    <?php
     foreach ($sites as $site):
     $address = $site->site_address;
     $site_address = $site->site_contact;
     $lati = $site->site_latitude;
     $long = $site->site_longitude;
-
-
-
     ?>
     datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>"])
     infoBox.push("<?php echo $site_address;?>")
@@ -266,56 +263,136 @@ $this->Form->setTemplates($formTemplate);
     <?php endforeach; ?>
 
 
-
-    <?php foreach ($query as $prog):
-    $name = $prog->program_name;
-    $manager = $prog->program_manager;
-    $type_id = $prog ->program_type_id;
-
-
-
-
-
-        ?>
-    filt.push(["<?php echo $name;?>","<?php echo $manager;?>","<?php echo $type_id;?>"]);
-
-
-    <?php endforeach; ?>
-
-
+<!---->
+<!--    --><?php //foreach ($query as $prog):
+//    $id = $prog->program_id;
+//
+//    $type_id = $prog ->program_type_id;
+//
+//
+//
+//
+//
+//        ?>
+//    filt.push(["<?php //echo $id;?>//","<?php //echo $type_id;?>//"]);
+//
+//
+//    <?php //endforeach; ?>
 
 
-    function fil(id){
+    function unique(arr) {
+        if (!Array.isArray(arr)) {
+            console.log('type error!')
+            return
+        }
+        var array = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (array .indexOf(arr[i]) === -1) {
+                array .push(arr[i])
+            }
+        }
+        return array;
+    }
 
-
-
-
-
-
+    function fil(typeId){
+        var progId = Array(0);
+        var siteId = Array(0);
+        var allSites = Array(0);
         datas.length = 0;
+        infoBox.length = 0;
 
-        <?php if (!empty($program)) : ?>
-        <?php foreach ($program as $pro) :
+
+        <?php
+        foreach ($sites as $site):
+        $address = $site->site_address;
+        $site_address = $site->site_contact;
+        $lati = $site->site_latitude;
+        $long = $site->site_longitude;
+        $sitId = $site->site_id;
+        ?>
+        allSites.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $sitId;?>"])
+
+
+        <?php endforeach; ?>
+
+
+        <?php
+        foreach ($query as $pro) :
         $proTypeId = $pro->program_type_id;
 
 
         $proId = $pro->program_id;
 
         ?>
+        var data = "<?php echo $proTypeId;?>"
+        if(toString(data) == toString(typeId)){
+            progId.push(data);
 
-        filt.push("<?php echo $proId;?>")
+        }
 
         <?php endforeach; ?>
-        <?php endif; ?>
+
+        progId.forEach( function (item) {
+
+            <?php
+            foreach ($bridges as $bri) :
+            $prId = $bri->program_id;
+
+
+            $stId = $bri->site_id;
+
+            ?>
+
+            var prograId = "<?php echo $prId;?>";
+            var siteeId = "<?php echo $stId;?>"
+            if(toString(item) == toString(prograId)){
+                siteId.push(siteeId);
+
+            }
+
+            <?php endforeach; ?>
+
+        })
+        var result = unique(siteId)
+
+        // result.forEach( function (itemm) {
+        //     allSites.forEach( function (itemmm) {
+        //
+        //        if(toString(itemmm[4]) == toString(itemm)){
+        //            document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+        //                ': </b><br> '+(toString(itemmm[4]) == toString(itemm));
+        //            datas.push(itemmm);
+        //        }
+        //     })
+        //     })
+        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+            ': </b><br> '+result;
+
+        allSites.forEach( function (itemmm) {
+              result.forEach( function (itemm){
+
+                if(itemmm[4] == itemm){
+                    document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+                        ': </b><br> '+(itemmm[4] == itemm);
+                    datas.push(itemmm);
+                }
+            })
+        })
+
 
         loadMapScenario();
     }
+
+
+
+
     function findLocation(){
 
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
         document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
+
 
     }
     function clean(){
@@ -328,13 +405,18 @@ $this->Form->setTemplates($formTemplate);
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
         var layer = new Microsoft.Maps.Layer();
         // document.getElementById('printoutPanel').innerHTML = filt[0]
-        // var loca = new Array(0);
+        var loca = new Array(0);
         // var addr = new Array(0);
         // var index;
         // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
         //     ': </b><br> '+filt[0][0]+filt[0][1];
-        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
-            ': </b><br> '+datas.length;
+
+
+
+
+
+        // document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+        //     ': </b><br> '+datas.length;
       Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
@@ -371,6 +453,8 @@ $this->Form->setTemplates($formTemplate);
 
               //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
             var cou = 0;
+            addr.length = 0;
+            loca.length = 0;
             datas.forEach( function (item) { var siteAdr = {
                 bounds: map.getBounds(),
                 where: item[0],
