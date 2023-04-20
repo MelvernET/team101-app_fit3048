@@ -19,12 +19,12 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="serviceStreams view content">
-            <h3><?= h($serviceStream->service_stream_name_) ?></h3>
+            <h3><?= h($serviceStream->service_stream_name) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
                     <th><?= __('Service Stream Name ') ?></th>
-                    <td><?= h($serviceStream->service_stream_name_) ?></td>
+                    <td><?= h($serviceStream->service_stream_name) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Service Stream Id') ?></th>

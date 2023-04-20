@@ -51,10 +51,10 @@ class ServiceStreamsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('service_stream_name_')
-            ->maxLength('service_stream_name_', 100)
-            ->requirePresence('service_stream_name_', 'create')
-            ->notEmptyString('service_stream_name_');
+            ->scalar('service_stream_name')
+            ->maxLength('service_stream_name', 100)
+            ->requirePresence('service_stream_name', 'create')
+            ->notEmptyString('service_stream_name');
 
         return $validator;
     }

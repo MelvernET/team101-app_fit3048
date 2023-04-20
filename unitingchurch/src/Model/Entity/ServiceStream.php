@@ -23,6 +23,6 @@ class ServiceStream extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'service_stream_name_' => true,
+        'service_stream_name' => true,
     ];
 }
