@@ -113,13 +113,7 @@ $this->Form->setTemplates($formTemplate);
 
                             </div>
                                 </div>
-                            <?php foreach ($program_types as $program_type):
 
-                                ?>
-                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="btn btn-primary">
-
-
-                            <?php endforeach; ?>
                         </div>
 
 
@@ -141,50 +135,51 @@ $this->Form->setTemplates($formTemplate);
                                 <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
 
                                 <p class="card-text"><br>
+
                                 <div id='searchBoxContainer'>
                                     <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
                                 </div>
                                 <div id='printoutPanel'></div>
 
-<!--                                <div class="input-group mb-3">-->
-<!---->
-<!---->
-<!--                                <div class="input-group">-->
-<!--                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">-->
-<!--                                    <div class="input-group-append" >-->
-<!---->
-<!--                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                            <span class="sr-only">Toggle Dropdown</span>-->
-<!--                                        </button>-->
-<!--                                        <div class="dropdown-menu">-->
-<!--                                            <a class="dropdown-item" href="#">Select Service</a>-->
-<!--                                            <a class="dropdown-item" href="#">Another action</a>-->
-<!--                                            <a class="dropdown-item" href="#">Something else here</a>-->
-<!---->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div></div>-->
-<!---->
-<!---->
-<!---->
-<!--                                    <div class="input-group">-->
-<!--                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">-->
-<!--                                        <div class="input-group-append" >-->
-<!---->
-<!--                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                                <span class="sr-only">Toggle Dropdown</span>-->
-<!--                                            </button>-->
-<!--                                            <div class="dropdown-menu">-->
-<!--                                                <a class="dropdown-item" href="#">Select Service</a>-->
-<!--                                                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                                                <a class="dropdown-item" href="#">Something else here</a>-->
-<!---->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!---->
-<!--<br>-->
-<!--                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">-->
+                                <div class="input-group mb-3">
+
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">
+                                    <div class="input-group-append" >
+
+                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Select Service</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        </div>
+                                    </div>
+                                </div></div>
+
+
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">
+                                        <div class="input-group-append" >
+
+                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Select Service</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+<br>
+                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
 
                              <br>
                                 <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">

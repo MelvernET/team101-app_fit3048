@@ -56,6 +56,11 @@ class PagesController extends AppController
         $programs= $this->fetchTable('Programs')->find()->toArray();
 
 
+
+
+
+
+
         if (!$path) {
             return $this->redirect('/');
         }
@@ -102,17 +107,19 @@ class PagesController extends AppController
 //
 //        $this->set(compact('posts'));
 //    }
-//    public function home($id = null)
-//    {
+    public function home()
+    {
 //        $program = $this->Programs->get($id, [
 //            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
 //        ]);
 //        $program = $this->Programs->find('all', [
 //            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
 //        ]);
+        $program = $this->Programs->query('SELECT * FROM programs');
+        $this->set('program', $program);
 //
 //        $this->set(compact('program'));
-//    }
+    }
 
 
 //    public function index()
