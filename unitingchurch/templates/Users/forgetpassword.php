@@ -21,7 +21,6 @@ $formTemplate =
 
 $this->Form->setTemplates($formTemplate);
 
-
 ?>
 
 <!DOCTYPE html>
