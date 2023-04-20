@@ -13,7 +13,23 @@
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  * @var \Cake\Collection\CollectionInterface|string[] $sites
+<?php
+/**
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link      https://cakephp.org CakePHP(tm) Project
+ * @since     0.10.0
+ * @license   https://opensource.org/licenses/mit-license.php MIT License
+ * @var \App\View\AppView $this
+ * @var \Cake\Collection\CollectionInterface|string[] $sites
  * @var \Cake\Collection\CollectionInterface|string[] $program_types
+ * @var \Cake\Collection\CollectionInterface|string[] $bridges
  * @var \App\Model\Entity\Site $site
  * @var \App\Model\Entity\Program $program
  * @var \App\Model\Entity\Program $query
@@ -81,157 +97,160 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->fetch('script') ?>
 </head>
 <body>
+<div class="programs index content">
 
-    <div class="container text-center">
+    <!--        <div class="col-xl-6 col-lg-7">-->
+    <div class="container-fluid">
 
-    </div>
+        <br>
+        <h3 class="headings"><b>Find a Uniting service near you</h3></b>
+        <br>
+        <!-- Content Row -->
 
-    <main class="main">
-<!--        <div class="col-xl-6 col-lg-7">-->
-        <div class="container-fluid">
-            <div class="content">
-                <br>
-                <h3 class="headings"><b>Find a Uniting service near you</h3></b>
-<br>
-                <!-- Content Row -->
-
-                <div class="row">
+        <div class="row">
 
 
-                    <div class="col-8">
+            <div class="col-8">
 
-                        <div class="card" style="height: 500px;">
+                <div class="card" style="height: 100%;">
 
 
 
-                            <div class="card-body" >
-                                <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
-                                <br>
+                    <div class="card-body" >
+                        <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
+                        <br>
 
-                                <div class="map" style='width: 100%; height: 80%;' >
+                        <div class="map" style='width: 100%; height: 80%;' >
 
-<!--                                    <div id='printoutPanel'></div>-->
+                            <!--                                    <div id='printoutPanel'></div>-->
 
-                                    <div id='myMap' style='width: 100%; height: 100%;'></div>
-
-                            </div>
-                                </div>
+                            <div id='myMap' style='width: 100%; height: 100%;'></div>
 
                         </div>
-
-
-
                     </div>
-
-
-
-
-
-
-
-
-                    <div class="col-4">
-
-                        <div  class="card" style="height: 500px;">
-
-                            <div  class="card-body">
-                                <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
-
-                                <p class="card-text"><br>
-
-                                <div id='searchBoxContainer'>
-                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
-                                </div>
-                                <br>
-
-                            <div id='printoutPanel'></div>
-
-                                <div class="input-group mb-3">
-
-
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">
-                                    <div class="input-group-append" >
-
-                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu">
-
-                                            <?php foreach ($program_types as $program_type):
-
-                                                ?>
-                                                <a class="dropdown-item" href="#">
-                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="btn btn-primary">
-                                                </a>
-
-                                            <?php endforeach; ?>
-
-                                            <a class="dropdown-item" href="#">Select Service</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-
-                                        </div>
-                                    </div>
-                                </div></div>
-
-
-
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">
-                                        <div class="input-group-append" >
-
-                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Select Service</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-<br>
-                                <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
-
-                             <br>
-                                <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary"><input type= "button" value = "Clear the info" onclick = "clean()" class="btn btn-primary">
-                                </br>
-
-</div>
-
-
-</div>
-
-                    </div>
-<br>
 
                 </div>
 
-<!-- end -->
+
+
+            </div>
 
 
 
 
 
+
+
+
+            <div class="col-4">
+
+                <div  class="card" style="height: 100%;">
+
+                    <div  class="card-body">
+                        <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
+
+                        <p class="card-text"><br>
+
+                        <div id='searchBoxContainer'>
+                            <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
+                        </div>
+                        <br>
+
+
+                        <div id='printoutPanel'></div>
+
+                        <div class="input-group mb-3">
+
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">
+                                <div class="input-group-append" >
+
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+
+
+                                    <div class="dropdown-menu">
+
+                                        <?php foreach ($program_types as $program_type):
+
+                                            ?>
+                                            <a class="dropdown-item" href="#">
+                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
+                                            </a>
+
+                                        <?php endforeach; ?>
+
+                                        <a class="dropdown-item" href="#">Select Service</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+
+                                    </div>
+                                </div>
+                            </div></div>
+
+
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">
+                            <div class="input-group-append" >
+
+                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Select Service</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
+
+                        <br>
+                        <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
+
+                        <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
+                        </br>
+
+                    </div>
+
+
+                </div>
+
+
+                <br>
+
+            </div>
+
+
+            <!-- end -->
+
+
+
+
+        </div>
 
     </div>
-    </div>
-    </main>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
+<br>
+</main>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/chart.js/Chart.min.js"></script>
 
 
 
@@ -244,21 +263,17 @@ $this->Form->setTemplates($formTemplate);
     var infoBox = new Array(0);
     var filt = new Array(0);
     var min = new Array(0);
-    var loca = new Array(0);
     var addr = new Array(0);
-    var index;
-    <?php
-//    $connection = ConnectionManager::get('default');
-//    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
+    var index = null;
+    //    $connection = ConnectionManager::get('default');
+    //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
 
+    <?php
     foreach ($sites as $site):
     $address = $site->site_address;
     $site_address = $site->site_contact;
     $lati = $site->site_latitude;
     $long = $site->site_longitude;
-
-
-
     ?>
     datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>"])
     infoBox.push("<?php echo $site_address;?>")
@@ -266,56 +281,136 @@ $this->Form->setTemplates($formTemplate);
     <?php endforeach; ?>
 
 
-
-    <?php foreach ($query as $prog):
-    $name = $prog->program_name;
-    $manager = $prog->program_manager;
-    $type_id = $prog ->program_type_id;
-
-
-
-
-
-        ?>
-    filt.push(["<?php echo $name;?>","<?php echo $manager;?>","<?php echo $type_id;?>"]);
-
-
-    <?php endforeach; ?>
-
-
+    <!---->
+    <!--    --><?php //foreach ($query as $prog):
+    //    $id = $prog->program_id;
+    //
+    //    $type_id = $prog ->program_type_id;
+    //
+    //
+    //
+    //
+    //
+    //        ?>
+    //    filt.push(["<?php //echo $id;?>//","<?php //echo $type_id;?>//"]);
+    //
+    //
+    //    <?php //endforeach; ?>
 
 
-    function fil(id){
+    function unique(arr) {
+        if (!Array.isArray(arr)) {
+            console.log('type error!')
+            return
+        }
+        var array = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (array .indexOf(arr[i]) === -1) {
+                array .push(arr[i])
+            }
+        }
+        return array;
+    }
 
-
-
-
-
-
+    function fil(typeId){
+        var progId = Array(0);
+        var siteId = Array(0);
+        var allSites = Array(0);
         datas.length = 0;
+        infoBox.length = 0;
 
-        <?php if (!empty($program)) : ?>
-        <?php foreach ($program as $pro) :
+
+        <?php
+        foreach ($sites as $site):
+        $address = $site->site_address;
+        $site_address = $site->site_contact;
+        $lati = $site->site_latitude;
+        $long = $site->site_longitude;
+        $sitId = $site->site_id;
+        ?>
+        allSites.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $sitId;?>"])
+
+
+        <?php endforeach; ?>
+
+
+        <?php
+        foreach ($query as $pro) :
         $proTypeId = $pro->program_type_id;
 
 
         $proId = $pro->program_id;
 
         ?>
+        var data = "<?php echo $proTypeId;?>"
+        if(toString(data) == toString(typeId)){
+            progId.push(data);
 
-        filt.push("<?php echo $proId;?>")
+        }
 
         <?php endforeach; ?>
-        <?php endif; ?>
+
+        progId.forEach( function (item) {
+
+            <?php
+            foreach ($bridges as $bri) :
+            $prId = $bri->program_id;
+
+
+            $stId = $bri->site_id;
+
+            ?>
+
+            var prograId = "<?php echo $prId;?>";
+            var siteeId = "<?php echo $stId;?>"
+            if(toString(item) == toString(prograId)){
+                siteId.push(siteeId);
+
+            }
+
+            <?php endforeach; ?>
+
+        })
+        var result = unique(siteId)
+
+        // result.forEach( function (itemm) {
+        //     allSites.forEach( function (itemmm) {
+        //
+        //        if(toString(itemmm[4]) == toString(itemm)){
+        //            document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+        //                ': </b><br> '+(toString(itemmm[4]) == toString(itemm));
+        //            datas.push(itemmm);
+        //        }
+        //     })
+        //     })
+        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+            ': </b><br> '+result;
+
+        allSites.forEach( function (itemmm) {
+            result.forEach( function (itemm){
+
+                if(itemmm[4] == itemm){
+                    document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+                        ': </b><br> '+(itemmm[4] == itemm);
+                    datas.push(itemmm);
+                }
+            })
+        })
+
 
         loadMapScenario();
     }
+
+
+
+
     function findLocation(){
 
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
-        document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
+        document.getElementById('printoutPanel').innerHTML = '<div class="card lightpink"><h6>Closest Site: </h6><br> '+addr[index][0]+'<br>'+addr[index][1]+'</div>';
+
 
     }
     function clean(){
@@ -328,14 +423,15 @@ $this->Form->setTemplates($formTemplate);
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
         var layer = new Microsoft.Maps.Layer();
         // document.getElementById('printoutPanel').innerHTML = filt[0]
-        // var loca = new Array(0);
+        var loca = new Array(0);
         // var addr = new Array(0);
         // var index;
         // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
         //     ': </b><br> '+filt[0][0]+filt[0][1];
-        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
-            ': </b><br> '+datas.length;
-      Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
+        document.getElementById('printoutPanel').innerHTML = '<b>Number of Sites' +
+            ': </b><br> '+datas.length+'<br><br>';
+
+        Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
 
@@ -369,8 +465,10 @@ $this->Form->setTemplates($formTemplate);
             //     searchManager.geocode(siteAdr);
             // }
 
-              //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
+            //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
             var cou = 0;
+            addr.length = 0;
+            loca.length = 0;
             datas.forEach( function (item) { var siteAdr = {
                 bounds: map.getBounds(),
                 where: item[0],
@@ -379,8 +477,8 @@ $this->Form->setTemplates($formTemplate);
                 callback: function (answer, userData) {
 
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-                    pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] };
-                    addr.push(['Site: '+item[1],'Address: '+ item[0]]);
+                    pushpin.metadata = { title: ''+item[1], description: '<b>Address: </b>'+ item[0] };
+                    addr.push(['<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
 
                     layer.add(pushpin);
 
@@ -410,7 +508,7 @@ $this->Form->setTemplates($formTemplate);
 
             };
 
-            searchManager.geocode(siteAdr);})
+                searchManager.geocode(siteAdr);})
             map.layers.insert(layer);
 
 
@@ -420,7 +518,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-          // datas.forEach( function (item) { var siteAdr = {
+            // datas.forEach( function (item) { var siteAdr = {
             //     // var locat = new Microsoft.Maps.Location(item[3], item[4]);
             //     var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(item[3]), parseFloat(item[4])),{ color: 'red' });
             //     pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
@@ -534,8 +632,8 @@ $this->Form->setTemplates($formTemplate);
                 infobox.setOptions({
                     location: args.target.getLocation(),
                     title: document.getElementById("searchBox").value,
-                    description: '<b>Location:</b>  <br>' + suggestionResult.formattedSuggestion+ '<br> Lat: ' + suggestionResult.location.latitude +
-                        '<br> Lon: ' + suggestionResult.location.longitude + '<br>',
+                    description: '<b>Location:</b>  <br>' + suggestionResult.formattedSuggestion+ '<br> <b>Lat:</b> ' + suggestionResult.location.latitude +
+                        '<br> <b>Lon:</b> ' + suggestionResult.location.longitude + '<br>',
                     visible: true
                 });
             });
@@ -544,7 +642,7 @@ $this->Form->setTemplates($formTemplate);
                     min.push(Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles));
                     // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
                     //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
-                        })
+                })
 
             })
             // var minn = Math.min.apply(null,min);
