@@ -232,9 +232,6 @@ $this->Form->setTemplates($formTemplate);
     var filt = new Array(0);
     var min = new Array(0);
     <?php
-//    $connection = ConnectionManager::get('default');
-//    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
-
     foreach ($sites as $site):
     $address = $site->site_address;
     $site_address = $site->site_contact;
