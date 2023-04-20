@@ -140,9 +140,11 @@ $this->Form->setTemplates($formTemplate);
                                 <p class="card-text"><br>
 
                                 <div id='searchBoxContainer'>
-                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id="searchBox">
-                                </div><br>
-                                <div id='printoutPanel'></div>
+                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
+                                </div>
+                                <br>
+
+                            <div id='printoutPanel'></div>
 
                                 <div class="input-group mb-3">
 
@@ -232,6 +234,9 @@ $this->Form->setTemplates($formTemplate);
     var filt = new Array(0);
     var min = new Array(0);
     <?php
+//    $connection = ConnectionManager::get('default');
+//    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
+
     foreach ($sites as $site):
     $address = $site->site_address;
     $site_address = $site->site_contact;
@@ -252,8 +257,14 @@ $this->Form->setTemplates($formTemplate);
     $name = $prog->program_name;
     $manager = $prog->program_manager;
     $type_id = $prog ->program_type_id;
+
+
+
+
+
         ?>
     filt.push(["<?php echo $name;?>","<?php echo $manager;?>","<?php echo $type_id;?>"]);
+
 
     <?php endforeach; ?>
 
@@ -308,8 +319,8 @@ $this->Form->setTemplates($formTemplate);
         // document.getElementById('printoutPanel').innerHTML = filt[0]
         var loca = new Array(0);
         var addr = new Array(0);
-        document.getElementById('printoutPanel').innerHTML = '<b>program data' +
-            ': </b><br> '+filt[0][2]+filt[1][2];
+        // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
+        //     ': </b><br> '+filt[0][0]+filt[0][1];
       Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
