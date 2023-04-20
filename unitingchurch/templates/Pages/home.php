@@ -157,6 +157,16 @@ $this->Form->setTemplates($formTemplate);
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu">
+
+                                            <?php foreach ($program_types as $program_type):
+
+                                                ?>
+                                                <a class="dropdown-item" href="#">
+                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="btn btn-primary">
+                                                </a>
+
+                                            <?php endforeach; ?>
+
                                             <a class="dropdown-item" href="#">Select Service</a>
                                             <a class="dropdown-item" href="#">Another action</a>
                                             <a class="dropdown-item" href="#">Something else here</a>
@@ -187,7 +197,8 @@ $this->Form->setTemplates($formTemplate);
                                 <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
 
                              <br>
-                                <input type= "button" value = "Search" onclick = "findLocation()" class="btn btn-primary">
+                                <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary"><input type= "button" value = "Clear the info" onclick = "clean()" class="btn btn-primary">
+                                </br>
 
 </div>
 
@@ -233,6 +244,9 @@ $this->Form->setTemplates($formTemplate);
     var infoBox = new Array(0);
     var filt = new Array(0);
     var min = new Array(0);
+    var loca = new Array(0);
+    var addr = new Array(0);
+    var index;
     <?php
 //    $connection = ConnectionManager::get('default');
 //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
@@ -274,9 +288,7 @@ $this->Form->setTemplates($formTemplate);
     function fil(id){
 
 
-        // numbers.forEach(function(number) {
-        //
-        // });
+
 
 
 
@@ -290,13 +302,7 @@ $this->Form->setTemplates($formTemplate);
         $proId = $pro->program_id;
 
         ?>
-        //var a = "<?php //echo $proTypeId;?>//";
-        //
-        //if( a == id ){
-        //
-        //    filt.push("<?php //echo $proId;?>//")
-        //
-        //}
+
         filt.push("<?php echo $proId;?>")
 
         <?php endforeach; ?>
@@ -307,20 +313,28 @@ $this->Form->setTemplates($formTemplate);
     function findLocation(){
 
 
+        var minn = Math.min.apply(null,min);
+        index = min.indexOf(minn);
+        document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
 
-        loadMapScenario();
-        // map.setView({ bounds: loca[index].bestView });
-        // document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> ';
+    }
+    function clean(){
+
+        document.getElementById('printoutPanel').innerHTML = '';
+
     }
     function loadMapScenario() {
 
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
         var layer = new Microsoft.Maps.Layer();
         // document.getElementById('printoutPanel').innerHTML = filt[0]
-        var loca = new Array(0);
-        var addr = new Array(0);
+        // var loca = new Array(0);
+        // var addr = new Array(0);
+        // var index;
         // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
         //     ': </b><br> '+filt[0][0]+filt[0][1];
+        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+            ': </b><br> '+datas.length;
       Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
@@ -356,18 +370,21 @@ $this->Form->setTemplates($formTemplate);
             // }
 
               //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
-
-
-
+            var cou = 0;
             datas.forEach( function (item) { var siteAdr = {
                 bounds: map.getBounds(),
                 where: item[0],
 
+
                 callback: function (answer, userData) {
+
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-                    pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
-                    addr.push(['Site: '+item[1],'Address: '+ item[0]])
+                    pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] };
+                    addr.push(['Site: '+item[1],'Address: '+ item[0]]);
+
                     layer.add(pushpin);
+
+
                     var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
                     // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: 'site: ', description: 'address: '+ item });
                     infobox.setMap(map);
@@ -380,12 +397,19 @@ $this->Form->setTemplates($formTemplate);
                         });
                     });
                     loca.push(pushpin);
-
+                    cou=cou+1;
+                    if(cou == 8){
+                        map.layers.insert(layer);
+                        layer = new Microsoft.Maps.Layer();
+                        cou = 0;
+                    }
 
                 }
 
 
+
             };
+
             searchManager.geocode(siteAdr);})
             map.layers.insert(layer);
 
@@ -481,14 +505,6 @@ $this->Form->setTemplates($formTemplate);
             // searchManager.geocode(requestOptions);
 
         });
-<!--        --><?php //foreach ($program as $pro) :
-//        $proTypeId = $pro->program_type_id;
-//
-//        $proId = $pro->program_id;
-//
-//        ?>
-        document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> ';
-//        <?php //endforeach; ?>
 
 
         Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
@@ -503,7 +519,8 @@ $this->Form->setTemplates($formTemplate);
 
         function selectedSuggestion(suggestionResult) {
             min.length = 0
-            var index;
+            index = null;
+            document.getElementById('printoutPanel').innerHTML = '';
             map.entities.clear();
             var pushpinNow = new Microsoft.Maps.Pushpin(suggestionResult.location, {
                 icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
@@ -530,9 +547,9 @@ $this->Form->setTemplates($formTemplate);
                         })
 
             })
-            var minn = Math.min.apply(null,min);
-            index = min.indexOf(minn);
-            document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
+            // var minn = Math.min.apply(null,min);
+            // index = min.indexOf(minn);
+            // document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
 
 
             // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
