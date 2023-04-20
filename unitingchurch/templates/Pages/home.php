@@ -85,7 +85,7 @@ $this->Form->setTemplates($formTemplate);
 
     <main class="main">
 <!--        <div class="col-xl-6 col-lg-7">-->
-        <div class="container">
+        <div class="container-fluid">
             <div class="content">
                 <br>
                 <h3 class="headings"><b>Find a Uniting service near you</h3></b>
@@ -137,8 +137,8 @@ $this->Form->setTemplates($formTemplate);
                                 <p class="card-text"><br>
 
                                 <div id='searchBoxContainer'>
-                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
-                                </div>
+                                    <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id="searchBox">
+                                </div><br>
                                 <div id='printoutPanel'></div>
 
                                 <div class="input-group mb-3">

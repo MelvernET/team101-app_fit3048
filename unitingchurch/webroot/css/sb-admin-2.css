@@ -11392,3 +11392,7 @@ select {
     margin: 10px 0px;
     color: #A20066;
 }
+
+#searchBox{
+    max-width: 90%!important;
+}

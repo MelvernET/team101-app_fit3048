@@ -53,7 +53,7 @@
                     <br style="line-height:1px;" />
                     <?= $this->Html->link(__('Edit Service Stream'), ['action' => 'edit', $serviceStream->service_stream_id], ['class' => 'btn btn-primary btn-block']) ?>
                     <br style="line-height:1px;" />
-                    <?= $this->Form->postLink(__('Delete Service Stream'), ['action' => 'delete', $serviceStream->service_stream_id], ['confirm' => __('Are you sure you want to delete # {0}?', $serviceStream->service_stream_name_), 'class' => 'btn btn-primary btn-block']) ?>
+                    <?= $this->Form->postLink(__('Delete Service Stream'), ['action' => 'delete', $serviceStream->service_stream_id], ['confirm' => __('Are you sure you want to delete # {0}?', $serviceStream->service_stream_name), 'class' => 'btn btn-primary btn-block']) ?>
 
                     </aside>
 
