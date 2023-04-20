@@ -81,15 +81,11 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->fetch('script') ?>
 </head>
 <body>
+<div class="programs index content">
 
-    <div class="container text-center">
-
-    </div>
-
-    <main class="main">
 <!--        <div class="col-xl-6 col-lg-7">-->
         <div class="container-fluid">
-            <div class="content">
+
                 <br>
                 <h3 class="headings"><b>Find a Uniting service near you</h3></b>
 <br>
@@ -100,7 +96,7 @@ $this->Form->setTemplates($formTemplate);
 
                     <div class="col-8">
 
-                        <div class="card" style="height: 500px;">
+                        <div class="card" style="height: 100%;">
 
 
 
@@ -132,7 +128,7 @@ $this->Form->setTemplates($formTemplate);
 
                     <div class="col-4">
 
-                        <div  class="card" style="height: 500px;">
+                        <div  class="card" style="height: 100%;">
 
                             <div  class="card-body">
                                 <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
@@ -143,6 +139,7 @@ $this->Form->setTemplates($formTemplate);
                                     <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
                                 </div>
                                 <br>
+
 
                             <div id='printoutPanel'></div>
 
@@ -156,13 +153,15 @@ $this->Form->setTemplates($formTemplate);
                                         <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
+
+
                                         <div class="dropdown-menu">
 
                                             <?php foreach ($program_types as $program_type):
 
                                                 ?>
                                                 <a class="dropdown-item" href="#">
-                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="btn btn-primary">
+                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
                                                 </a>
 
                                             <?php endforeach; ?>
@@ -197,7 +196,9 @@ $this->Form->setTemplates($formTemplate);
                                 <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
 
                              <br>
-                                <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary"><input type= "button" value = "Clear the info" onclick = "clean()" class="btn btn-primary">
+                                <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
+
+                                <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
                                 </br>
 
 </div>
@@ -205,20 +206,22 @@ $this->Form->setTemplates($formTemplate);
 
 </div>
 
-                    </div>
+
 <br>
 
                 </div>
+
 
 <!-- end -->
 
 
 
 
-
+</div>
 
     </div>
     </div>
+<br>
     </main>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -315,7 +318,7 @@ $this->Form->setTemplates($formTemplate);
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
-        document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
+        document.getElementById('printoutPanel').innerHTML = '<div class="card lightpink"><h6>Closest Site: </h6><br> '+addr[index][0]+'<br>'+addr[index][1]+'</div>';
 
     }
     function clean(){
@@ -333,8 +336,8 @@ $this->Form->setTemplates($formTemplate);
         // var index;
         // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
         //     ': </b><br> '+filt[0][0]+filt[0][1];
-        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
-            ': </b><br> '+datas.length;
+        document.getElementById('printoutPanel').innerHTML = '<b>Number of Sites' +
+            ': </b><br> '+datas.length+'<br><br>';
       Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
@@ -379,8 +382,8 @@ $this->Form->setTemplates($formTemplate);
                 callback: function (answer, userData) {
 
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-                    pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] };
-                    addr.push(['Site: '+item[1],'Address: '+ item[0]]);
+                    pushpin.metadata = { title: ''+item[1], description: '<b>Address: </b>'+ item[0] };
+                    addr.push(['<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
 
                     layer.add(pushpin);
 
@@ -534,8 +537,8 @@ $this->Form->setTemplates($formTemplate);
                 infobox.setOptions({
                     location: args.target.getLocation(),
                     title: document.getElementById("searchBox").value,
-                    description: '<b>Location:</b>  <br>' + suggestionResult.formattedSuggestion+ '<br> Lat: ' + suggestionResult.location.latitude +
-                        '<br> Lon: ' + suggestionResult.location.longitude + '<br>',
+                    description: '<b>Location:</b>  <br>' + suggestionResult.formattedSuggestion+ '<br> <b>Lat:</b> ' + suggestionResult.location.latitude +
+                        '<br> <b>Lon:</b> ' + suggestionResult.location.longitude + '<br>',
                     visible: true
                 });
             });

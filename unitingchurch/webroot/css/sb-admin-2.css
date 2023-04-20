@@ -11396,3 +11396,18 @@ select {
 #searchBox{
     max-width: 90%!important;
 }
+
+.lightpink{
+    background-color: #fcf0f4;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+h6{
+    color: #A20066;
+    font-weight: bold;
+}
+
+html{
+    overflow-y: scroll!important;
+}
