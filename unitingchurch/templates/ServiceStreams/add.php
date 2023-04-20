@@ -24,7 +24,7 @@
             <fieldset>
 
                 <?php
-                    echo $this->Form->control('service_stream_name_');
+                    echo $this->Form->control('service_stream_name');
                 ?>
             </fieldset><br>
             <?= $this->Form->button(__('Submit'), ['class' => 'button float-right btn btn-primary']) ?>
