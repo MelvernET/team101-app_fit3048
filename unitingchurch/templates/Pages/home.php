@@ -16,6 +16,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $program_types
  * @var \App\Model\Entity\Site $site
  * @var \App\Model\Entity\Program $program
+ * @var \App\Model\Entity\Program $query
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -23,6 +24,8 @@ use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
+use Cake\ORM\Locator\LocatorAwareTrait;
+
 
 $checkConnection = function (string $name) {
     $error = null;
@@ -226,9 +229,11 @@ $this->Form->setTemplates($formTemplate);
     var number = "<?php echo count($sites);?>"
     var datas = new Array(0);
     var infoBox = new Array(0);
-    // var filt = new Array("1");
+    var filt = new Array(0);
     var min = new Array(0);
     <?php
+//    $connection = ConnectionManager::get('default');
+//    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
 
     foreach ($sites as $site):
     $address = $site->site_address;
@@ -245,6 +250,19 @@ $this->Form->setTemplates($formTemplate);
     <?php endforeach; ?>
 
 
+
+    <?php foreach ($query as $prog):
+    $name = $prog->program_name;
+    $manager = $prog->program_manager;
+    $type_id = $prog ->program_type_id;
+        ?>
+    filt.push(["<?php echo $name;?>","<?php echo $manager;?>","<?php echo $type_id;?>"]);
+
+    <?php endforeach; ?>
+
+
+
+
     function fil(id){
 
 
@@ -259,6 +277,7 @@ $this->Form->setTemplates($formTemplate);
         <?php if (!empty($program)) : ?>
         <?php foreach ($program as $pro) :
         $proTypeId = $pro->program_type_id;
+
 
         $proId = $pro->program_id;
 
@@ -292,7 +311,8 @@ $this->Form->setTemplates($formTemplate);
         // document.getElementById('printoutPanel').innerHTML = filt[0]
         var loca = new Array(0);
         var addr = new Array(0);
-
+        document.getElementById('printoutPanel').innerHTML = '<b>program data' +
+            ': </b><br> '+filt[0][2]+filt[1][2];
       Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
@@ -326,6 +346,8 @@ $this->Form->setTemplates($formTemplate);
             //     };
             //     searchManager.geocode(siteAdr);
             // }
+
+              //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
 
 
 
@@ -363,7 +385,10 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-            // datas.forEach( function (item) { var siteAdr = {
+
+
+
+          // datas.forEach( function (item) { var siteAdr = {
             //     // var locat = new Microsoft.Maps.Location(item[3], item[4]);
             //     var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(item[3]), parseFloat(item[4])),{ color: 'red' });
             //     pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
@@ -448,7 +473,14 @@ $this->Form->setTemplates($formTemplate);
             // searchManager.geocode(requestOptions);
 
         });
-
+<!--        --><?php //foreach ($program as $pro) :
+//        $proTypeId = $pro->program_type_id;
+//
+//        $proId = $pro->program_id;
+//
+//        ?>
+        document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> ';
+//        <?php //endforeach; ?>
 
 
         Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {

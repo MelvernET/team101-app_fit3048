@@ -21,6 +21,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\Locator\LocatorAwareTrait;
 
 /**
  * Static content controller
@@ -54,8 +55,11 @@ class PagesController extends AppController
         $sites = $this->fetchTable('Sites')->find()->toArray();
         $program_types = $this->fetchTable('Programtypes')->find()->toArray();
         $programs= $this->fetchTable('Programs')->find()->toArray();
+//        $query =  $this->set('programs', $this->Programs->find('all'));
+//        $results = $query->all();
 
-
+        $programm = $this->getTableLocator()->get('Programs');
+        $query = $programm->find();
 
 
 
@@ -76,7 +80,7 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
 
-        $this->set(compact('page', 'subpage','sites','program_types','programs'));
+        $this->set(compact('page', 'subpage','sites','program_types','programs','query'));
 
         try {
             return $this->render(implode('/', $path));
@@ -115,8 +119,8 @@ class PagesController extends AppController
 //        $program = $this->Programs->find('all', [
 //            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
 //        ]);
-        $program = $this->Programs->query('SELECT * FROM programs');
-        $this->set('program', $program);
+//        $programm = $this->Programs->query('SELECT * FROM programs');
+//        $this->set('programm', $programm);
 //
 //        $this->set(compact('program'));
     }
