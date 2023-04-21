@@ -188,21 +188,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Select Program" aria-label="Text input with segmented dropdown button" id="suburb">
-                            <div class="input-group-append" >
 
-                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Select Service</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-
-                                </div>
-                            </div>
-                        </div>
 
 
 
@@ -232,6 +218,8 @@ $this->Form->setTemplates($formTemplate);
 
 
                         <br>
+
+
                         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
 
                         <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">

@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="sites view content">
-                                <h3><?= h($site->site_name) ?></h3>
+                                <h3><?= h($site->site_address) ?></h3>
                                 <table class="table table-bordered" id="dataTable" width="100%">
                                     <tr>
                                         <th><?= __('Site Address') ?></th>

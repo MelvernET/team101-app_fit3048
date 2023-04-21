@@ -27,7 +27,7 @@
                     <td><?= h($serviceStream->service_stream_name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Service Stream Id') ?></th>
+                    <th><?= __('Service Stream ID') ?></th>
                     <td><?= $this->Number->format($serviceStream->service_stream_id) ?></td>
                 </tr>
             </table>

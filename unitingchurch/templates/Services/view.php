@@ -46,7 +46,7 @@
                                         <td><?= $service->has('service_type') ? $this->Html->link($service->service_type->service_type_id, ['controller' => 'ServiceTypes', 'action' => 'view', $service->service_type->service_type_id]) : '' ?></td>
                                     </tr>
                                     <tr>
-                                        <th><?= __('Service Id') ?></th>
+                                        <th><?= __('Service ID') ?></th>
                                         <td><?= $this->Number->format($service->service_id) ?></td>
                                     </tr>
                                     <tr>
@@ -58,7 +58,7 @@
                                         <td><?= $this->Number->format($service->service_staff_number) ?></td>
                                     </tr>
                                     <tr>
-                                        <th><?= __('Service Fte') ?></th>
+                                        <th><?= __('Service FTE') ?></th>
                                         <td><?= $this->Number->format($service->service_fte) ?></td>
                                     </tr>
                                     <tr>
