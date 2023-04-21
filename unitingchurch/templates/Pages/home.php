@@ -112,7 +112,7 @@ $this->Form->setTemplates($formTemplate);
 
             <div class="col-8">
 
-                <div class="card" style="height: 100%;">
+                <div class="card" style="height: 200%;">
 
 
 
@@ -144,7 +144,7 @@ $this->Form->setTemplates($formTemplate);
 
             <div class="col-4">
 
-                <div  class="card" style="height: 100%;">
+                <div  class="card" style="height: 200%;">
 
                     <div  class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
@@ -223,6 +223,7 @@ $this->Form->setTemplates($formTemplate);
                         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
 
                         <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
+                        <input type= "button" value = "Reset Sites" onclick = "resetData()" class="btn btn-primary">
                         </br>
 
                     </div>
@@ -276,6 +277,8 @@ $this->Form->setTemplates($formTemplate);
     //    $connection = ConnectionManager::get('default');
     //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
 
+
+    //init the data about sites
     <?php
     foreach ($sites as $site):
     $address = $site->site_address;
@@ -288,7 +291,7 @@ $this->Form->setTemplates($formTemplate);
 
     <?php endforeach; ?>
 
-
+//
     <!---->
     <!--    --><?php //foreach ($query as $prog):
     //    $id = $prog->program_id;
@@ -305,6 +308,26 @@ $this->Form->setTemplates($formTemplate);
     //
     //    <?php //endforeach; ?>
 
+// reset sites data function
+    function resetData(){
+
+        datas.length = 0;
+        infoBox.length = 0;
+        <?php
+        foreach ($sites as $site):
+        $address = $site->site_address;
+        $site_address = $site->site_contact;
+        $lati = $site->site_latitude;
+        $long = $site->site_longitude;
+        ?>
+        datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>"])
+        infoBox.push("<?php echo $site_address;?>")
+
+        <?php endforeach; ?>
+        loadMapScenario();
+
+    }
+
 
     function unique(arr) {
         if (!Array.isArray(arr)) {
@@ -319,7 +342,7 @@ $this->Form->setTemplates($formTemplate);
         }
         return array;
     }
-
+// filter function
     function fil(typeId){
         var progId = Array(0);
         var siteId = Array(0);
@@ -411,7 +434,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-
+//show the nearest site function
     function findLocation(){
 
 
@@ -421,11 +444,33 @@ $this->Form->setTemplates($formTemplate);
 
 
     }
+
+
+
+//clear the text window function
     function clean(){
 
         document.getElementById('printoutPanel').innerHTML = '';
 
     }
+
+
+//remove array duplicate element function
+    function unique(arr) {
+        if (!Array.isArray(arr)) {
+            console.log('type error!')
+            return
+        }
+        var array = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (array .indexOf(arr[i]) === -1) {
+                array .push(arr[i])
+            }
+        }
+        return array;
+    }
+
+//load map function
     function loadMapScenario() {
 
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});

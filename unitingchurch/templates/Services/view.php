@@ -65,6 +65,10 @@
                                         <th><?= __('Service Riskman') ?></th>
                                         <td><?= $this->Number->format($service->service_riskman) ?></td>
                                     </tr>
+                                    <tr>
+                                        <th><?= __('Service Description') ?></th>
+                                        <td><?= h($service->service_description) ?></td>
+                                    </tr>
                                 </table>
                             </div>
                         </div></div>
