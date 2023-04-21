@@ -18,9 +18,7 @@
                 <th><?= $this->Paginator->sort('site_address') ?></th>
                 <th><?= $this->Paginator->sort('site_postcode') ?></th>
                 <th><?= $this->Paginator->sort('site_contact') ?></th>
-                <th><?= $this->Paginator->sort('site_contact_no') ?></th>
-                <th><?= $this->Paginator->sort('site_ph_no') ?></th>
-                <th><?= $this->Paginator->sort('site_contact_direct_ph_no') ?></th>
+
                 <th><?= $this->Paginator->sort('LGA') ?></th>
                 <th><?= $this->Paginator->sort('DHHS Area') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -33,9 +31,6 @@
                     <td><?= h($site->site_address) ?></td>
                     <td><?= h($site->site_postcode) ?></td>
                     <td><?= h($site->site_contact) ?></td>
-                    <td><?= h($site->site_contact_no) ?></td>
-                    <td><?= h($site->site_ph_no) ?></td>
-                    <td><?= h($site->site_contact_direct_ph_no) ?></td>
                     <td><?= h($site->site_lga) ?></td>
                     <td><?= h($site->site_dhhs_area) ?></td>
                     <td class="actions">

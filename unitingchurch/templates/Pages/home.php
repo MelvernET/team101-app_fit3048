@@ -101,14 +101,10 @@ $this->Form->setTemplates($formTemplate);
 
     <!--        <div class="col-xl-6 col-lg-7">-->
     <div class="container-fluid">
-
-        <br>
         <h3 class="headings"><b>Find a Uniting service near you</h3></b>
-        <br>
         <!-- Content Row -->
 
         <div class="row">
-
 
             <div class="col-8">
 
@@ -147,7 +143,7 @@ $this->Form->setTemplates($formTemplate);
                 <div  class="card" style="height: 100%;">
 
                     <div  class="card-body">
-                        <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search Filters</h5>
+                        <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
 
                         <p class="card-text"><br>
 
@@ -182,10 +178,6 @@ $this->Form->setTemplates($formTemplate);
 
                                         <?php endforeach; ?>
 
-                                        <a class="dropdown-item" href="#">Select Service</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-
                                     </div>
                                 </div>
                             </div></div>
@@ -209,7 +201,6 @@ $this->Form->setTemplates($formTemplate);
                         </div>
 
                         <br>
-                        <input type="text" class="form-control" placeholder="Suburb or Postcode" aria-label="Text input with segmented dropdown button">
 
                         <br>
                         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">

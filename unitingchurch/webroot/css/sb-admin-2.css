@@ -11303,6 +11303,8 @@ body.sidebar-toggled footer.sticky-footer {
     color:#A20066;
     font-family: 'Lucida Grande', sans-serif!important;
     font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .secondary-heading{
@@ -11411,3 +11413,4 @@ h6{
 html{
     overflow-y: scroll!important;
 }
+
