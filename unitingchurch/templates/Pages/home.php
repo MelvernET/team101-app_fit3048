@@ -99,8 +99,12 @@ $this->Form->setTemplates($formTemplate);
 <body>
 <div class="programs index content">
 
+
+
     <!--        <div class="col-xl-6 col-lg-7">-->
     <div class="container-fluid">
+        <!-- Earnings (Monthly) Card Example -->
+
         <h3 class="headings"><b>Find a Uniting service near you</h3></b>
         <!-- Content Row -->
 
@@ -153,7 +157,7 @@ $this->Form->setTemplates($formTemplate);
                         <br>
 
 
-                        <div id='printoutPanel'></div>
+
 
                         <div class="input-group mb-3">
 
@@ -200,7 +204,32 @@ $this->Form->setTemplates($formTemplate);
                             </div>
                         </div>
 
-                        <br>
+
+
+
+                        <hr style="border:solid 1px grey;">
+
+
+                            <div class="card border-left-primary ">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div id='printoutPanel'></div>
+                                        </div>
+
+
+
+
+                                        <div class="col-auto">
+<!--                                            <i class="fas fa-map-pin fa-2x text-gray-300"></i>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
 
                         <br>
                         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
@@ -400,7 +429,7 @@ $this->Form->setTemplates($formTemplate);
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
-        document.getElementById('printoutPanel').innerHTML = '<div class="card lightpink"><h6>Closest Site: </h6><br> '+addr[index][0]+'<br>'+addr[index][1]+'</div>';
+        document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+'</div>';
 
 
     }
@@ -419,8 +448,8 @@ $this->Form->setTemplates($formTemplate);
         // var index;
         // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
         //     ': </b><br> '+filt[0][0]+filt[0][1];
-        document.getElementById('printoutPanel').innerHTML = '<b>Number of Sites' +
-            ': </b><br> '+datas.length+'<br><br>';
+        document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of Sites' +
+            ': </div><br><div class="h5 mb-0 font-weight-bold text-gray-800"> '+datas.length+'<br></div><br>';
 
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);

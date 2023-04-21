@@ -11401,8 +11401,6 @@ select {
 
 .lightpink{
     background-color: #fcf0f4;
-    padding: 10px;
-    margin-bottom: 20px;
 }
 
 h6{
@@ -11413,4 +11411,36 @@ h6{
 html{
     overflow-y: scroll!important;
 }
+
+.MicrosoftMap .infobox-close{
+    color: #A20066!important;
+}
+
+.MicrosoftMap .infobox-body, .MicrosoftMap .InfoboxCustom{
+    background: white;
+    border: 1px solid #A20066!important;
+    border-radius: 20px!important;
+}
+.MicrosoftMap .Infobox {
+    border: 1px solid #A20066!important;
+    border-radius: 20px!important;
+}
+
+
+.infobox-title{
+    color: #A20066!important;
+    font-size: 17px!important;
+    font-family: 'Lucida Grande', sans-serif!important;
+}
+
+.icon{
+    height: auto;
+    color: #A20066!important;
+    display: flex;
+    vertical-align: middle;
+    height: 100%;
+    width: 50%;
+    justify-content: center;
+}
+
 
