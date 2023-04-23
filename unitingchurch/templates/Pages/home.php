@@ -97,6 +97,7 @@ $this->Form->setTemplates($formTemplate);
     <?= $this->fetch('script') ?>
 </head>
 <body>
+
 <div class="programs index content">
 
 
@@ -112,7 +113,7 @@ $this->Form->setTemplates($formTemplate);
 
             <div class="col-8">
 
-                <div class="card" style="height: 200%;">
+                <div class="card" style="height: 150%;">
 
 
 
@@ -144,7 +145,7 @@ $this->Form->setTemplates($formTemplate);
 
             <div class="col-4">
 
-                <div  class="card" style="height: 200%;">
+                <div  class="card" style="height: 150%;">
 
                     <div  class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
@@ -184,11 +185,8 @@ $this->Form->setTemplates($formTemplate);
 
                                     </div>
                                 </div>
-                            </div></div>
-
-
-
-
+                            </div>
+                        </div>
 
 
 
@@ -232,21 +230,18 @@ $this->Form->setTemplates($formTemplate);
                 </div>
 
 
-                <br>
 
             </div>
+        </div>
+    </div>
+</div>
 
 
             <!-- end -->
-
-
-
-
-        </div>
-
-    </div>
-</div>
 <br>
+
+
+
 </main>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -281,12 +276,13 @@ $this->Form->setTemplates($formTemplate);
     //init the data about sites
     <?php
     foreach ($sites as $site):
+    $siId = $site->site_id;
     $address = $site->site_address;
     $site_address = $site->site_contact;
     $lati = $site->site_latitude;
     $long = $site->site_longitude;
     ?>
-    datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>"])
+    datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $siId;?>"])
     infoBox.push("<?php echo $site_address;?>")
 
     <?php endforeach; ?>
@@ -308,6 +304,26 @@ $this->Form->setTemplates($formTemplate);
     //
     //    <?php //endforeach; ?>
 
+
+
+
+    function getprograms(letter){
+        pros.length = 0;
+
+        <?php
+
+        foreach ($program_types as $pross):
+        ?>
+        var pro = "<?php echo $pross->program_type_name;?>"
+        var lettt = pro;
+        if(lettt.charAt(0).toLowerCase() == ($letter).toLowerCase()){
+            pros.push(pro);
+        }
+        <?php endforeach; ?>
+
+    }
+
+
 // reset sites data function
     function resetData(){
 
@@ -315,12 +331,13 @@ $this->Form->setTemplates($formTemplate);
         infoBox.length = 0;
         <?php
         foreach ($sites as $site):
+        $id = $site->site_id;
         $address = $site->site_address;
         $site_address = $site->site_contact;
         $lati = $site->site_latitude;
         $long = $site->site_longitude;
         ?>
-        datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>"])
+        datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $id;?>"])
         infoBox.push("<?php echo $site_address;?>")
 
         <?php endforeach; ?>
@@ -374,8 +391,8 @@ $this->Form->setTemplates($formTemplate);
 
         ?>
         var data = "<?php echo $proTypeId;?>"
-        if(toString(data) == toString(typeId)){
-            progId.push(data);
+        if(parseInt(data) == parseInt(typeId)){
+            progId.push("<?php echo $proId;?>");
 
         }
 
@@ -394,7 +411,7 @@ $this->Form->setTemplates($formTemplate);
 
             var prograId = "<?php echo $prId;?>";
             var siteeId = "<?php echo $stId;?>"
-            if(toString(item) == toString(prograId)){
+            if(item === prograId){
                 siteId.push(siteeId);
 
             }
@@ -414,20 +431,29 @@ $this->Form->setTemplates($formTemplate);
         //        }
         //     })
         //     })
+
+
+
+
         document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
             ': </b><br> '+result;
 
         allSites.forEach( function (itemmm) {
             result.forEach( function (itemm){
 
-                if(itemmm[4] == itemm){
+                if(itemmm[4] === itemm){
                     document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
                         ': </b><br> '+(itemmm[4] == itemm);
                     datas.push(itemmm);
                 }
             })
         })
-
+        // progId.forEach( function (itemm){
+        //
+        //
+        //         datas.push(itemm);
+        //
+        // })
 
         loadMapScenario();
     }
@@ -530,7 +556,7 @@ $this->Form->setTemplates($formTemplate);
                 callback: function (answer, userData) {
 
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-                    pushpin.metadata = { title: ''+item[1], description: '<b>Address: </b>'+ item[0] };
+                    pushpin.metadata = { title: 'ID: '+item[4]+'['+item[1]+']', description: '<b>Address: </b>'+ item[0] };
                     addr.push(['<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
 
                     layer.add(pushpin);
