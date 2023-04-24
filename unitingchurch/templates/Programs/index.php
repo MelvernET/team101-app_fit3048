@@ -26,10 +26,10 @@
             <?php foreach ($programs as $program): ?>
                 <tr>
                     <td><?= $this->Number->format($program->program_id) ?></td>
-                    <td><?= $program->has('program_type') ? $this->Html->link($program->program_type->program_type_id, ['controller' => 'ProgramTypes', 'action' => 'view', $program->program_type->program_type_id]) : '' ?></td>
+                    <td><?= $program->has('program_type') ? $this->Html->link($program->program_type->program_type_name, ['controller' => 'ProgramTypes', 'action' => 'view', $program->program_type->program_type_id]) : '' ?></td>
                     <td><?= h($program->program_name) ?></td>
                     <td><?= h($program->program_manager) ?></td>
-                    <td><?= $program->has('cluster') ? $this->Html->link($program->cluster->cluster_id, ['controller' => 'Clusters', 'action' => 'view', $program->cluster->cluster_id]) : '' ?></td>
+                    <td><?= $program->has('cluster') ? $this->Html->link($program->cluster->cluster_name, ['controller' => 'Clusters', 'action' => 'view', $program->cluster->cluster_id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $program->program_id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $program->program_id], ['class' => 'btn btn-primary btn-sm']) ?>

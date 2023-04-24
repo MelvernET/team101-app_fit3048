@@ -27,7 +27,7 @@
                 <tr>
                     <td><?= $this->Number->format($serviceType->service_type_id) ?></td>
                     <td><?= h($serviceType->service_type_name) ?></td>
-                    <td><?= $serviceType->has('service_stream') ? $this->Html->link($serviceType->service_stream->service_stream_id, ['controller' => 'ServiceStreams', 'action' => 'view', $serviceType->service_stream->service_stream_id]) : '' ?></td>
+                    <td><?= $serviceType->has('service_stream') ? $this->Html->link($serviceType->service_stream->service_stream_name, ['controller' => 'ServiceStreams', 'action' => 'view', $serviceType->service_stream->service_stream_id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $serviceType->service_type_id],['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $serviceType->service_type_id], ['class' => 'btn btn-primary btn-sm']) ?>

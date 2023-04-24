@@ -173,7 +173,7 @@ $this->Form->setTemplates($formTemplate);
                                     </button>
 
 
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
 
                                         <?php foreach ($program_types as $program_type):
 
@@ -327,6 +327,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 // reset sites data function
+    let searchbox = document.querySelector('#searchBox');
     function resetData(){
 
         datas.length = 0;
@@ -343,6 +344,7 @@ $this->Form->setTemplates($formTemplate);
         infoBox.push("<?php echo $site_address;?>")
 
         <?php endforeach; ?>
+        searchbox.value = '';
         loadMapScenario();
 
     }
@@ -480,6 +482,8 @@ $this->Form->setTemplates($formTemplate);
         document.getElementById('printoutPanel').innerHTML = '';
 
     }
+
+
 
 
 //remove array duplicate element function

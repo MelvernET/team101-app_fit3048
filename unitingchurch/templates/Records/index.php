@@ -27,8 +27,8 @@
                 <?php foreach ($records as $record): ?>
                 <tr>
                     <td><?= $this->Number->format($record->record_id) ?></td>
-                    <td><?= $record->has('user') ? $this->Html->link($record->user->user_id, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : '' ?></td>
-                    <td><?= $record->has('client') ? $this->Html->link($record->client->client_id, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ?></td>
+                    <td><?= $record->has('user') ? $this->Html->link($record->user->user_first_name, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : '' ?></td>
+                    <td><?= $record->has('client') ? $this->Html->link($record->client->client_first_name, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ?></td>
                     <td><?= h($record->record_date_time) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $record->record_id], ['class' => 'btn btn-primary btn-sm']) ?>

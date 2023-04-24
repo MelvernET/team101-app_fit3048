@@ -27,7 +27,7 @@
                     <td><?= $this->Number->format($cluster->cluster_id) ?></td>
                     <td><?= h($cluster->cluster_name) ?></td>
                     <td><?= h($cluster->cluster_executive_manager) ?></td>
-                    <td><?= $cluster->has('division') ? $this->Html->link($cluster->division->division_id, ['controller' => 'Divisions', 'action' => 'view', $cluster->division->division_id]) : '' ?></td>
+                    <td><?= $cluster->has('division') ? $this->Html->link($cluster->division->division_name, ['controller' => 'Divisions', 'action' => 'view', $cluster->division->division_id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $cluster->cluster_id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cluster->cluster_id], ['class' => 'btn btn-primary btn-sm']) ?>
