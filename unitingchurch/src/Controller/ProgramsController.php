@@ -18,11 +18,7 @@ class ProgramsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['ProgramTypes', 'Clusters'],
-        ];
-        $programs = $this->paginate($this->Programs);
-
+        $programs = $this->Programs->find()->contain(['ProgramTypes', 'Clusters']);
         $this->set(compact('programs'));
     }
 

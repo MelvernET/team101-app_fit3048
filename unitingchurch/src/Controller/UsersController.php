@@ -3,6 +3,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Mailer\Email;
+use Cake\Mailer\Mailer;
+use Cake\Mailer\TransportFactory;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Utility\Security;
+use Cake\ORM\TableRegistry;
+
 /**
  * Users Controller
  *
@@ -18,8 +25,8 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
 
+        $users = $this->Users->find();
         $this->set(compact('users'));
     }
 
@@ -68,13 +75,34 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+//        $user = $this->Users->get($id, [
+//            'contain' => [],
+//        ]);
+//        if ($this->request->is(['patch', 'post', 'put'])) {
+//            $user = $this->Users->patchEntity($user, $this->request->getData());
+//            if ($this->Users->save($user)) {
+//                $this->Flash->success(__('The user has been saved.'));
+//
+//                return $this->redirect(['action' => 'index']);
+//            }
+//            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+//        }
+//        $this->set(compact('user'));
+
+
+
+
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            $hasher = new DefaultPasswordHasher();
+            $mypass = $this->request->getData('password');
+            $user->password = $hasher->hash($mypass);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+
+                $this->Flash->success(__('The password has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
@@ -139,15 +167,15 @@ class UsersController extends AppController
 
     }
 
-    public function forgetpassword()
+
+    protected function _setPassword($password)
     {
-
-        $this->viewBuilder()->setLayout('non-default');
-
-
-
-
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher)->hash($password);
+        }
     }
+
+
 
 
 

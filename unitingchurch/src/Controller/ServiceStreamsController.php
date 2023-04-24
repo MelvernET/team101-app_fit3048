@@ -18,8 +18,7 @@ class ServiceStreamsController extends AppController
      */
     public function index()
     {
-        $serviceStreams = $this->paginate($this->ServiceStreams);
-
+        $serviceStreams = $this->ServiceStreams->find();
         $this->set(compact('serviceStreams'));
     }
 

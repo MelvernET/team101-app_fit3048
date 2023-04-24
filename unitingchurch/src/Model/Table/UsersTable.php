@@ -89,4 +89,17 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+
+
+////
+    public function findAuth(Query $query, array $options)
+    {
+        $query->where([
+            'OR' => [
+                'username' => $options['username'],
+                'email' => $options['username']
+            ]], [], true);
+        return $query;
+    }
 }

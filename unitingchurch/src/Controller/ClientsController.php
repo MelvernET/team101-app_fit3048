@@ -18,8 +18,7 @@ class ClientsController extends AppController
      */
     public function index()
     {
-        $clients = $this->paginate($this->Clients);
-
+        $clients = $this->Clients->find();
         $this->set(compact('clients'));
     }
 

@@ -18,11 +18,11 @@ class RecordsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Clients'],
-        ];
-        $records = $this->paginate($this->Records);
-
+//        $this->paginate = [
+//            'contain' => ['Users', 'Clients'],
+//        ];
+//        $records = $this->paginate($this->Records);
+        $records = $this->Records->find()->contain(['Clients']);
         $this->set(compact('records'));
     }
 

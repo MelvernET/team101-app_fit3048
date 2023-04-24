@@ -18,8 +18,7 @@ class DivisionsController extends AppController
      */
     public function index()
     {
-        $divisions = $this->paginate($this->Divisions);
-
+        $divisions = $this->Divisions->find();
         $this->set(compact('divisions'));
     }
 

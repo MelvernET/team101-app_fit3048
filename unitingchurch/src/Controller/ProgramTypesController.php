@@ -18,8 +18,7 @@ class ProgramTypesController extends AppController
      */
     public function index()
     {
-        $programTypes = $this->paginate($this->ProgramTypes);
-
+        $programTypes = $this->ProgramTypes->find();
         $this->set(compact('programTypes'));
     }
 

@@ -18,11 +18,7 @@ class ClustersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Divisions'],
-        ];
-        $clusters = $this->paginate($this->Clusters);
-
+        $clusters = $this->Clusters->find()->contain(['Divisions']);
         $this->set(compact('clusters'));
     }
 

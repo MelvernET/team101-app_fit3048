@@ -54,9 +54,10 @@ class PagesController extends AppController
 
 
         $sites = $this->fetchTable('Sites')->find()->toArray();
-        $program_types = $this->fetchTable('Programtypes')->find()->toArray();
+        $program_types = $this->fetchTable('ProgramTypes')->find()->toArray();
         $programs= $this->fetchTable('Programs')->find()->toArray();
         $bridges= $this->fetchTable('ProgramsSites')->find()->toArray();
+        $clusters= $this->fetchTable('Clusters')->find()->toArray();
 //        $query =  $this->set('programs', $this->Programs->find('all'));
 //        $results = $query->all();
 
@@ -82,7 +83,7 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
 
-        $this->set(compact('page', 'subpage','sites','program_types','programs','query','bridges'));
+        $this->set(compact('page', 'subpage','sites','program_types','programs','query','bridges','clusters'));
 
         try {
             return $this->render(implode('/', $path));

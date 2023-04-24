@@ -18,7 +18,7 @@ class SitesController extends AppController
      */
     public function index()
     {
-        $sites = $this->paginate($this->Sites);
+        $sites = $this->Sites->find();
 
         $this->set(compact('sites'));
     }

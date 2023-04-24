@@ -57,6 +57,9 @@ class AppController extends Controller
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
+//        $this->Auth->allow(['login','add','forgetpassword','change_password','verification']);
+//        $this->set('fullname',$this->Auth->user('user_first_name'));
+
     }
 
 

@@ -30,6 +30,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $sites
  * @var \Cake\Collection\CollectionInterface|string[] $program_types
  * @var \Cake\Collection\CollectionInterface|string[] $bridges
+ * @var \Cake\Collection\CollectionInterface|string[] $clusters
  * @var \App\Model\Entity\Site $site
  * @var \App\Model\Entity\Program $program
  * @var \App\Model\Entity\Program $query
@@ -269,6 +270,7 @@ $this->Form->setTemplates($formTemplate);
     var min = new Array(0);
     var addr = new Array(0);
     var index = null;
+    var manager;
     //    $connection = ConnectionManager::get('default');
     //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
 
@@ -454,7 +456,6 @@ $this->Form->setTemplates($formTemplate);
         //         datas.push(itemm);
         //
         // })
-
         loadMapScenario();
     }
 
@@ -501,6 +502,7 @@ $this->Form->setTemplates($formTemplate);
 
         var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
         var layer = new Microsoft.Maps.Layer();
+        layer.clear();
         // document.getElementById('printoutPanel').innerHTML = filt[0]
         var loca = new Array(0);
         // var addr = new Array(0);
@@ -689,7 +691,7 @@ $this->Form->setTemplates($formTemplate);
                 maxResults: 4,
                 map: map
             };
-            var manager = new Microsoft.Maps.AutosuggestManager(options);
+            manager = new Microsoft.Maps.AutosuggestManager(options);
             manager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
         });
 
