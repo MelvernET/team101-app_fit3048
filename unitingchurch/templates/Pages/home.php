@@ -295,7 +295,7 @@ $this->Form->setTemplates($formTemplate);
                         <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">
                         <input type= "button" value = "Show All Sites" onclick = "resetData()" class="btn btn-primary">
                         </br>
-                        <input type= "button" value = "load" onclick = "loadData()" class="btn btn-primary">
+
                     </div>
 
 
@@ -373,12 +373,7 @@ $this->Form->setTemplates($formTemplate);
 //
 
 //
-    function loadData(){
-        proget('');
-        fil('');
-        filByCluster('');
-        loadMapScenario();
-    }
+
 
 
 //dropdown filter 3 function
