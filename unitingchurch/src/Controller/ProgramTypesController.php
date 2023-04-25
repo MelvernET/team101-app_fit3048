@@ -93,7 +93,7 @@ class ProgramTypesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $programType = $this->ProgramTypes->get($id);
-        if ($this->ProgramTypes->Programs->deleteAll(['program_type_id' => $id])) {
+        $this->ProgramTypes->Programs->deleteAll(['program_type_id' => $id]);
         if ($this->ProgramTypes->delete($programType)) {
             $this->Flash->success(__('The program type has been deleted.'));
         } else {
@@ -101,5 +101,5 @@ class ProgramTypesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }}
+    }
 }

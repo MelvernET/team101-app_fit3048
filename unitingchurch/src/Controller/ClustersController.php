@@ -95,7 +95,7 @@ class ClustersController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $cluster = $this->Clusters->get($id);
-        if ($this->Clusters->Programs->deleteAll(['cluster_id' => $id])) {
+        $this->Clusters->Programs->deleteAll(['cluster_id' => $id]);
         if ($this->Clusters->delete($cluster)) {
             $this->Flash->success(__('The cluster has been deleted.'));
         } else {
@@ -103,5 +103,5 @@ class ClustersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }}
+    }
 }

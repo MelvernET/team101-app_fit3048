@@ -98,7 +98,7 @@ class ClientsController extends AppController
 //            'contain' => ['Records'],
 //        ]);
         $client = $this->Clients->get($id);
-        if ($this->Clients->Records->deleteAll(['client_id' => $id])) {
+        $this->Clients->Records->deleteAll(['client_id' => $id]);
         if ($this->Clients->delete($client)) {
             $this->Flash->success(__('The client has been deleted.'));
         } else {
@@ -106,5 +106,5 @@ class ClientsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }}
+    }
 }

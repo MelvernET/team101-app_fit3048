@@ -93,7 +93,7 @@ class DivisionsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $division = $this->Divisions->get($id);
-        if ($this->Divisions->Clusters->deleteAll(['division_id' => $id])) {
+        $this->Divisions->Clusters->deleteAll(['division_id' => $id]);
         if ($this->Divisions->delete($division)) {
             $this->Flash->success(__('The division has been deleted.'));
         } else {
@@ -101,5 +101,5 @@ class DivisionsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }}
+    }
 }

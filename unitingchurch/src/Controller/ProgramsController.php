@@ -98,9 +98,11 @@ class ProgramsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $program = $this->Programs->get($id);
-        if ($this->Programs->Services->deleteAll(['program_id' => $id])) {
-//            if ($this->Programs->Sites->deleteAll(['program_id' => $id])) {
+        $program = $this->Programs->get($id, [
+            'contain' => ['Services'],
+        ]);
+        $this->Programs->Services->deleteAll(['program_id' => $id]);
+
         if ($this->Programs->delete($program)) {
             $this->Flash->success(__('The program has been deleted.'));
         } else {
@@ -108,8 +110,7 @@ class ProgramsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }}
-//}
+    }
 
 
 //    public function filt($id){
