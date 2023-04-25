@@ -65,9 +65,13 @@ class SitesTable extends Table
 
         $validator
             ->scalar('site_postcode')
+            ->minLength('site_postcode', 3)
             ->maxLength('site_postcode', 4)
             ->requirePresence('site_postcode', 'create')
-            ->notEmptyString('site_postcode');
+            ->notEmptyString('site_postcode')
+            ->greaterThanOrEqual('value', 0, 'Postcode must be 4 digits number.');
+//        ->postal('postal_code', 'au', 'Please enter valid postcode.');
+
 
         $validator
             ->scalar('site_contact')
@@ -106,15 +110,18 @@ class SitesTable extends Table
             ->notEmptyString('site_dhhs_area');
         $validator
             ->scalar('site_longitude')
-            ->maxLength('site_longitude', 100)
+            ->maxLength('site_longitude', 20)
             ->requirePresence('site_longitude', 'create')
             ->notEmptyString('site_longitude');
         $validator
             ->scalar('site_latitude')
-            ->maxLength('site_latitude', 100)
+            ->maxLength('site_latitude', 20)
             ->requirePresence('site_latitude', 'create')
             ->notEmptyString('site_latitude');
 
+
         return $validator;
     }
+
+
 }

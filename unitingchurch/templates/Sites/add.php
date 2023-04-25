@@ -50,6 +50,8 @@ $this->Form->setTemplates($formTemplate);
                                     echo $this->Form->control('site_contact_direct_ph_no');
                                     echo $this->Form->control('site_lga');
                                     echo $this->Form->control('site_dhhs_area');
+                                    echo $this->Form->control('site_longitude');
+                                    echo $this->Form->control('site_latitude');
                                     echo $this->Form->control('programs._ids', ['options' => $programs ,'label' => 'Program Name','class' => 'form-control']);
                                     ?>
                                 </fieldset><br>

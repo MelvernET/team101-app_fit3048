@@ -69,12 +69,17 @@ class UsersTable extends Table
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 200)
+            ->add('password', 'length', ['rule' => ['lengthBetween', 8, 16]])
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
+
         return $validator;
     }
+
+
+
+
 
     /**
      * Returns a rules checker object that will be used for validating
@@ -86,7 +91,10 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
-
+        $rules->add($rules->isUnique(
+            ['user_first_name', 'user_last_name'],
+            'This username combination has already been used.'
+        ));
         return $rules;
     }
 

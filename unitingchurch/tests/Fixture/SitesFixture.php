@@ -28,6 +28,8 @@ class SitesFixture extends TestFixture
                 'site_contact_direct_ph_no' => 'Lorem ipsum dolor ',
                 'site_lga' => 'Lorem ipsum dolor sit amet',
                 'site_dhhs_area' => 'Lorem ipsum dolor sit amet',
+                'site_longitude' => 'Lorem ipsum dolor sit amet',
+                'site_latitude' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

@@ -180,7 +180,7 @@ $this->Form->setTemplates($formTemplate);
 
                                             ?>
                                             <a class="dropdown-item" href="#">
-                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "filll(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
+                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
                                             </a>
 
                                         <?php endforeach; ?>
@@ -196,10 +196,10 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="sort by Cluster" aria-label="Text input with segmented dropdown button">
+                                <input type="text" class="form-control" placeholder="sort by Cluster" aria-label="Text input with segmented dropdown button" id = "dropdownBox2">
                                 <div class="input-group-append" >
 
-                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "dropdownBox2">
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
 
@@ -229,10 +229,10 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="sort by State" aria-label="Text input with segmented dropdown button">
+                                <input type="text" class="form-control" placeholder="sort by State" aria-label="Text input with segmented dropdown button" id = "dropdownBox3">
                                 <div class="input-group-append" >
 
-                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "dropdownBox3">
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
 
@@ -269,7 +269,9 @@ $this->Form->setTemplates($formTemplate);
                                         <div class="col mr-2">
                                             <div id='printoutPanel'></div>
                                         </div>
-
+                                        <div class="col mr-2">
+                                            <div id='printoutPanel1'></div>
+                                        </div>
 
 
 
@@ -291,8 +293,9 @@ $this->Form->setTemplates($formTemplate);
 
                         <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
                         <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">
+                        <input type= "button" value = "Show All Sites" onclick = "resetData()" class="btn btn-primary">
                         </br>
-
+                        <input type= "button" value = "load" onclick = "loadData()" class="btn btn-primary">
                     </div>
 
 
@@ -331,17 +334,18 @@ $this->Form->setTemplates($formTemplate);
 
 
 <script type='text/javascript'>
-    var number = "<?php echo count($sites);?>"
+
     var datas = new Array(0);
     var infoBox = new Array(0);
-    var filt = new Array(0);
+
     var min = new Array(0);
     var addr = new Array(0);
     var index = null;
     var manager;
     var map;
-    var layer
+    var layer;
     var center;
+    var searchedLocation;
     //    $connection = ConnectionManager::get('default');
     //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
     let searchbox = document.querySelector('#searchBox');
@@ -368,16 +372,21 @@ $this->Form->setTemplates($formTemplate);
 
 //
 
-
+//
+    function loadData(){
+        proget('');
+        fil('');
+        filByCluster('');
+        loadMapScenario();
+    }
 
 
 //dropdown filter 3 function
     function proget(a){
         dropdown.value = '';
         dropdown2.value = '';
-        dropdown3.value = a.value;
+        dropdown3.value = a;
         searchbox.value = '';
-
         datas.length = 0;
         infoBox.length = 0;
         <?php
@@ -402,11 +411,8 @@ $this->Form->setTemplates($formTemplate);
 // reset sites data function
 
     function resetData(){
-
-
         datas.length = 0;
         infoBox.length = 0;
-
         <?php
         foreach ($sites as $site):
         $id = $site->site_id;
@@ -417,21 +423,16 @@ $this->Form->setTemplates($formTemplate);
         ?>
         datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $id;?>"])
         infoBox.push("<?php echo $site_address;?>")
-
         <?php endforeach; ?>
         searchbox.value = '';
         loadMapScenario();
 
     }
     function cleanData(){
-
-
         datas.length = 0;
         infoBox.length = 0;
-
         searchbox.value = '';
         loadMapScenario();
-
     }
 
 //let array remove duplicate elements
@@ -454,10 +455,7 @@ $this->Form->setTemplates($formTemplate);
 
 
     // filter function
-    function filll(typeId){
-        fil(typeId);
 
-    }
     function fil(typeId){
         var progId = Array(0);
         var siteId = Array(0);
@@ -541,7 +539,7 @@ $this->Form->setTemplates($formTemplate);
         datas.length = 0;
         infoBox.length = 0;
         dropdown.value = '';
-        dropdown2.value = '';
+        dropdown2.value = 'Cluster ID: '+typeId;
         dropdown3.value = '';
         searchbox.value = '';
 
@@ -622,8 +620,25 @@ $this->Form->setTemplates($formTemplate);
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
-        document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+'</div>';
+        document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+addr[index][2]+'</div>'+'<br>'+'public transport route:';
 
+
+
+
+
+
+        // Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+        //     var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+        //     // Set Route Mode to transit
+        //     directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.transit });
+        //     var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: 'Redmond', location: new Microsoft.Maps.Location(47.67683029174805, -122.1099624633789) });
+        //     var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: 'Seattle', location: new Microsoft.Maps.Location(47.59977722167969, -122.33458709716797) });
+        //     directionsManager.addWaypoint(waypoint1);
+        //     directionsManager.addWaypoint(waypoint2);
+        //     // Set the element in which the itinerary will be rendered
+        //     directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel1') });
+        //     directionsManager.calculateDirections();
+        // });
 
     }
 
@@ -657,15 +672,13 @@ $this->Form->setTemplates($formTemplate);
 //load map function
     function loadMapScenario() {
         min.length = 0
-        // var cou = 0;
         addr.length = 0;
-
         map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
             center: center,
             zoom: 8});
-        var layer = new Microsoft.Maps.Layer();
+        layer = new Microsoft.Maps.Layer();
         layer.clear();
-        // document.getElementById('printoutPanel').innerHTML = filt[0]
+
         var loca = new Array(0);
         // var addr = new Array(0);
         // var index;
@@ -674,42 +687,10 @@ $this->Form->setTemplates($formTemplate);
         document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of Sites' +
             ': </div><br><div class="h5 mb-0 font-weight-bold text-gray-800"> '+datas.length+'<br></div><br>';
         loca.length = 0;
+
+
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
-
-
-
-
-            // var a = 0;
-            // for (i = 0; i < datas.length; i++) {
-            //
-            //     var siteAdr = {
-            //         bounds: map.getBounds(),
-            //         where: datas[i],
-            //
-            //         callback: function (answer, userData) {
-            //             var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-            //             // pushpin.metadata = { title: infoBox[a], description: 'Address: '+ datas[a] }
-            //             layer.add(pushpin);
-            //             // var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
-            //             var infobox = new Microsoft.Maps.Infobox(answer.results[0].location, { title: infoBox[a], description: 'address: '+ datas[a] });
-            //             infobox.setMap(map);
-            //             // Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
-            //             //     infobox.setOptions({
-            //             //         location: args.target.getLocation(),
-            //             //         title: args.target.metadata.title,
-            //             //         description: args.target.metadata.description,
-            //             //         visible: true
-            //             //     });
-            //             // });
-            //             a++;
-            //         }
-            //     };
-            //     searchManager.geocode(siteAdr);
-            // }
-
-            //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
-
             datas.forEach( function (item) { var siteAdr = {
                 bounds: map.getBounds(),
                 where: item[0],
@@ -719,7 +700,7 @@ $this->Form->setTemplates($formTemplate);
 
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
                     pushpin.metadata = { title: 'ID: '+item[4]+'['+item[1]+']', description: '<b>Address: </b>'+ item[0] };
-                    addr.push(['<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
+                    addr.push(['<br><b>Site ID:</b> '+ item[4],'<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
 
                     layer.add(pushpin);
 
@@ -736,113 +717,10 @@ $this->Form->setTemplates($formTemplate);
                         });
                     });
                     loca.push(pushpin);
-                    // cou=cou+1;
-                    // if(cou == 8){
-                    //     map.layers.insert(layer);
-                    //     layer = new Microsoft.Maps.Layer();
-                    //     cou = 0;
-                    // }
-
                 }
-
-
-
             };
-
                 searchManager.geocode(siteAdr);})
             map.layers.insert(layer);
-
-
-
-
-
-
-
-
-
-            // datas.forEach( function (item) { var siteAdr = {
-            //     // var locat = new Microsoft.Maps.Location(item[3], item[4]);
-            //     var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(item[3]), parseFloat(item[4])),{ color: 'red' });
-            //     pushpin.metadata = { title: 'Site: '+item[1], description: 'Address: '+ item[0] }
-            //     layer.add(pushpin);
-            //     var infobox = new Microsoft.Maps.Infobox(locat,  { visible: false, autoAlignment: true });
-            //     infobox.setMap(map);
-            //     Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) {
-            //         infobox.setOptions({
-            //             location: args.target.getLocation(),
-            //             title: args.target.metadata.title,
-            //             description: args.target.metadata.description,
-            //             visible: true
-            //         });
-            //     });
-            // };
-            //     searchManager.geocode(siteAdr);})
-            // map.layers.insert(layer);
-
-
-
-
-
-
-
-            // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), {
-            //     icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-            //     anchor: new Microsoft.Maps.Point(12, 39)
-            // });
-            // map.entities.push(pushpin);
-
-
-
-
-            //
-            //
-            // Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
-            //     // var pushpins = Microsoft.Maps.TestDataGenerator.getPushpins(2, map.getBounds());
-            //     // map.entities.push(pushpins);
-            //     document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
-            //         + Microsoft.Maps.SpatialMath.getDistanceTo(pushpins[0].getLocation(), pushpins[1].getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
-            // });
-
-
-
-
-
-
-
-
-
-
-
-
-            // var requestOptions = {
-            //     bounds: map.getBounds(),
-            //     where: document.getElementById("searchBox").value,
-            //     callback: function (answer, userData) {
-            //         var pushpinNow = new Microsoft.Maps.Pushpin(answer.results[0].location, {
-            //             icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
-            //             anchor: new Microsoft.Maps.Point(12, 39)
-            //         });
-            //         map.setView({ bounds: answer.results[0].bestView });
-            //         map.entities.push(pushpinNow);
-            //         var infobox = new Microsoft.Maps.Infobox(answer.results[0].location,  { visible: false, autoAlignment: true });
-            //         infobox.setMap(map);
-            //         Microsoft.Maps.Events.addHandler(pushpinNow, 'click', function (args) {
-            //             infobox.setOptions({
-            //                 location: args.target.getLocation(),
-            //                 title: document.getElementById("searchBox").value,
-            //                 description: '<b>Location:</b> <br>' + infobox.getLocation() + '<br>',
-            //                 visible: true
-            //             });
-            //         });
-            //
-            //     }
-            //
-            // };
-            //
-            //
-            //
-            //
-            // searchManager.geocode(requestOptions);
 
         });
 
@@ -887,19 +765,7 @@ $this->Form->setTemplates($formTemplate);
                 })
 
             })
-            // var minn = Math.min.apply(null,min);
-            // index = min.indexOf(minn);
-            // document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+addr[index][0]+'<br>'+addr[index][1];
 
-
-            // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
-            //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), loca[0].getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);})
-            // datas.forEach( function (item) {
-            //     Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
-            //         var pushpin1 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(item[3],item[4]),{});
-            //         document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
-            //             + Microsoft.Maps.SpatialMath.getDistanceTo(suggestionResult.location.getLocation(), pushpin1.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);})
-            // })
 
             // document.getElementById('printoutPanel').innerHTML =
             //     'Suggestion: ' + suggestionResult.formattedSuggestion +
@@ -909,10 +775,6 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-
-
-        // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
-        //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpins[0].getLocation(), pushpins[1].getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
 
 
         // Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
