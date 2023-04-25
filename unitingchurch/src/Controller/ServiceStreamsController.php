@@ -93,6 +93,7 @@ class ServiceStreamsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $serviceStream = $this->ServiceStreams->get($id);
+        if ($this->ServiceStreams->ServiceTypes->deleteAll(['service_stream_id' => $id])) {
         if ($this->ServiceStreams->delete($serviceStream)) {
             $this->Flash->success(__('The service stream has been deleted.'));
         } else {
@@ -100,5 +101,5 @@ class ServiceStreamsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
+    }}
 }

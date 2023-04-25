@@ -47,6 +47,11 @@ class ClustersTable extends Table
             'foreignKey' => 'division_id',
             'joinType' => 'INNER',
         ]);
+        $this->hasMany('Programs',[
+            'className' => 'Programs',
+            'foreignKey' => 'program_id'
+
+        ]);
     }
 
     /**

@@ -40,6 +40,11 @@ class ProgramTypesTable extends Table
         $this->setTable('program_types');
         $this->setDisplayField(['program_type_id','program_type_name']);
         $this->setPrimaryKey('program_type_id');
+        $this->hasMany('Programs',[
+            'className' => 'Programs',
+            'foreignKey' => 'program_id'
+
+        ]);
     }
 
     /**

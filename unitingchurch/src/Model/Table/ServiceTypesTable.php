@@ -47,6 +47,12 @@ class ServiceTypesTable extends Table
             'foreignKey' => 'service_stream_id',
             'joinType' => 'INNER',
         ]);
+
+        $this->hasMany('Services',[
+            'className' => 'Services',
+            'foreignKey' => 'service_id'
+
+        ]);
     }
 
     /**

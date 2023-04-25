@@ -40,6 +40,11 @@ class DivisionsTable extends Table
         $this->setTable('divisions');
         $this->setDisplayField(['division_id','division_name']);
         $this->setPrimaryKey('division_id');
+        $this->hasMany('Clusters',[
+            'className' => 'Clusters',
+            'foreignKey' => 'cluster_id'
+
+        ]);
     }
 
     /**

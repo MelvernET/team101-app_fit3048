@@ -42,7 +42,7 @@ $this->Form->setTemplates($formTemplate);
                                     <?php
                                     echo $this->Form->control('client_first_name');
                                     echo $this->Form->control('client_last_name');
-                                    echo $this->Form->control('client_address');
+                                    echo $this->Form->control('client_location');
                                     ?>
                                 </fieldset>
                                 <br>
@@ -70,7 +70,7 @@ $this->Form->setTemplates($formTemplate);
                         <br style="line-height:1px;" />
                         <?= $this->Html->link(__('View Client'), ['action' => 'view', $client->client_id], ['class' => 'btn btn-primary btn-block']) ?>
                         <br style="line-height:1px;" />
-                        <?= $this->Form->postLink(__('Delete Client'), ['action' => 'delete', $client->clientr_id], ['confirm' => __('Are you sure you want to delete {0}?', $client->client_first_name), 'class' => 'btn btn-primary btn-block']) ?>
+                        <?= $this->Form->postLink(__('Delete Client'), ['action' => 'delete', $client->client_id], ['confirm' => __('Are you sure you want to delete {0}?', $client->client_first_name), 'class' => 'btn btn-primary btn-block']) ?>
 
                         </aside>
 

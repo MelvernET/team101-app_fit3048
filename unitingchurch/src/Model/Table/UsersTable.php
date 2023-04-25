@@ -40,6 +40,11 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField(['user_id','email']);
         $this->setPrimaryKey('user_id');
+        $this->hasMany('Records',[
+            'className' => 'Records',
+            'foreignKey' => 'user_id'
+
+        ]);
     }
 
     /**

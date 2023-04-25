@@ -40,6 +40,11 @@ class ServiceStreamsTable extends Table
         $this->setTable('service_streams');
         $this->setDisplayField(['service_stream_id','service_stream_name']);
         $this->setPrimaryKey('service_stream_id');
+        $this->hasMany('ServiceTypes',[
+            'className' => 'ServiceTypes',
+            'foreignKey' => 'service_type_id'
+
+        ]);
     }
 
     /**
@@ -52,7 +57,7 @@ class ServiceStreamsTable extends Table
     {
         $validator
             ->scalar('service_stream_name')
-            ->maxLength('service_stream_name', 100)
+            ->maxLength('service_stream_name', 40)
             ->requirePresence('service_stream_name', 'create')
             ->notEmptyString('service_stream_name');
 

@@ -56,7 +56,7 @@ class SitesController extends AppController
             }
             $this->Flash->error(__('The site could not be saved. Please, try again.'));
         }
-        $programs = $this->Sites->Programs->find('list', ['limit' => 200])->all();
+        $programs = $this->Sites->Programs->find('list', ['limit' => 1000])->all();
         $this->set(compact('site', 'programs'));
     }
 
@@ -96,6 +96,7 @@ class SitesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $site = $this->Sites->get($id);
+//        if ($this->Sites->Programs->deleteAll(['site_id' => $id])) {
         if ($this->Sites->delete($site)) {
             $this->Flash->success(__('The site has been deleted.'));
         } else {
@@ -104,4 +105,5 @@ class SitesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+//}
 }

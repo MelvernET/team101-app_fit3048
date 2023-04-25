@@ -58,6 +58,11 @@ class ProgramsTable extends Table
             'targetForeignKey' => 'site_id',
             'joinTable' => 'programs_sites',
         ]);
+        $this->hasMany('Services',[
+            'className' => 'Services',
+            'foreignKey' => 'service_id'
+
+        ]);
     }
 
     /**

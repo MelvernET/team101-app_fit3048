@@ -99,6 +99,7 @@ class ServiceTypesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $serviceType = $this->ServiceTypes->get($id);
+        if ($this->ServiceTypes->Services->deleteAll(['service_type_id' => $id])) {
         if ($this->ServiceTypes->delete($serviceType)) {
             $this->Flash->success(__('The service type has been deleted.'));
         } else {
@@ -106,5 +107,5 @@ class ServiceTypesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
+    }}
 }

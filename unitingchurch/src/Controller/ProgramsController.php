@@ -57,7 +57,7 @@ class ProgramsController extends AppController
         }
         $programTypes = $this->Programs->ProgramTypes->find('list', ['limit' => 200])->all();
         $clusters = $this->Programs->Clusters->find('list', ['limit' => 200])->all();
-        $sites = $this->Programs->Sites->find('list', ['limit' => 200])->all();
+        $sites = $this->Programs->Sites->find('list', ['limit' => 1000])->all();
         $this->set(compact('program', 'programTypes', 'clusters', 'sites'));
     }
 
@@ -99,6 +99,8 @@ class ProgramsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $program = $this->Programs->get($id);
+        if ($this->Programs->Services->deleteAll(['program_id' => $id])) {
+//            if ($this->Programs->Sites->deleteAll(['program_id' => $id])) {
         if ($this->Programs->delete($program)) {
             $this->Flash->success(__('The program has been deleted.'));
         } else {
@@ -106,7 +108,8 @@ class ProgramsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
+    }}
+//}
 
 
 //    public function filt($id){

@@ -52,6 +52,8 @@ class ServicesTable extends Table
             'foreignKey' => 'service_type_id',
             'joinType' => 'INNER',
         ]);
+
+
     }
 
     /**
@@ -70,22 +72,29 @@ class ServicesTable extends Table
         $validator
             ->integer('service_active_client')
             ->requirePresence('service_active_client', 'create')
-            ->notEmptyString('service_active_client');
+            ->notEmptyString('service_active_client')
+            ->greaterThanOrEqual('service_active_client', 0, 'service active client must be positive.');
 
         $validator
             ->numeric('service_staff_number')
             ->requirePresence('service_staff_number', 'create')
-            ->notEmptyString('service_staff_number');
+            ->notEmptyString('service_staff_number')
+            ->greaterThanOrEqual('service_staff_number', 0, 'service staff number must be positive.');
 
         $validator
             ->numeric('service_fte')
             ->requirePresence('service_fte', 'create')
-            ->notEmptyString('service_fte');
+            ->notEmptyString('service_fte')
+
+            ->greaterThanOrEqual('service_fte', 0, 'service staff number must be positive.');
 
         $validator
             ->integer('service_riskman')
             ->requirePresence('service_riskman', 'create')
-            ->notEmptyString('service_riskman');
+            ->notEmptyString('service_riskman')
+            ->minLength('service_riskman',5)
+            ->maxLength('service_riskman',5)
+            ->greaterThanOrEqual('service_fte', 0, 'riskman ID must be positive.');
 
         $validator
             ->integer('program_id')
