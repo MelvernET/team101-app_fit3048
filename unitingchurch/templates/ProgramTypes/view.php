@@ -19,17 +19,14 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="programTypes view content">
-            <h3><?= h($programType->program_type_name) ?></h3>
+            <h3 class="h3 headings"><?= h($programType->program_type_name) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
                     <th><?= __('Program Type Name') ?></th>
                     <td><?= h($programType->program_type_name) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Program Type ID') ?></th>
-                    <td><?= $this->Number->format($programType->program_type_id) ?></td>
-                </tr>
+
             </table>
 
         </div></div></div>

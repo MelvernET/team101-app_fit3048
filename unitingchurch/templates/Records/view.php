@@ -19,21 +19,18 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="records view content">
-            <h3><?= h($record->record_id) ?></h3>
+            <h3 class="h3 headings"><?= h($record->record_id) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
                     <th><?= __('Staff') ?></th>
-                    <td><?= h("ID: "),($record->has('user') ? $this->Html->link($record->user->user_id, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : ''),(h(" , Name: ")),(h($record->user->user_first_name)),(h("  ")),(h($record->user->user_last_name)) ?></td>
+                    <td><?= h("ID: "),($record->has('user') ? $this->Html->link($record->user->user_first_name, ['controller' => 'Users', 'action' => 'view', $record->user->user_id]) : ''),(h(" , Name: ")),(h($record->user->user_first_name)),(h("  ")),(h($record->user->user_last_name)) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Client') ?></th>
-                    <td><?= (h("ID: ")),($record->has('client') ? $this->Html->link($record->client->client_id, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ),(h(" , Name: ")),(h($record->client->client_first_name)),(h("  ")),(h($record->client->client_last_name)) ?></td>
+                    <td><?= (h("ID: ")),($record->has('client') ? $this->Html->link($record->client->client_first_name, ['controller' => 'Clients', 'action' => 'view', $record->client->client_id]) : '' ),(h(" , Name: ")),(h($record->client->client_first_name)),(h("  ")),(h($record->client->client_last_name)) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Record ID') ?></th>
-                    <td><?= $this->Number->format($record->record_id) ?></td>
-                </tr>
+
                 <tr>
                     <th><?= __('Record Date Time') ?></th>
                     <td><?= h($record->record_date_time) ?></td>

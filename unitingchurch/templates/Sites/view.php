@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="sites view content">
-                                <h3><?= h($site->site_address) ?></h3>
+                                <h3 class="h3 headings"><?= h($site->site_address) ?></h3>
                                 <table class="table table-bordered" id="dataTable" width="100%">
                                     <tr>
                                         <th><?= __('Site Address') ?></th>
@@ -53,10 +53,7 @@
                                         <th><?= __('DHHS Area') ?></th>
                                         <td><?= h($site->site_dhhs_area) ?></td>
                                     </tr>
-                                    <tr>
-                                        <th><?= __('Site ID') ?></th>
-                                        <td><?= $this->Number->format($site->site_id) ?></td>
-                                    </tr>
+
                                 </table>
                                 <div class="related">
                                     <h4><?= __('Related Programs') ?></h4>
@@ -90,7 +87,7 @@
                                     </div>
                                 </div></div>
                     </div>
-                </div>
+                    </div></div>
                 </div>
 
             </div>

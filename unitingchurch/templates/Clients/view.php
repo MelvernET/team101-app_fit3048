@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
                             <div class="clients view content">
-                                <h3><?= h($client->client_first_name) ?></h3>
+                                <h3 class="h3 headings"><?= h($client->client_first_name) ?></h3>
                                 <table class="table table-bordered" id="dataTable" width="100%">
                                 <tr>
                                         <th><?= __('Client First Name') ?></th>
@@ -33,10 +33,6 @@
                                     <tr>
                                         <th><?= __('Client Last Name') ?></th>
                                         <td><?= h($client->client_last_name) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= __('Client Id') ?></th>
-                                        <td><?= $this->Number->format($client->client_id) ?></td>
                                     </tr>
                                     <tr>
                                 <div class="text">

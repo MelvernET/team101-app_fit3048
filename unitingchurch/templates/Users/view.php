@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="users view content">
-            <h3><?= h($user->user_id) ?></h3>
+            <h3 class="h3 headings"><?= h($user->user_id) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
@@ -34,10 +34,7 @@
                     <th><?= __('Email') ?></th>
                     <td><?= h($user->email) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('User Id') ?></th>
-                    <td><?= $this->Number->format($user->user_id) ?></td>
-                </tr>
+
             </table>
 
         </div>
