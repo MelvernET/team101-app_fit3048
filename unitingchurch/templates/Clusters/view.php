@@ -35,12 +35,9 @@
                     </tr>
                     <tr>
                         <th><?= __('Division') ?></th>
-                        <td><?= $cluster->has('division') ? $this->Html->link($cluster->division->division_id, ['controller' => 'Divisions', 'action' => 'view', $cluster->division->division_id]) : '' ?></td>
+                        <td><?= $cluster->has('division') ? $this->Html->link($cluster->division->division_name, ['controller' => 'Divisions', 'action' => 'view', $cluster->division->division_id]) : '' ?></td>
                     </tr>
-                    <tr>
-                        <th><?= __('Cluster Id') ?></th>
-                        <td><?= $this->Number->format($cluster->cluster_id) ?></td>
-                    </tr>
+
                 </table>
 
                             </div>

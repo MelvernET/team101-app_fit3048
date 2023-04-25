@@ -19,11 +19,11 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="programs view content">
-            <h3><?= h($program->program_name) ?></h3>
+            <h3 class="h3 headings"><?= h($program->program_name) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
                 <tr>
                     <th><?= __('Program Type') ?></th>
-                    <td><?= $program->has('program_type') ? $this->Html->link($program->program_type->program_type_id, ['controller' => 'ProgramTypes', 'action' => 'view', $program->program_type->program_type_id]) : '' ?></td>
+                    <td><?= $program->has('program_type') ? $this->Html->link($program->program_type->program_type_name, ['controller' => 'ProgramTypes', 'action' => 'view', $program->program_type->program_type_id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Program Name') ?></th>
@@ -35,15 +35,12 @@
                 </tr>
                 <tr>
                     <th><?= __('Cluster') ?></th>
-                    <td><?= $program->has('cluster') ? $this->Html->link($program->cluster->cluster_id, ['controller' => 'Clusters', 'action' => 'view', $program->cluster->cluster_id]) : '' ?></td>
+                    <td><?= $program->has('cluster') ? $this->Html->link($program->cluster->cluster_name, ['controller' => 'Clusters', 'action' => 'view', $program->cluster->cluster_id]) : '' ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Program ID') ?></th>
-                    <td><?= $this->Number->format($program->program_id) ?></td>
-                </tr>
+
             </table>
             <div class="related">
-                <h4><?= __('Related Sites') ?></h4>
+                <h4 class="h3 headings"><?= __('Related Sites') ?></h4>
                 <?php if (!empty($program->sites)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%">

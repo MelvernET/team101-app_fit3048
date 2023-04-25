@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="serviceTypes view content">
-            <h3><?= h($serviceType->service_type_name) ?></h3>
+            <h3 class="h3 headings"><?= h($serviceType->service_type_name) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
@@ -28,12 +28,9 @@
                 </tr>
                 <tr>
                     <th><?= __('Service Stream') ?></th>
-                    <td><?= $serviceType->has('service_stream') ? $this->Html->link($serviceType->service_stream->service_stream_id, ['controller' => 'ServiceStreams', 'action' => 'view', $serviceType->service_stream->service_stream_id]) : '' ?></td>
+                    <td><?= $serviceType->has('service_stream') ? $this->Html->link($serviceType->service_stream->service_stream_name, ['controller' => 'ServiceStreams', 'action' => 'view', $serviceType->service_stream->service_stream_id]) : '' ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Service Type Id') ?></th>
-                    <td><?= $this->Number->format($serviceType->service_type_id) ?></td>
-                </tr>
+
             </table>
 
         </div>

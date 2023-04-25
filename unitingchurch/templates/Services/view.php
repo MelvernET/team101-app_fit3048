@@ -39,16 +39,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%">
                                     <tr>
                                         <th><?= __('Program') ?></th>
-                                        <td><?= $service->has('program') ? $this->Html->link($service->program->program_id, ['controller' => 'Programs', 'action' => 'view', $service->program->program_id]) : '' ?></td>
+                                        <td><?= $service->has('program') ? $this->Html->link($service->program->program_name, ['controller' => 'Programs', 'action' => 'view', $service->program->program_id]) : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= __('Service Type') ?></th>
-                                        <td><?= $service->has('service_type') ? $this->Html->link($service->service_type->service_type_id, ['controller' => 'ServiceTypes', 'action' => 'view', $service->service_type->service_type_id]) : '' ?></td>
+                                        <td><?= $service->has('service_type') ? $this->Html->link($service->service_type->service_type_name, ['controller' => 'ServiceTypes', 'action' => 'view', $service->service_type->service_type_id]) : '' ?></td>
                                     </tr>
-                                    <tr>
-                                        <th><?= __('Service ID') ?></th>
-                                        <td><?= $this->Number->format($service->service_id) ?></td>
-                                    </tr>
+
                                     <tr>
                                         <th><?= __('Service Active Client') ?></th>
                                         <td><?= $this->Number->format($service->service_active_client) ?></td>
