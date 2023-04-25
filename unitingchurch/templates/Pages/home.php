@@ -107,7 +107,8 @@ $this->Form->setTemplates($formTemplate);
     <div class="container-fluid">
         <!-- Earnings (Monthly) Card Example -->
 
-        <h3 class="headings"><b>Find a Uniting service near you</h3></b>
+
+        <h3 class="headings"><b>Uniting Church Map Panel</h3></b>
         <!-- Content Row -->
 
         <div class="row">
@@ -165,7 +166,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Select Service" aria-label="Text input with segmented dropdown button">
+                                <input type="text" class="form-control" placeholder="sort by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1">
                                 <div class="input-group-append" >
 
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -179,7 +180,7 @@ $this->Form->setTemplates($formTemplate);
 
                                             ?>
                                             <a class="dropdown-item" href="#">
-                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
+                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "filll(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
                                             </a>
 
                                         <?php endforeach; ?>
@@ -188,6 +189,73 @@ $this->Form->setTemplates($formTemplate);
                                 </div>
                             </div>
                         </div>
+
+
+
+                        <div class="input-group mb-3">
+
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="sort by Cluster" aria-label="Text input with segmented dropdown button">
+                                <div class="input-group-append" >
+
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "dropdownBox2">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+
+
+                                    <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
+
+                                        <?php foreach ($clusters as $clust):
+
+                                            ?>
+                                            <a class="dropdown-item" href="#">
+                                                <input id = filter type= "button" value = "<?php echo $clust->cluster_name;?>" onclick = "filByCluster(<?php echo $clust->cluster_id;?>)" class="dropdown-item">
+                                            </a>
+
+                                        <?php endforeach; ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="input-group mb-3">
+
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="sort by State" aria-label="Text input with segmented dropdown button">
+                                <div class="input-group-append" >
+
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "dropdownBox3">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+
+
+                                    <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
+
+                                        <?php
+                                        $state = array('NT','WA','QLD','SA','NSW','ACT','VIC','TAS');
+
+                                        foreach ($state as $letter):
+
+                                            ?>
+                                            <a class="dropdown-item" href="#">
+                                                <input id = 'filter-<?php echo $letter; ?>' type= "button" value = "<?php echo $letter;?>" onclick = "proget('<?php echo $letter;?>')" class="dropdown-item">
+                                            </a>
+
+                                        <?php endforeach; ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
 
 
@@ -222,7 +290,7 @@ $this->Form->setTemplates($formTemplate);
                         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
 
                         <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
-                        <input type= "button" value = "Reset Sites" onclick = "resetData()" class="btn btn-primary">
+                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">
                         </br>
 
                     </div>
@@ -271,67 +339,74 @@ $this->Form->setTemplates($formTemplate);
     var addr = new Array(0);
     var index = null;
     var manager;
+    var map;
+    var layer
+    var center;
     //    $connection = ConnectionManager::get('default');
     //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
+    let searchbox = document.querySelector('#searchBox');
+    let dropdown = document.querySelector('#dropdownBox1');
+    let dropdown2 = document.querySelector('#dropdownBox2');
+    let dropdown3 = document.querySelector('#dropdownBox3');
+
+
 
 
     //init the data about sites
-    <?php
-    foreach ($sites as $site):
-    $siId = $site->site_id;
-    $address = $site->site_address;
-    $site_address = $site->site_contact;
-    $lati = $site->site_latitude;
-    $long = $site->site_longitude;
-    ?>
-    datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $siId;?>"])
-    infoBox.push("<?php echo $site_address;?>")
-
-    <?php endforeach; ?>
+<!--    --><?php
+//    foreach ($sites as $site):
+//    $siId = $site->site_id;
+//    $address = $site->site_address;
+//    $site_address = $site->site_contact;
+//    $lati = $site->site_latitude;
+//    $long = $site->site_longitude;
+//    ?>
+//    datas.push(["<?php //echo $address;?>//","<?php //echo $site_address;?>//","<?php //echo $lati;?>//","<?php //echo $long;?>//","<?php //echo $siId;?>//"])
+//    infoBox.push("<?php //echo $site_address;?>//")
+//
+//    <?php //endforeach; ?>
 
 //
-    <!---->
-    <!--    --><?php //foreach ($query as $prog):
-    //    $id = $prog->program_id;
-    //
-    //    $type_id = $prog ->program_type_id;
-    //
-    //
-    //
-    //
-    //
-    //        ?>
-    //    filt.push(["<?php //echo $id;?>//","<?php //echo $type_id;?>//"]);
-    //
-    //
-    //    <?php //endforeach; ?>
 
 
 
 
-    function getprograms(letter){
-        pros.length = 0;
+//dropdown filter 3 function
+    function proget(a){
+        dropdown.value = '';
+        dropdown2.value = '';
+        dropdown3.value = a.value;
+        searchbox.value = '';
 
+        datas.length = 0;
+        infoBox.length = 0;
         <?php
-
-        foreach ($program_types as $pross):
+        foreach ($sites as $st):
+        $siId = $st->site_id;
+        $address = $st->site_address;
+        $site_address = $st->site_contact;
+        $lati = $st->site_latitude;
+        $long = $st->site_longitude;
         ?>
-        var pro = "<?php echo $pross->program_type_name;?>"
-        var lettt = pro;
-        if(lettt.charAt(0).toLowerCase() == ($letter).toLowerCase()){
-            pros.push(pro);
+        var ad = "<?php echo $address;?>"
+
+        if(ad.includes(a)){
+            datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $siId;?>"])
+            infoBox.push("<?php echo $site_address;?>")
         }
         <?php endforeach; ?>
-
+        loadMapScenario();
     }
 
 
 // reset sites data function
-    let searchbox = document.querySelector('#searchBox');
+
     function resetData(){
+
 
         datas.length = 0;
         infoBox.length = 0;
+
         <?php
         foreach ($sites as $site):
         $id = $site->site_id;
@@ -348,8 +423,18 @@ $this->Form->setTemplates($formTemplate);
         loadMapScenario();
 
     }
+    function cleanData(){
 
 
+        datas.length = 0;
+        infoBox.length = 0;
+
+        searchbox.value = '';
+        loadMapScenario();
+
+    }
+
+//let array remove duplicate elements
     function unique(arr) {
         if (!Array.isArray(arr)) {
             console.log('type error!')
@@ -363,14 +448,23 @@ $this->Form->setTemplates($formTemplate);
         }
         return array;
     }
-// filter function
+
+
+
+
+
+    // filter function
+    function filll(typeId){
+        fil(typeId);
+
+    }
     function fil(typeId){
         var progId = Array(0);
         var siteId = Array(0);
         var allSites = Array(0);
+        searchbox.value = '';
         datas.length = 0;
         infoBox.length = 0;
-
 
         <?php
         foreach ($sites as $site):
@@ -381,25 +475,22 @@ $this->Form->setTemplates($formTemplate);
         $sitId = $site->site_id;
         ?>
         allSites.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $sitId;?>"])
-
-
         <?php endforeach; ?>
-
-
         <?php
         foreach ($query as $pro) :
         $proTypeId = $pro->program_type_id;
-
-
         $proId = $pro->program_id;
-
+        $proname = $pro->program_name;
         ?>
+        var name = "<?php echo $proname;?>";
         var data = "<?php echo $proTypeId;?>"
         if(parseInt(data) == parseInt(typeId)){
             progId.push("<?php echo $proId;?>");
 
+            dropdown3.value = '';
+            dropdown2.value = '';
+            dropdown.value = "<?php echo $proname;?>";
         }
-
         <?php endforeach; ?>
 
         progId.forEach( function (item) {
@@ -425,19 +516,88 @@ $this->Form->setTemplates($formTemplate);
         })
         var result = unique(siteId)
 
-        // result.forEach( function (itemm) {
-        //     allSites.forEach( function (itemmm) {
-        //
-        //        if(toString(itemmm[4]) == toString(itemm)){
-        //            document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
-        //                ': </b><br> '+(toString(itemmm[4]) == toString(itemm));
-        //            datas.push(itemmm);
-        //        }
-        //     })
-        //     })
+        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+            ': </b><br> '+result;
+
+        allSites.forEach( function (itemmm) {
+            result.forEach( function (itemm){
+
+                if(itemmm[4] === itemm){
+                    document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+                        ': </b><br> '+(itemmm[4] == itemm);
+                    datas.push(itemmm);
+                }
+            })
+        })
+        loadMapScenario();
+    }
 
 
 
+
+    // filter function 2
+    function filByCluster(typeId){
+
+        datas.length = 0;
+        infoBox.length = 0;
+        dropdown.value = '';
+        dropdown2.value = '';
+        dropdown3.value = '';
+        searchbox.value = '';
+
+        var progId = Array(0);
+        var siteId = Array(0);
+        var allSites = Array(0);
+
+        <?php
+        foreach ($sites as $site):
+        $address = $site->site_address;
+        $site_address = $site->site_contact;
+        $lati = $site->site_latitude;
+        $long = $site->site_longitude;
+        $sitId = $site->site_id;
+        ?>
+        allSites.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $sitId;?>"])
+        <?php endforeach; ?>
+
+
+        <?php
+        foreach ($query as $pro) :
+        $proTypeId = $pro->cluster_id;
+        $proId = $pro->program_id;
+
+        ?>
+
+        var data = "<?php echo $proTypeId;?>"
+        if(parseInt(data) == parseInt(typeId)){
+            progId.push("<?php echo $proId;?>");
+
+
+        }
+        <?php endforeach; ?>
+
+        progId.forEach( function (item) {
+
+            <?php
+            foreach ($bridges as $bri) :
+            $prId = $bri->program_id;
+
+
+            $stId = $bri->site_id;
+
+            ?>
+
+            var prograId = "<?php echo $prId;?>";
+            var siteeId = "<?php echo $stId;?>"
+            if(item === prograId){
+                siteId.push(siteeId);
+
+            }
+
+            <?php endforeach; ?>
+
+        })
+        var result = unique(siteId)
 
         document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
             ': </b><br> '+result;
@@ -452,15 +612,8 @@ $this->Form->setTemplates($formTemplate);
                 }
             })
         })
-        // progId.forEach( function (itemm){
-        //
-        //
-        //         datas.push(itemm);
-        //
-        // })
         loadMapScenario();
     }
-
 
 
 //show the nearest site function
@@ -503,8 +656,13 @@ $this->Form->setTemplates($formTemplate);
 
 //load map function
     function loadMapScenario() {
+        min.length = 0
+        // var cou = 0;
+        addr.length = 0;
 
-        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {zoom: 12});
+        map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+            center: center,
+            zoom: 8});
         var layer = new Microsoft.Maps.Layer();
         layer.clear();
         // document.getElementById('printoutPanel').innerHTML = filt[0]
@@ -515,7 +673,7 @@ $this->Form->setTemplates($formTemplate);
         //     ': </b><br> '+filt[0][0]+filt[0][1];
         document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of Sites' +
             ': </div><br><div class="h5 mb-0 font-weight-bold text-gray-800"> '+datas.length+'<br></div><br>';
-
+        loca.length = 0;
         Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
             var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 
@@ -551,9 +709,7 @@ $this->Form->setTemplates($formTemplate);
             // }
 
             //document.getElementById('printoutPanel').innerHTML = '<b>Closest site: </b><br> '+<?php //echo $query;?>//;
-            var cou = 0;
-            addr.length = 0;
-            loca.length = 0;
+
             datas.forEach( function (item) { var siteAdr = {
                 bounds: map.getBounds(),
                 where: item[0],
@@ -580,12 +736,12 @@ $this->Form->setTemplates($formTemplate);
                         });
                     });
                     loca.push(pushpin);
-                    cou=cou+1;
-                    if(cou == 8){
-                        map.layers.insert(layer);
-                        layer = new Microsoft.Maps.Layer();
-                        cou = 0;
-                    }
+                    // cou=cou+1;
+                    // if(cou == 8){
+                    //     map.layers.insert(layer);
+                    //     layer = new Microsoft.Maps.Layer();
+                    //     cou = 0;
+                    // }
 
                 }
 
@@ -595,6 +751,7 @@ $this->Form->setTemplates($formTemplate);
 
                 searchManager.geocode(siteAdr);})
             map.layers.insert(layer);
+
 
 
 
@@ -703,7 +860,7 @@ $this->Form->setTemplates($formTemplate);
         function selectedSuggestion(suggestionResult) {
             min.length = 0
             index = null;
-            document.getElementById('printoutPanel').innerHTML = '';
+            // document.getElementById('printoutPanel').innerHTML = '';
             map.entities.clear();
             var pushpinNow = new Microsoft.Maps.Pushpin(suggestionResult.location, {
                 icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',

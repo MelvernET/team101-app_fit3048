@@ -174,7 +174,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" >Username</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" ></span>
 
                             <?=  $this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']); ?>
                         </a>
@@ -184,10 +184,6 @@
                             <a class="dropdown-item" href="<?= $this->Url->build('/users') ?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 User
-                            </a>
-                            <a class="dropdown-item" href="<?= $this->Url->build('/users/forgetpassword') ?>">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Forget Password
                             </a>
 
                             <div class="dropdown-divider"></div>
