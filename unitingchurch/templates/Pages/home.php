@@ -345,19 +345,6 @@ $this->Form->setTemplates($formTemplate);
 
 //
 
-
-
-
-    var optionsVIC = {
-        center: new Microsoft.Maps.Location(-37.81361, 144.96306), // center
-        zoom: 12,
-        // mapTypeId: Microsoft.Maps.MapTypeId.road //
-    };
-    var optionsACT = {
-        center: new Microsoft.Maps.Location(-35.2984, 149.134), // center
-        zoom: 12,
-
-    };
 //
 
 
