@@ -133,7 +133,7 @@ $this->Form->setTemplates($formTemplate);
 
                     <div  class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
-                        <p class="card-text">1: use the filter bar.<br>
+                        <p class="card-text">1: Use the filter bar.<br>
                         <p class="card-text">2: Search an Address.<br>
                         <div class="input-group mb-3">
                             <div class="input-group">
@@ -292,6 +292,7 @@ $this->Form->setTemplates($formTemplate);
     var map;
     var layer;
     var center;
+    var sizee = 12;
     var searchedLocation;
     //    $connection = ConnectionManager::get('default');
     //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
@@ -423,6 +424,9 @@ $this->Form->setTemplates($formTemplate);
     // filter function
 
     function fil(typeId){
+        sizee = 4;
+        // center = new Microsoft.Maps.Location(-34.9287, 138.601);
+        center = new Microsoft.Maps.Location(-37.81361, 144.96306);
         var progId = Array(0);
         var siteId = Array(0);
         var allSites = Array(0);
@@ -640,7 +644,7 @@ $this->Form->setTemplates($formTemplate);
         addr.length = 0;
         map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
             center: center,
-            zoom: 8});
+            zoom: sizee});
         layer = new Microsoft.Maps.Layer();
         layer.clear();
 
