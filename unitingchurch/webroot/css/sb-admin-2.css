@@ -11443,4 +11443,8 @@ html{
     justify-content: center;
 }
 
+input[type="text"]:disabled {
+    background: white;
+}
+
 

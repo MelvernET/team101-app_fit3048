@@ -166,7 +166,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="sort by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1">
+                                <input type="text" class="form-control" placeholder="Sort by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
                                 <div class="input-group-append" >
 
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -196,7 +196,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="sort by Cluster" aria-label="Text input with segmented dropdown button" id = "dropdownBox2">
+                                <input type="text" class="form-control" placeholder="Sort by Cluster" aria-label="Text input with segmented dropdown button" id = "dropdownBox2" disabled="disabled">
                                 <div class="input-group-append" >
 
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
@@ -229,7 +229,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="sort by State" aria-label="Text input with segmented dropdown button" id = "dropdownBox3">
+                                <input type="text" class="form-control" placeholder="Sort by State" aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
                                 <div class="input-group-append" >
 
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
