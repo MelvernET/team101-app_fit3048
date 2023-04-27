@@ -152,8 +152,8 @@ $this->Form->setTemplates($formTemplate);
                     <div  class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
 
-                        <p class="card-text">First: use the filter bar.<br>
-                        <p class="card-text">Second: Search an Address.<br>
+                        <p class="card-text">1: use the filter bar.<br>
+                        <p class="card-text">2: Search an Address.<br>
 
 
 
