@@ -152,12 +152,9 @@ $this->Form->setTemplates($formTemplate);
                     <div  class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
 
-                        <p class="card-text"><br>
+                        <p class="card-text">Please do not search address before using filter bar.<br>
 
-                        <div id='searchBoxContainer'>
-                            <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
-                        </div>
-                        <br>
+
 
 
 
@@ -166,7 +163,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Sort by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
+                                <input type="text" class="form-control" placeholder="Show the site by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
                                 <div class="input-group-append" >
 
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -192,33 +189,6 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-                        <div class="input-group mb-3">
-
-
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Sort by Cluster" aria-label="Text input with segmented dropdown button" id = "dropdownBox2" disabled="disabled">
-                                <div class="input-group-append" >
-
-                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-
-
-                                    <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
-
-                                        <?php foreach ($clusters as $clust):
-
-                                            ?>
-                                            <a class="dropdown-item" href="#">
-                                                <input id = filter type= "button" value = "<?php echo $clust->cluster_name;?>" onclick = "filByCluster(<?php echo $clust->cluster_id;?>)" class="dropdown-item">
-                                            </a>
-
-                                        <?php endforeach; ?>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
 
@@ -229,7 +199,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Sort by State" aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
+                                <input type="text" class="form-control" placeholder="Show the site by State" aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
                                 <div class="input-group-append" >
 
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
@@ -281,8 +251,11 @@ $this->Form->setTemplates($formTemplate);
                                     </div>
                                 </div>
                             </div>
-
-
+                        <br>
+                        <div id='searchBoxContainer'>
+                            <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
+                        </div>
+                        <br>
 
 
 
@@ -292,7 +265,7 @@ $this->Form->setTemplates($formTemplate);
                         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
 
                         <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
-                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">
+<!--                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">-->
                         <input type= "button" value = "Show All Sites" onclick = "resetData()" class="btn btn-primary">
                         </br>
 
@@ -372,14 +345,37 @@ $this->Form->setTemplates($formTemplate);
 
 //
 
+
+
+
+    var optionsVIC = {
+        center: new Microsoft.Maps.Location(-37.81361, 144.96306), // center
+        zoom: 12,
+        // mapTypeId: Microsoft.Maps.MapTypeId.road //
+    };
+    var optionsACT = {
+        center: new Microsoft.Maps.Location(-35.2984, 149.134), // center
+        zoom: 12,
+
+    };
 //
 
 
 
 //dropdown filter 3 function
     function proget(a){
+
+        if(a == "VIC"){center = new Microsoft.Maps.Location(-37.81361, 144.96306);}
+        if(a == "ACT"){center = new Microsoft.Maps.Location(-35.2984, 149.134);}
+        if(a == "NT"){center = new Microsoft.Maps.Location(-12.4608, 130.844);}
+        if(a == "WA"){center = new Microsoft.Maps.Location(-31.9518, 115.859);}
+        if(a == "QLD"){center = new Microsoft.Maps.Location(-27.4678, 153.026);}
+        if(a == "SA"){center = new Microsoft.Maps.Location(-34.9287, 138.601);}
+        if(a == "NSW"){center = new Microsoft.Maps.Location(-33.8732, 151.21);}
+        if(a == "TAS"){center = new Microsoft.Maps.Location(-42.88, 147.32);}
+
         dropdown.value = '';
-        dropdown2.value = '';
+        // dropdown2.value = '';
         dropdown3.value = a;
         searchbox.value = '';
         datas.length = 0;
@@ -393,6 +389,7 @@ $this->Form->setTemplates($formTemplate);
         $long = $st->site_longitude;
         ?>
         var ad = "<?php echo $address;?>"
+
 
         if(ad.includes(a)){
             datas.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $siId;?>"])
@@ -423,11 +420,24 @@ $this->Form->setTemplates($formTemplate);
         loadMapScenario();
 
     }
-    function cleanData(){
+    // function cleanData(){
+    //     datas.length = 0;
+    //     infoBox.length = 0;
+    //     searchbox.value = '';
+    //     loadMapScenario();
+    // }
+
+    function clean(){
         datas.length = 0;
         infoBox.length = 0;
         searchbox.value = '';
+        document.getElementById('printoutPanel').innerHTML = '';
+        dropdown.value = '';
+        // dropdown2.value = '';
+        dropdown3.value = '';
+        searchbox.value = '';
         loadMapScenario();
+
     }
 
 //let array remove duplicate elements
@@ -481,7 +491,7 @@ $this->Form->setTemplates($formTemplate);
             progId.push("<?php echo $proId;?>");
 
             dropdown3.value = '';
-            dropdown2.value = '';
+            // dropdown2.value = '';
             dropdown.value = "<?php echo $proname;?>";
         }
         <?php endforeach; ?>
@@ -612,6 +622,9 @@ $this->Form->setTemplates($formTemplate);
 //show the nearest site function
     function findLocation(){
 
+        if(min.length === 0){
+            window.confirm("Please search a location.");
+        }
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
@@ -640,11 +653,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 //clear the text window function
-    function clean(){
 
-        document.getElementById('printoutPanel').innerHTML = '';
-
-    }
 
 
 
@@ -694,7 +703,8 @@ $this->Form->setTemplates($formTemplate);
                 callback: function (answer, userData) {
 
                     var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
-                    pushpin.metadata = { title: 'ID: '+item[4]+'['+item[1]+']', description: '<b>Address: </b>'+ item[0] };
+                    pushpin.metadata = { title: item[1]+'['+'ID: '+item[4]+']', description: '<b>Address: </b>'+ item[0]+'<br> <b>Lat:</b> ' + answer.results[0].location.latitude +
+                            '<br> <b>Lon:</b> ' + answer.results[0].location.longitude + '<br>' };
                     addr.push(['<br><b>Site ID:</b> '+ item[4],'<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
 
                     layer.add(pushpin);
