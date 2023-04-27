@@ -101,12 +101,9 @@ $this->Form->setTemplates($formTemplate);
 
 <div class="programs index content">
 
-
-
     <!--        <div class="col-xl-6 col-lg-7">-->
     <div class="container-fluid">
         <!-- Earnings (Monthly) Card Example -->
-
 
         <h3 class="headings"><b>Uniting Church Map Panel</h3></b>
         <!-- Content Row -->
@@ -117,32 +114,17 @@ $this->Form->setTemplates($formTemplate);
 
                 <div class="card" style="height: 150%;">
 
-
-
                     <div class="card-body" >
                         <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
                         <br>
-
                         <div class="map" style='width: 100%; height: 80%;' >
-
                             <!--                                    <div id='printoutPanel'></div>-->
-
                             <div id='myMap' style='width: 100%; height: 100%;'></div>
 
                         </div>
                     </div>
-
                 </div>
-
-
-
             </div>
-
-
-
-
-
-
 
 
             <div class="col-4">
@@ -151,17 +133,9 @@ $this->Form->setTemplates($formTemplate);
 
                     <div  class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
-
                         <p class="card-text">1: use the filter bar.<br>
                         <p class="card-text">2: Search an Address.<br>
-
-
-
-
-
                         <div class="input-group mb-3">
-
-
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Show the site by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
                                 <div class="input-group-append" >
