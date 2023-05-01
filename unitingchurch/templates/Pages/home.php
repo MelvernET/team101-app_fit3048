@@ -424,7 +424,7 @@ $this->Form->setTemplates($formTemplate);
     // filter function
 
     function fil(typeId){
-        sizee = 4;
+        sizee = 8;
         // center = new Microsoft.Maps.Location(-34.9287, 138.601);
         center = new Microsoft.Maps.Location(-37.81361, 144.96306);
         var progId = Array(0);
@@ -593,7 +593,7 @@ $this->Form->setTemplates($formTemplate);
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
-        document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+addr[index][2]+'</div>'+'<br>'+'public transport route:';
+        document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+addr[index][2]+'</div>'+'<br>';
 
 
 
