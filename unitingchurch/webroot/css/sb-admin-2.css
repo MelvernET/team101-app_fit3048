@@ -11447,4 +11447,18 @@ input[type="text"]:disabled {
     background: white;
 }
 
+.small{
+    margin-top: 15px;
+}
 
+.purple{
+    padding-top: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: rgba(249, 195, 212, 0.22);
+}
+
+.btn-outline-secondary{
+color: #A20066;
+    border-color: #A20066;
+}

@@ -106,13 +106,95 @@ $this->Form->setTemplates($formTemplate);
         <!-- Earnings (Monthly) Card Example -->
 
         <h3 class="headings"><b>Uniting Church Map Panel</h3></b>
+<div class="card purple">
+
+            <div class="row">
+                <div class="col-sm">
+                    <div id='searchBoxContainer'>
+                        <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="input-group mb-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
+                            <div class="input-group-append" >
+
+                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+
+
+                                <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
+
+                                    <?php foreach ($program_types as $program_type):
+
+                                        ?>
+                                        <a class="dropdown-item" href="#">
+                                            <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
+                                        </a>
+
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm">
+                    <div class="input-group mb-3">
+
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search by State " aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
+                            <div class="input-group-append" >
+
+                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+
+
+                                <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
+
+                                    <?php
+                                    $state = array('NT','WA','QLD','SA','NSW','ACT','VIC','TAS');
+
+                                    foreach ($state as $letter):
+
+                                        ?>
+                                        <a class="dropdown-item" href="#">
+                                            <input id = 'filter-<?php echo $letter; ?>' type= "button" value = "<?php echo $letter;?>" onclick = "proget('<?php echo $letter;?>')" class="dropdown-item">
+                                        </a>
+
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    <br></div>
+
+        <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="small btn btn-primary mr2">
+
+        <input type= "button" value = "Clear" onclick = "clean()" class="small btn btn-primary">
+        <!--                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">-->
+        <input type= "button" value = "Show All Sites" onclick = "resetData()" class="small btn btn-primary">
+
+
+        </br>
+
+        <br>
         <!-- Content Row -->
 
         <div class="row">
 
             <div class="col-8">
 
-                <div class="card" style="height: 150%;">
+                <div class="card" style="height: 600px;">
 
                     <div class="card-body" >
                         <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
@@ -129,37 +211,10 @@ $this->Form->setTemplates($formTemplate);
 
             <div class="col-4">
 
-                <div  class="card" style="height: 150%;">
+                <div  class="card" style="height: 600px;">
 
                     <div  class="card-body">
-                        <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Search</h5>
-                        <p class="card-text">1: Use the filter bar.<br>
-                        <p class="card-text">2: Search an Address.<br>
-                        <div class="input-group mb-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Show the site by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
-                                <div class="input-group-append" >
-
-                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-
-
-                                    <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
-
-                                        <?php foreach ($program_types as $program_type):
-
-                                            ?>
-                                            <a class="dropdown-item" href="#">
-                                                <input id = filter type= "button" value = "<?php echo $program_type->program_type_name;?>" onclick = "fil(<?php echo $program_type->program_type_id;?>)" class="dropdown-item">
-                                            </a>
-
-                                        <?php endforeach; ?>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h5 class="card-title"><i class="fas fa-fw  fa-search"></i> Results</h5>
 
 
 
@@ -169,42 +224,14 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-                        <div class="input-group mb-3">
-
-
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Show the site by State" aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
-                                <div class="input-group-append" >
-
-                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-
-
-                                    <div class="dropdown-menu"  style="max-height: 400px; overflow-y: auto;">
-
-                                        <?php
-                                        $state = array('NT','WA','QLD','SA','NSW','ACT','VIC','TAS');
-
-                                        foreach ($state as $letter):
-
-                                            ?>
-                                            <a class="dropdown-item" href="#">
-                                                <input id = 'filter-<?php echo $letter; ?>' type= "button" value = "<?php echo $letter;?>" onclick = "proget('<?php echo $letter;?>')" class="dropdown-item">
-                                            </a>
-
-                                        <?php endforeach; ?>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
 
 
 
-                        <hr style="border:solid 1px grey;">
+
+
+
 
 
                             <div class="card border-left-primary ">
@@ -226,22 +253,14 @@ $this->Form->setTemplates($formTemplate);
                                 </div>
                             </div>
                         <br>
-                        <div id='searchBoxContainer'>
-                            <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
-                        </div>
-                        <br>
-
-
 
                         <br>
 
 
-                        <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="btn btn-primary mr2">
 
-                        <input type= "button" value = "Clear" onclick = "clean()" class="btn btn-primary">
-<!--                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">-->
-                        <input type= "button" value = "Show All Sites" onclick = "resetData()" class="btn btn-primary">
-                        </br>
+                        <br>
+
+
 
                     </div>
 
