@@ -111,7 +111,7 @@ $this->Form->setTemplates($formTemplate);
             <div class="row">
                 <div class="col-sm">
                     <div id='searchBoxContainer'>
-                        <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Text input with segmented dropdown button" id = "searchBox">
+                        <input type="text" class="form-control" placeholder="Enter Address or Suburb" aria-label="Text input with segmented dropdown button" id = "searchBox">
                     </div>
                 </div>
                 <div class="col-sm">
