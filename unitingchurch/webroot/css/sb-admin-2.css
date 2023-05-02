@@ -11462,3 +11462,15 @@ input[type="text"]:disabled {
 color: #A20066;
     border-color: #A20066;
 }
+
+
+.dropdown-toggle:hover{
+    color: white;
+    background:#A20066!important;
+    border-color: white;
+}
+
+
+.form-control{
+    height: 100%;
+}
