@@ -339,8 +339,16 @@ $this->Form->setTemplates($formTemplate);
 
 //
 
-//
+//get random color
 
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 
 
 //dropdown filter 3 function
@@ -686,7 +694,7 @@ $this->Form->setTemplates($formTemplate);
 
                 callback: function (answer, userData) {
 
-                    var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
+                    var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: getRandomColor() });
                     pushpin.metadata = { title: item[1]+'['+'ID: '+item[4]+']', description: '<b>Address: </b>'+ item[0]+'<br> <b>Lat:</b> ' + answer.results[0].location.latitude +
                             '<br> <b>Lon:</b> ' + answer.results[0].location.longitude + '<br>' };
                     addr.push(['<br><b>Site ID:</b> '+ item[4],'<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
