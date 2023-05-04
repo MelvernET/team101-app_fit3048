@@ -118,7 +118,7 @@ $this->Form->setTemplates($formTemplate);
                 <div class="col-sm">
                     <div class="input-group mb-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
+                            <input type="text" class="form-control" placeholder="Show sites by Program Type" aria-label="Text input with segmented dropdown button" id = "dropdownBox1" disabled="disabled">
                             <div class="input-group-append" >
 
                                 <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -148,7 +148,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search by State " aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
+                            <input type="text" class="form-control" placeholder="Show sites by State " aria-label="Text input with segmented dropdown button" id = "dropdownBox3" disabled="disabled">
                             <div class="input-group-append" >
 
                                 <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
@@ -632,7 +632,7 @@ $this->Form->setTemplates($formTemplate);
     function findLocation(){
 
         if(min.length === 0){
-            window.confirm("Please search a location.");
+            window.confirm("Error. No site found. Please set sites on the map before searching.");
         }
 
         var minn = Math.min.apply(null,min);
@@ -836,6 +836,7 @@ $this->Form->setTemplates($formTemplate);
                         '<br> <b>Lon:</b> ' + suggestionResult.location.longitude + '<br>',
                     visible: true
                 });
+
             });
             loca.forEach( function (item) {
                 Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
@@ -846,6 +847,15 @@ $this->Form->setTemplates($formTemplate);
                 })
 
             })
+            document.getElementById('printoutPanel').innerHTML =
+                '';
+
+            document.getElementById('printoutPanel').innerHTML +=
+                '<b><div class="h5 mb-0 font-weight-bold text-gray-800"> Address:</div></b> <br>' + suggestionResult.formattedSuggestion+ '<br> <b>Lat:</b> ' + suggestionResult.location.latitude +
+                '<br> <b>Lon:</b> ' + suggestionResult.location.longitude + '<br>';
+
+
+
 
 
             // min.forEach( function (item) {
