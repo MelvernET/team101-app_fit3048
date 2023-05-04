@@ -485,7 +485,6 @@ $this->Form->setTemplates($formTemplate);
         if(parseInt(data) == parseInt(typeId)){
             progId.push("<?php echo $proId;?>");
 
-
             <?php
             foreach ($program_types as $proTy) :
             $proTypeName = $proTy->program_type_name;
@@ -496,9 +495,6 @@ $this->Form->setTemplates($formTemplate);
             var ptyName = "<?php echo $proTypeName;?>"
             if(ptId === data){
                 var name = ptyName;
-
-
-
                 dropdown3.value = '';
                 // dropdown2.value = '';
                 dropdown.value = name;
