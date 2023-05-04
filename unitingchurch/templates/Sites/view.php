@@ -4,12 +4,12 @@
  * @var \App\Model\Entity\Site $site
  */
 ?>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
 
-        <div class="col-sm-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw  fa-info"></i> View Site</h5>
@@ -56,7 +56,7 @@
 
                                 </table>
                                 <div class="related">
-                                    <h4><?= __('Related Programs') ?></h4>
+                                    <h4 class="h3 headings"><?= __('Related Programs') ?></h4>
                                     <?php if (!empty($site->programs)) : ?>
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%">
@@ -66,7 +66,7 @@
                                                 <th><?= __('Program Name') ?></th>
                                                 <th><?= __('Program Manager') ?></th>
                                                 <th><?= __('Cluster ID') ?></th>
-                                                <th class="actions"><?= __('Actions') ?></th>
+                                                <th><?= __('Actions') ?></th>
                                             </tr>
                                             <?php foreach ($site->programs as $programs) : ?>
                                                 <tr>
@@ -92,7 +92,7 @@
 
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-md-3">
                 <div class="card" style="height: 100%;" >
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>

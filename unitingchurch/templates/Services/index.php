@@ -43,7 +43,7 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="st
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $service->service_id], ['class' => 'btn btn-primary btn-sm', 'confirm' => __('Are you sure you want to delete {0}?', $service->service_name)]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $service->service_id], ['class' => 'btn btn-primary btn-sm', 'confirm' => __('Are you sure you want to delete {0}?', $service->service_id)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

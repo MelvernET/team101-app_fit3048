@@ -19,12 +19,12 @@ $formTemplate =
 $this->Form->setTemplates($formTemplate);
 
 ?>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
 
-        <div class="col-sm-8">
+        <div class="col-md-9">
             <div class="card" style="height: 100%;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw fa-pen"></i> Edit Division</h5>
@@ -54,7 +54,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-        <div class="col-sm-4">
+        <div class="col-md-3">
             <div class="card" style="height: 100%;" >
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>

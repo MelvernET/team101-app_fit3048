@@ -195,7 +195,7 @@ $this->Form->setTemplates($formTemplate);
 
         <div class="row">
 
-            <div class="col-8">
+            <div class="col-md-8">
 
                 <div class="card" style="height: 600px;">
 
@@ -212,7 +212,7 @@ $this->Form->setTemplates($formTemplate);
             </div>
 
 
-            <div class="col-4">
+            <div class="col-md-4">
 
                 <div  class="card" style="height: 600px;">
 
@@ -237,9 +237,9 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-                            <div class="card border-left-primary ">
+                            <div class="card border-left-primary"  style="max-height: 400px; width: 100%; overflow-x: scroll;">
                                 <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
+                                    <div class="row no-gutters align4items-center">
                                         <div class="col mr-2">
                                             <div id='printoutPanel'></div>
                                         </div>

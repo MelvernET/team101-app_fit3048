@@ -11,7 +11,7 @@
     <div class="row">
 
 
-        <div class="col-sm-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw  fa-info"></i> View Program</h5>
@@ -41,21 +41,23 @@
                 </tr>
 
             </table>
+
+            <br>   <br>
             <div class="related">
                 <h4 class="h3 headings"><?= __('Related Sites') ?></h4>
                 <?php if (!empty($program->sites)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%">
                         <tr>
-                            <th><?= __('Site Id') ?></th>
+                            <th><?= __('Site ID') ?></th>
                             <th><?= __('Site Address') ?></th>
                             <th><?= __('Site Postcode') ?></th>
                             <th><?= __('Site Contact') ?></th>
                             <th><?= __('Site Contact No') ?></th>
                             <th><?= __('Site Ph No') ?></th>
 
-                            <th><?= __('Site Lga') ?></th>
-                            <th><?= __('Site Dhhs Area') ?></th>
+                            <th><?= __('Site LGA') ?></th>
+                            <th><?= __('Site DHHS Area') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($program->sites as $sites) : ?>
@@ -89,11 +91,12 @@
 
 
 
-
+            <br>   <br>
 
 
 
             <div class="related">
+
                 <h4 class="h3 headings"><?= __('Related Services') ?></h4>
 <!--                --><?php //if (!empty($program->sites)) : ?>
                 <div class="table-responsive">
@@ -118,9 +121,9 @@
                                 <td><?= $this->Number->format($service->service_fte) ?></td>
                                 <td><?= h($service->service_riskman) ?></td>
                                 <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'Services','action' => 'view', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Services','action' => 'edit', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Services','action' => 'delete', $service->service_id], ['class' => 'btn btn-primary btn-sm', 'confirm' => __('Are you sure you want to delete {0}?', $service->service_name)]) ?>
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Services','action' => 'view', $service->service_id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Services','action' => 'edit', $service->service_id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Services','action' => 'delete', $service->service_id], [ 'confirm' => __('Are you sure you want to delete {0}?', $service->service_name)]) ?>
                                 </td>
                             </tr>
 
@@ -145,8 +148,7 @@
                 </div>
 
                 </div>
-
-                <div class="col-sm-4">
+                <div class="col-md-3">
                     <div class="card" style="height: 100%;" >
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>

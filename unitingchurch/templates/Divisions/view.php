@@ -5,12 +5,12 @@
  */
 ?>
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
 
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw  fa-info"></i> View Division</h5>
@@ -44,7 +44,7 @@
         </div>
 
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="card" style="height: 100%;" >
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>

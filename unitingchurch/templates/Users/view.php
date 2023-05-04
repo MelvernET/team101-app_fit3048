@@ -4,12 +4,12 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
 
-        <div class="col-sm-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-fw  fa-info"></i> View User</h5>
@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class = "modal-body">
         <div class="users view content">
-            <h3 class="h3 headings"><?= h($user->user_id) ?></h3>
+            <h3 class="h3 headings"><?= h($user->user_first_name) ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%">
 
             <tr>
@@ -45,7 +45,7 @@
 
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-md-3">
         <div class="card" style="height: 100%;" >
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-fw  fa-link"></i> Actions</h5><br>
