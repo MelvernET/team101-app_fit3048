@@ -485,9 +485,27 @@ $this->Form->setTemplates($formTemplate);
         if(parseInt(data) == parseInt(typeId)){
             progId.push("<?php echo $proId;?>");
 
-            dropdown3.value = '';
-            // dropdown2.value = '';
-            dropdown.value = "<?php echo $proname;?>";
+
+            <?php
+            foreach ($program_types as $proTy) :
+            $proTypeName = $proTy->program_type_name;
+            $proTyId = $proTy->program_type_id;
+
+                ?>
+            var ptId = "<?php echo $proTyId;?>";
+            var ptyName = "<?php echo $proTypeName;?>"
+            if(ptId === data){
+                var name = ptyName;
+
+
+
+                dropdown3.value = '';
+                // dropdown2.value = '';
+                dropdown.value = name;
+            }
+
+            <?php endforeach; ?>
+
         }
         <?php endforeach; ?>
 
