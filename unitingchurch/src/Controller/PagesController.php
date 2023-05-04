@@ -33,6 +33,7 @@ use Cake\ORM\Locator\LocatorAwareTrait;
  * @property \App\Model\Table\SitesTable $Sites
  * @property \App\Model\Table\ProgramTypesTable $ProgramTypes
  * @property \App\Model\Table\ProgramsSitesTable $ProgramsSites
+ * @property \App\Model\Table\ServicesTable $Services
  */
 class PagesController extends AppController
 {
@@ -58,6 +59,7 @@ class PagesController extends AppController
         $programs= $this->fetchTable('Programs')->find()->toArray();
         $bridges= $this->fetchTable('ProgramsSites')->find()->toArray();
         $clusters= $this->fetchTable('Clusters')->find()->toArray();
+        $services= $this->fetchTable('Services')->find()->toArray();
 //        $query =  $this->set('programs', $this->Programs->find('all'));
 //        $results = $query->all();
 
@@ -83,7 +85,7 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
 
-        $this->set(compact('page', 'subpage','sites','program_types','programs','query','bridges','clusters'));
+        $this->set(compact('page', 'subpage','sites','program_types','programs','query','bridges','clusters','services'));
 
         try {
             return $this->render(implode('/', $path));

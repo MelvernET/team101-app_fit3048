@@ -2,9 +2,11 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Program $program
+ *
+ * @var \Cake\Collection\CollectionInterface|string[] $services
  */
 ?>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
@@ -51,7 +53,7 @@
                             <th><?= __('Site Contact') ?></th>
                             <th><?= __('Site Contact No') ?></th>
                             <th><?= __('Site Ph No') ?></th>
-                            <th><?= __('Site Contact Direct Ph No') ?></th>
+
                             <th><?= __('Site Lga') ?></th>
                             <th><?= __('Site Dhhs Area') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -64,7 +66,7 @@
                             <td><?= h($sites->site_contact) ?></td>
                             <td><?= h($sites->site_contact_no) ?></td>
                             <td><?= h($sites->site_ph_no) ?></td>
-                            <td><?= h($sites->site_contact_direct_ph_no) ?></td>
+
                             <td><?= h($sites->site_lga) ?></td>
                             <td><?= h($sites->site_dhhs_area) ?></td>
                             <td class="actions">
@@ -77,10 +79,66 @@
                         <?php endforeach; ?>
 
                         <?php endif; ?>
+
                     </table>
 
                 </div>
                 </div>
+
+
+
+
+
+
+
+
+
+            <div class="related">
+                <h4 class="h3 headings"><?= __('Related Services') ?></h4>
+<!--                --><?php //if (!empty($program->sites)) : ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%">
+                        <tr>
+                            <th><?= __('Service ID') ?></th>
+                            <th><?= __('Active Clients') ?></th>
+                            <th><?= __('Staff Numbers (Head Count)') ?></th>
+                            <th><?= __('FTE') ?></th>
+                            <th><?= __('RiskMan ID') ?></th>
+
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($program->services as $service) :
+                            ?>
+
+
+                            <tr>
+                                <td><?= $this->Number->format($service->service_id) ?></td>
+                                <td><?= $this->Number->format($service->service_active_client) ?></td>
+                                <td><?= $this->Number->format($service->service_staff_number) ?></td>
+                                <td><?= $this->Number->format($service->service_fte) ?></td>
+                                <td><?= h($service->service_riskman) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Services','action' => 'view', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Services','action' => 'edit', $service->service_id], ['class' => 'btn btn-primary btn-sm']) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Services','action' => 'delete', $service->service_id], ['class' => 'btn btn-primary btn-sm', 'confirm' => __('Are you sure you want to delete {0}?', $service->service_name)]) ?>
+                                </td>
+                            </tr>
+
+                        <?php endforeach; ?>
+
+
+
+                    </table>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
             </div></div></div>
                     </div>
 

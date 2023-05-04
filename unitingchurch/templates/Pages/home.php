@@ -31,6 +31,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $program_types
  * @var \Cake\Collection\CollectionInterface|string[] $bridges
  * @var \Cake\Collection\CollectionInterface|string[] $clusters
+ * @var \Cake\Collection\CollectionInterface|string[] $services
  * @var \App\Model\Entity\Site $site
  * @var \App\Model\Entity\Program $program
  * @var \App\Model\Entity\Program $query
@@ -183,6 +184,8 @@ $this->Form->setTemplates($formTemplate);
         <input type= "button" value = "Clear" onclick = "clean()" class="small btn btn-primary">
         <!--                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">-->
         <input type= "button" value = "Show All Sites" onclick = "resetData()" class="small btn btn-primary">
+
+
 
 
         </br>
@@ -620,10 +623,25 @@ $this->Form->setTemplates($formTemplate);
 
         var minn = Math.min.apply(null,min);
         index = min.indexOf(minn);
+        // document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+addr[index][2]+'</div>'+'<br>';
+        document.getElementById('printoutPanel').innerHTML = '';
         document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+addr[index][2]+'</div>'+'<br>';
 
-
-
+        // min.forEach( function (item) {
+        //
+        //
+        //     document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">data is : </div><br><div class="mb-0 text-gray-800">'+item+'</div>'+'<br>';
+        //
+        // })
+        // addr.forEach( function (item) {
+        //
+        //
+        //     document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">data is : </div><br><div class="mb-0 text-gray-800">'+item+'</div>'+'<br>';
+        //
+        // })
+        // document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">index is : </div><br><div class="mb-0 text-gray-800">'+index+'</div>'+'<br>';
+        //
+        //
 
 
 
@@ -694,9 +712,10 @@ $this->Form->setTemplates($formTemplate);
 
                 callback: function (answer, userData) {
 
-                    var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: getRandomColor() });
+                    var pushpin = new Microsoft.Maps.Pushpin(answer.results[0].location,{ color: 'red' });
                     pushpin.metadata = { title: item[1]+'['+'ID: '+item[4]+']', description: '<b>Address: </b>'+ item[0]+'<br> <b>Lat:</b> ' + answer.results[0].location.latitude +
                             '<br> <b>Lon:</b> ' + answer.results[0].location.longitude + '<br>' };
+                    pushpin.setOptions({ enableHoverStyle: true});
                     addr.push(['<br><b>Site ID:</b> '+ item[4],'<b>Name:</b> '+item[1],'<br><b>Address:</b> '+ item[0]]);
 
                     layer.add(pushpin);
@@ -710,8 +729,58 @@ $this->Form->setTemplates($formTemplate);
                             location: args.target.getLocation(),
                             title: args.target.metadata.title,
                             description: args.target.metadata.description,
+                            // actions: [
+                            //     { label: 'Handler1', eventHandler: function () { alert('Handler1'); } },
+                            //     { label: 'Handler2', eventHandler: function () { alert('Handler2'); } },
+                            //     { label: 'Handler3', eventHandler: function () { alert('Handler3'); } }
+                            // ],
                             visible: true
                         });
+                        document.getElementById('printoutPanel').innerHTML =
+                            '';
+                        document.getElementById('printoutPanel').innerHTML +=
+                            '<b><div class="h5 mb-0 font-weight-bold text-gray-800">Site:</div></b> <br>' + infobox.getTitle() + '<br>';
+                        document.getElementById('printoutPanel').innerHTML +=
+                            '<b></b> <br>' + infobox.getDescription() + '<br>';
+
+                        document.getElementById('printoutPanel').innerHTML +=
+                            '<div class="h5 mb-0 font-weight-bold text-gray-800">Related Services:</div>';
+
+                        <?php
+                        foreach ($bridges as $bri) :
+                        $prId = $bri->program_id;
+                        $stId = $bri->site_id;
+                        ?>
+                        <?php
+
+
+                        ?>
+                        <?php foreach ($query as $p) :
+                        $prName = $p->program_name;
+                        $pId = $p->program_id;
+                        if($pId===$prId){
+                            $pName = $prName;
+                            if($pName == null){
+                                $linkHtml = $this->Html->link(__('N/A'), ['controller' => 'Programs', 'action' => 'view', $prId]);
+                            }else{
+                                $linkHtml = $this->Html->link(__(strval($pName)), ['controller' => 'Programs', 'action' => 'view', $prId]);
+
+                            }
+                        }
+                        ?>
+                        <?php endforeach;?>
+
+
+                        var linkHtml = '<?php echo addslashes($linkHtml); ?>';
+                        if(item[4]==="<?php echo $stId;?>") {
+                            document.getElementById('printoutPanel').innerHTML += '<b></b> <br>' +  linkHtml + '<br>';
+                        }
+
+
+                        <?php endforeach;?>
+
+
+
                     });
                     loca.push(pushpin);
                 }
@@ -757,11 +826,20 @@ $this->Form->setTemplates($formTemplate);
             loca.forEach( function (item) {
                 Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
                     min.push(Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles));
+
                     // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
                     //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
                 })
 
             })
+
+
+            // min.forEach( function (item) {
+            //
+            //
+            //     document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">data is : </div><br><div class="mb-0 text-gray-800">'+item+'</div>'+'<br>';
+            //
+            // })
 
 
             // document.getElementById('printoutPanel').innerHTML =
@@ -820,7 +898,25 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-
+    // function selecte(loca) {
+    //     min.length = 0
+    //     index = null;
+    //     // document.getElementById('printoutPanel').innerHTML = '';
+    //     map.entities.clear();
+    //     var pushpinM = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+    //
+    //
+    //     map.entities.push(pushpinM);
+    //     map.entities.clear();
+    //     loca.forEach( function (item) {
+    //         Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
+    //             min.push(Microsoft.Maps.SpatialMath.getDistanceTo(pushpinM.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles));
+    //
+    //         })
+    //
+    //     })
+    //
+    // }
 
 
 

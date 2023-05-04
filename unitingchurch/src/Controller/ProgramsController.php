@@ -7,6 +7,7 @@ namespace App\Controller;
  * Programs Controller
  *
  * @property \App\Model\Table\ProgramsTable $Programs
+ * @property \App\Model\Table\ServicesTable $Services
  * @method \App\Model\Entity\Program[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class ProgramsController extends AppController
@@ -32,10 +33,11 @@ class ProgramsController extends AppController
     public function view($id = null)
     {
         $program = $this->Programs->get($id, [
-            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
+            'contain' => ['ProgramTypes', 'Clusters', 'Sites','Services'],
         ]);
+        $services= $this->fetchTable('Services')->find()->toArray();
 
-        $this->set(compact('program'));
+        $this->set(compact('program','services'));
     }
 
     /**

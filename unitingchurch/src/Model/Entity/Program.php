@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\ProgramType $program_type
  * @property \App\Model\Entity\Cluster $cluster
  * @property \App\Model\Entity\Site[] $sites
+ * @property \App\Model\Entity\Service[] $services
  */
 class Program extends Entity
 {

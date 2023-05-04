@@ -14,6 +14,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\ProgramTypesTable&\Cake\ORM\Association\BelongsTo $ProgramTypes
  * @property \App\Model\Table\ClustersTable&\Cake\ORM\Association\BelongsTo $Clusters
  * @property \App\Model\Table\SitesTable&\Cake\ORM\Association\BelongsToMany $Sites
+ * @property \App\Model\Table\ServicesTable&\Cake\ORM\Association\BelongsToMany $Services
  *
  * @method \App\Model\Entity\Program newEmptyEntity()
  * @method \App\Model\Entity\Program newEntity(array $data, array $options = [])
