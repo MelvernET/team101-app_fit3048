@@ -21,7 +21,7 @@
                         <div class = "modal-body">
                             <div class="divisions view content">
                 <!--          -->
-                <h3><?= h($division->division_name) ?></h3>
+                <h3 class="h3 headings"><?= h($division->division_name) ?></h3>
                                 <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
                         <th><?= __('Division Name') ?></th>
@@ -31,10 +31,7 @@
                         <th><?= __('Division General Manager') ?></th>
                         <td><?= h($division->division_general_manager) ?></td>
                     </tr>
-                    <tr>
-                        <th><?= __('Division Id') ?></th>
-                        <td><?= $this->Number->format($division->division_id) ?></td>
-                    </tr>
+
                 </table>
 
                         </div>

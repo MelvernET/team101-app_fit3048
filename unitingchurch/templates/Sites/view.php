@@ -105,7 +105,7 @@
                             <br style="line-height:1px;" />
                             <?= $this->Html->link(__('Edit Site'), ['action' => 'edit', $site->site_id], ['class' => 'btn btn-primary btn-block']) ?>
                             <br style="line-height:1px;" />
-                            <?= $this->Form->postLink(__('Delete Site'), ['action' => 'delete', $site->site_id], ['confirm' => __('Are you sure you want to delete #this site: id {0}?', $site->site_id), 'class' => 'btn btn-primary btn-block']) ?>
+                            <?= $this->Form->postLink(__('Delete Site'), ['action' => 'delete', $site->site_id], ['confirm' => __('Are you sure you want to delete this site: {0}?', $site->site_address), 'class' => 'btn btn-primary btn-block']) ?>
 
                             </aside>
 

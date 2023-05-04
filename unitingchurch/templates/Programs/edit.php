@@ -72,7 +72,7 @@ $this->Form->setTemplates($formTemplate);
                 <br style="line-height:1px;" />
                 <?= $this->Html->link(__('View Program'), ['action' => 'view', $program->program_id], ['class' => 'btn btn-primary btn-block']) ?>
                 <br style="line-height:1px;" />
-                <?= $this->Form->postLink(__('Delete Program'), ['action' => 'delete', $program->program_id], ['confirm' => __('Are you sure you want to delete # {0}?', $program->program_name), 'class' => 'btn btn-primary btn-block']) ?>
+                <?= $this->Form->postLink(__('Delete Program'), ['action' => 'delete', $program->program_id], ['confirm' => __('Are you sure you want to delete {0}?', $program->program_name), 'class' => 'btn btn-primary btn-block']) ?>
 
                 </aside>
 

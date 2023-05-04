@@ -23,7 +23,7 @@
                         <div class = "modal-body">
                             <div class="clusters view content">
                 <!--          -->
-                <h3><?= h($cluster->cluster_name) ?></h3>
+                <h3 class="h3 headings"><?= h($cluster->cluster_name) ?></h3>
                             <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
                         <th><?= __('Cluster Name') ?></th>
