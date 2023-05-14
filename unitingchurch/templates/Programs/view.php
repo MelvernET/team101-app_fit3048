@@ -110,9 +110,10 @@
 
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
-                        <?php foreach ($program->services as $service) :
+                        <?php foreach ($services as $service) :
                             ?>
-
+                        <?php if($program->program_id == $service->program_id ) :
+                            ?>
 
                             <tr>
                                 <td><?= $this->Number->format($service->service_id) ?></td>
@@ -126,7 +127,7 @@
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Services','action' => 'delete', $service->service_id], [ 'confirm' => __('Are you sure you want to delete {0}?', $service->service_name)]) ?>
                                 </td>
                             </tr>
-
+                        <?php endif; ?>
                         <?php endforeach; ?>
 
 
