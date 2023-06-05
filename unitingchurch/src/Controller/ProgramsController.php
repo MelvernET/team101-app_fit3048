@@ -115,12 +115,5 @@ class ProgramsController extends AppController
     }
 
 
-//    public function filt($id){
-//        $following = $this->getTableLocator()->get('Program_Site')->find()->contain('Lecturer')->where(['user'=>$id]);
-//        $this->set('following',$following);
-//        $following_count = $following->count();
-//        $this->set('following_count', $following_count);
-//        $prog = $this->getTableLocator()->get('Program')->find()->contain('Site')->where(['program_id'=>$id]);
-//        $this->set('prog',$prog);
-//    }
+
 }

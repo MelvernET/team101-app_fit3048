@@ -99,44 +99,7 @@ class PagesController extends AppController
 
 
 
-//
-//    public function loadSite($programTypeId) {
-//        $pr = array();
-//        $siteee = array();
-//        foreach ($this->Programs as $pro):
-//            if($pro->program_type_id == $programTypeId){
-//                $pr.array_push($pr,$pro);
-//            }
-//            endforeach;
-//
-//
-//        $progType = $this->Sites->findById($programTypeId);
-//        $posts = $progType['program_type_id'];
-//        $sitee = $this->Programs->findById($progType);
-//
-//        $this->set(compact('posts'));
-//    }
-    public function home()
-    {
-//        $program = $this->Programs->get($id, [
-//            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
-//        ]);
-//        $program = $this->Programs->find('all', [
-//            'contain' => ['ProgramTypes', 'Clusters', 'Sites'],
-//        ]);
-//        $programm = $this->Programs->query('SELECT * FROM programs');
-//        $this->set('programm', $programm);
-//
-//        $this->set(compact('program'));
-    }
 
 
-//    public function index()
-//    {
-//
-//
-//        $program = $this->Programs->find('all'); // Retrieve all articles from the database
-//
-//        $this->set(compact('program')); // Pass the articles data to the view
-//    }
+
 }

@@ -412,12 +412,7 @@ $this->Form->setTemplates($formTemplate);
         loadMapScenario();
 
     }
-    // function cleanData(){
-    //     datas.length = 0;
-    //     infoBox.length = 0;
-    //     searchbox.value = '';
-    //     loadMapScenario();
-    // }
+
 
     function clean(){
         datas.length = 0;
@@ -455,7 +450,7 @@ $this->Form->setTemplates($formTemplate);
 
     function fil(typeId){
         sizee = 8;
-        // center = new Microsoft.Maps.Location(-34.9287, 138.601);
+
         center = new Microsoft.Maps.Location(-37.81361, 144.96306);
         var progId = Array(0);
         var siteId = Array(0);
@@ -641,42 +636,12 @@ $this->Form->setTemplates($formTemplate);
         document.getElementById('printoutPanel').innerHTML = '';
         document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Closest Site: </div><br><div class="mb-0 text-gray-800">'+addr[index][0]+'<br>'+addr[index][1]+addr[index][2]+'</div>'+'<br>';
 
-        // min.forEach( function (item) {
-        //
-        //
-        //     document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">data is : </div><br><div class="mb-0 text-gray-800">'+item+'</div>'+'<br>';
-        //
-        // })
-        // addr.forEach( function (item) {
-        //
-        //
-        //     document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">data is : </div><br><div class="mb-0 text-gray-800">'+item+'</div>'+'<br>';
-        //
-        // })
-        // document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">index is : </div><br><div class="mb-0 text-gray-800">'+index+'</div>'+'<br>';
-        //
-        //
-
-
-
-        // Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
-        //     var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
-        //     // Set Route Mode to transit
-        //     directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.transit });
-        //     var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: 'Redmond', location: new Microsoft.Maps.Location(47.67683029174805, -122.1099624633789) });
-        //     var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: 'Seattle', location: new Microsoft.Maps.Location(47.59977722167969, -122.33458709716797) });
-        //     directionsManager.addWaypoint(waypoint1);
-        //     directionsManager.addWaypoint(waypoint2);
-        //     // Set the element in which the itinerary will be rendered
-        //     directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel1') });
-        //     directionsManager.calculateDirections();
-        // });
 
     }
 
 
 
-//clear the text window function
+
 
 
 
@@ -711,10 +676,7 @@ $this->Form->setTemplates($formTemplate);
         layer.clear();
 
         var loca = new Array(0);
-        // var addr = new Array(0);
-        // var index;
-        // document.getElementById('printoutPanel').innerHTML = '<b>program data' +
-        //     ': </b><br> '+filt[0][0]+filt[0][1];
+
         document.getElementById('printoutPanel').innerHTML = '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of Sites' +
             ': </div><br><div class="h5 mb-0 font-weight-bold text-gray-800"> '+datas.length+'<br></div><br>';
         loca.length = 0;
@@ -746,11 +708,7 @@ $this->Form->setTemplates($formTemplate);
                             location: args.target.getLocation(),
                             title: args.target.metadata.title,
                             description: args.target.metadata.description,
-                            // actions: [
-                            //     { label: 'Handler1', eventHandler: function () { alert('Handler1'); } },
-                            //     { label: 'Handler2', eventHandler: function () { alert('Handler2'); } },
-                            //     { label: 'Handler3', eventHandler: function () { alert('Handler3'); } }
-                            // ],
+
                             visible: true
                         });
                         document.getElementById('printoutPanel').innerHTML =
@@ -821,7 +779,6 @@ $this->Form->setTemplates($formTemplate);
         function selectedSuggestion(suggestionResult) {
             min.length = 0
             index = null;
-            // document.getElementById('printoutPanel').innerHTML = '';
             map.entities.clear();
             var pushpinNow = new Microsoft.Maps.Pushpin(suggestionResult.location, {
                 icon: 'https://bingmapsisdk.blob.core.windows.net/isdksamples/defaultPushpin.png',
@@ -845,8 +802,7 @@ $this->Form->setTemplates($formTemplate);
                 Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
                     min.push(Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles));
 
-                    // document.getElementById('printoutPanel').innerHTML = '<b>Distance between two pushpins in miles</b><br> '
-                    //     + Microsoft.Maps.SpatialMath.getDistanceTo(pushpinNow.getLocation(), item.getLocation(), Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
+
                 })
 
             })
@@ -857,22 +813,6 @@ $this->Form->setTemplates($formTemplate);
                 '<b><div class="h5 mb-0 font-weight-bold text-gray-800"> Address:</div></b> <br>' + suggestionResult.formattedSuggestion+ '<br> <b>Lat:</b> ' + suggestionResult.location.latitude +
                 '<br> <b>Lon:</b> ' + suggestionResult.location.longitude + '<br>';
 
-
-
-
-
-            // min.forEach( function (item) {
-            //
-            //
-            //     document.getElementById('printoutPanel').innerHTML += '<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">data is : </div><br><div class="mb-0 text-gray-800">'+item+'</div>'+'<br>';
-            //
-            // })
-
-
-            // document.getElementById('printoutPanel').innerHTML =
-            //     'Suggestion: ' + suggestionResult.formattedSuggestion +
-            //     '<br> Lat: ' + suggestionResult.location.latitude +
-            //     '<br> Lon: ' + suggestionResult.location.longitude;
         }
 
 

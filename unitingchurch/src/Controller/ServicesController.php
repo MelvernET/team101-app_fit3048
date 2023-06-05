@@ -18,10 +18,7 @@ class ServicesController extends AppController
      */
     public function index()
     {
-//        $this->paginate = [
-//            'contain' => ['Programs', 'ServiceTypes'],
-//        ];
-//        $services = $this->paginate($this->Services);
+
         $services = $this->Services->find()->contain(['Programs', 'ServiceTypes']);
         $this->set(compact('services'));
     }

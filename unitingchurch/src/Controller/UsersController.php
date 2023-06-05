@@ -75,22 +75,6 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-//        $user = $this->Users->get($id, [
-//            'contain' => [],
-//        ]);
-//        if ($this->request->is(['patch', 'post', 'put'])) {
-//            $user = $this->Users->patchEntity($user, $this->request->getData());
-//            if ($this->Users->save($user)) {
-//                $this->Flash->success(__('The user has been saved.'));
-//
-//                return $this->redirect(['action' => 'index']);
-//            }
-//            $this->Flash->error(__('The user could not be saved. Please, try again.'));
-//        }
-//        $this->set(compact('user'));
-
-
-
 
         $user = $this->Users->get($id, [
             'contain' => [],
@@ -139,7 +123,6 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
-//        $this->Authentication->addUnauthenticatedActions(['login']);
         $this->Authentication->addUnauthenticatedActions(['login', 'add']);
     }
 
