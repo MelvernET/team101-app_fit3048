@@ -182,7 +182,6 @@ $this->Form->setTemplates($formTemplate);
         <input type= "button" value = "Nearest Site" onclick = "findLocation()" class="small btn btn-primary mr2">
 
         <input type= "button" value = "Clear" onclick = "clean()" class="small btn btn-primary">
-        <!--                        <input type= "button" value = "Reset Sites" onclick = "cleanData()" class="btn btn-primary">-->
         <input type= "button" value = "Show All Sites" onclick = "resetData()" class="small btn btn-primary">
 
 
@@ -203,7 +202,7 @@ $this->Form->setTemplates($formTemplate);
                         <h5 class="card-title"><i class="fas fa-fw  fa-map"></i> Map</h5>
                         <br>
                         <div class="map" style='width: 100%; height: 80%;' >
-                            <!--                                    <div id='printoutPanel'></div>-->
+
                             <div id='myMap' style='width: 100%; height: 100%;'></div>
 
                         </div>
@@ -223,20 +222,6 @@ $this->Form->setTemplates($formTemplate);
 <br><br>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             <div class="card border-left-primary"  style="max-height: 400px; width: 100%; overflow-x: scroll;">
                                 <div class="card-body">
                                     <div class="row no-gutters align4items-center">
@@ -250,7 +235,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                                         <div class="col-auto">
-<!--                                            <i class="fas fa-map-pin fa-2x text-gray-300"></i>-->
+
                                         </div>
                                     </div>
                                 </div>
@@ -316,8 +301,7 @@ $this->Form->setTemplates($formTemplate);
     var center;
     var sizee = 12;
     var searchedLocation;
-    //    $connection = ConnectionManager::get('default');
-    //    $results = $connection->execute('SELECT * FROM programs')->fetchAll('assoc');
+
     let searchbox = document.querySelector('#searchBox');
     let dropdown = document.querySelector('#dropdownBox1');
     let dropdown2 = document.querySelector('#dropdownBox2');
@@ -326,21 +310,7 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-    //init the data about sites
-<!--    --><?php
-//    foreach ($sites as $site):
-//    $siId = $site->site_id;
-//    $address = $site->site_address;
-//    $site_address = $site->site_contact;
-//    $lati = $site->site_latitude;
-//    $long = $site->site_longitude;
-//    ?>
-//    datas.push(["<?php //echo $address;?>//","<?php //echo $site_address;?>//","<?php //echo $lati;?>//","<?php //echo $long;?>//","<?php //echo $siId;?>//"])
-//    infoBox.push("<?php //echo $site_address;?>//")
-//
-//    <?php //endforeach; ?>
 
-//
 
 //get random color
 
@@ -491,7 +461,7 @@ $this->Form->setTemplates($formTemplate);
             if(ptId === data){
                 var name = ptyName;
                 dropdown3.value = '';
-                // dropdown2.value = '';
+
                 dropdown.value = name;
             }
 
@@ -541,86 +511,6 @@ $this->Form->setTemplates($formTemplate);
 
 
 
-
-    // filter function 2
-    function filByCluster(typeId){
-
-        datas.length = 0;
-        infoBox.length = 0;
-        dropdown.value = '';
-        dropdown2.value = 'Cluster ID: '+typeId;
-        dropdown3.value = '';
-        searchbox.value = '';
-
-        var progId = Array(0);
-        var siteId = Array(0);
-        var allSites = Array(0);
-
-        <?php
-        foreach ($sites as $site):
-        $address = $site->site_address;
-        $site_address = $site->site_contact;
-        $lati = $site->site_latitude;
-        $long = $site->site_longitude;
-        $sitId = $site->site_id;
-        ?>
-        allSites.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $sitId;?>"])
-        <?php endforeach; ?>
-
-
-        <?php
-        foreach ($query as $pro) :
-        $proTypeId = $pro->cluster_id;
-        $proId = $pro->program_id;
-
-        ?>
-
-        var data = "<?php echo $proTypeId;?>"
-        if(parseInt(data) == parseInt(typeId)){
-            progId.push("<?php echo $proId;?>");
-
-
-        }
-        <?php endforeach; ?>
-
-        progId.forEach( function (item) {
-
-            <?php
-            foreach ($bridges as $bri) :
-            $prId = $bri->program_id;
-
-
-            $stId = $bri->site_id;
-
-            ?>
-
-            var prograId = "<?php echo $prId;?>";
-            var siteeId = "<?php echo $stId;?>"
-            if(item === prograId){
-                siteId.push(siteeId);
-
-            }
-
-            <?php endforeach; ?>
-
-        })
-        var result = unique(siteId)
-
-        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
-            ': </b><br> '+result;
-
-        allSites.forEach( function (itemmm) {
-            result.forEach( function (itemm){
-
-                if(itemmm[4] === itemm){
-                    document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
-                        ': </b><br> '+(itemmm[4] == itemm);
-                    datas.push(itemmm);
-                }
-            })
-        })
-        loadMapScenario();
-    }
 
 
 //show the nearest site function
