@@ -96,7 +96,7 @@ class SitesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $site = $this->Sites->get($id);
-//        if ($this->Sites->Programs->deleteAll(['site_id' => $id])) {
+
         if ($this->Sites->delete($site)) {
             $this->Flash->success(__('The site has been deleted.'));
         } else {
@@ -105,5 +105,5 @@ class SitesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-//}
+
 }

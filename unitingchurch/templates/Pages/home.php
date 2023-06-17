@@ -512,6 +512,86 @@ $this->Form->setTemplates($formTemplate);
 
 
 
+    // filter function 2
+    function filByCluster(typeId){
+
+        datas.length = 0;
+        infoBox.length = 0;
+        dropdown.value = '';
+        dropdown2.value = 'Cluster ID: '+typeId;
+        dropdown3.value = '';
+        searchbox.value = '';
+
+        var progId = Array(0);
+        var siteId = Array(0);
+        var allSites = Array(0);
+
+        <?php
+        foreach ($sites as $site):
+        $address = $site->site_address;
+        $site_address = $site->site_contact;
+        $lati = $site->site_latitude;
+        $long = $site->site_longitude;
+        $sitId = $site->site_id;
+        ?>
+        allSites.push(["<?php echo $address;?>","<?php echo $site_address;?>","<?php echo $lati;?>","<?php echo $long;?>","<?php echo $sitId;?>"])
+        <?php endforeach; ?>
+
+
+        <?php
+        foreach ($query as $pro) :
+        $proTypeId = $pro->cluster_id;
+        $proId = $pro->program_id;
+
+        ?>
+
+        var data = "<?php echo $proTypeId;?>"
+        if(parseInt(data) == parseInt(typeId)){
+            progId.push("<?php echo $proId;?>");
+
+
+        }
+        <?php endforeach; ?>
+
+        progId.forEach( function (item) {
+
+            <?php
+            foreach ($bridges as $bri) :
+            $prId = $bri->program_id;
+
+
+            $stId = $bri->site_id;
+
+            ?>
+
+            var prograId = "<?php echo $prId;?>";
+            var siteeId = "<?php echo $stId;?>"
+            if(item === prograId){
+                siteId.push(siteeId);
+
+            }
+
+            <?php endforeach; ?>
+
+        })
+        var result = unique(siteId)
+
+        document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+            ': </b><br> '+result;
+
+        allSites.forEach( function (itemmm) {
+            result.forEach( function (itemm){
+
+                if(itemmm[4] === itemm){
+                    document.getElementById('printoutPanel').innerHTML = '<b>site numbers' +
+                        ': </b><br> '+(itemmm[4] == itemm);
+                    datas.push(itemmm);
+                }
+            })
+        })
+        loadMapScenario();
+    }
+
 
 //show the nearest site function
     function findLocation(){
